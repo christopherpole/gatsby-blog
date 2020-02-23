@@ -12,6 +12,8 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
+    'import/prefer-default-export': 'off',
+    'arrow-parens': ['error', 'as-needed'],
   },
   settings: {
     'import/resolver': {

@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Footer from 'src/components/footer';
 import Header from 'src/components/header';
@@ -7,12 +8,22 @@ interface IProps {
   children: React.ReactNode;
 }
 
+const Wrapper = styled.div`
+  border: 1px solid green;
+  max-width: ${props => props.theme.maxPageWidth};
+  margin: auto;
+`;
+
+const Content = styled.div`
+  border: 1px solid red;
+`;
+
 const Layout = ({ children }: IProps) => (
-  <div>
+  <Wrapper>
     <Header />
-    <div>{children}</div>
+    <Content>{children}</Content>
     <Footer />
-  </div>
+  </Wrapper>
 );
 
 export default Layout;
