@@ -13,4 +13,12 @@ module.exports = {
     'prettier/prettier': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['src', './src']],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      },
+    },
+  },
 };

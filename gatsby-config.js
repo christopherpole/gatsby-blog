@@ -5,6 +5,7 @@ module.exports = {
     author: 'Christopher Pole',
   },
   plugins: [
+    'gatsby-plugin-root-import',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
     'gatsby-plugin-offline',
