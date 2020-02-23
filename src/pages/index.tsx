@@ -1,7 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import Layout from 'src/components/layout';
+const Wrapper = styled.div``;
 
-const IndexPage = () => <Layout>Hello</Layout>;
+const IndexPage = () => <Wrapper>Hello</Wrapper>;
 
 export default IndexPage;
