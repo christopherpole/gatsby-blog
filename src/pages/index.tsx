@@ -1,9 +1,7 @@
 import React from 'react';
 
-const IndexPage = () => (
-  <div>
-    <h1>Sup world</h1>
-  </div>
-);
+import Layout from '../components/layout';
+
+const IndexPage = () => <Layout>Hello</Layout>;
 
 export default IndexPage;
