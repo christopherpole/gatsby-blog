@@ -4,8 +4,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import 'normalize.css';
 
-import Footer from 'src/components/footer';
-import Header from 'src/components/header';
+import Footer from 'src/components/structure/footer';
+import Header from 'src/components/structure/header';
 
 export const QUERY = graphql`
   {

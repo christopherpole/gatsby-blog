@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Logo from 'src/components/logo';
-import Nav from 'src/components/nav';
+import Logo from 'src/components/structure/logo';
+import Nav from 'src/components/structure/nav';
 
 const Wrapper = styled.header`
   width: 100%;
