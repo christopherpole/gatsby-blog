@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link as GatsbyLink } from 'gatsby';
+
+import ButtonLink from 'src/components/ui/buttonLink';
 
 const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.secondary};
@@ -30,11 +31,11 @@ const ContentWrapperInner = styled.div`
   justify-content: center;
 `;
 
+const CopyWrapper = styled.div``;
+
 const Title = styled.p``;
 
 const Description = styled.p``;
-
-const Link = styled(GatsbyLink)``;
 
 const FeaturedArticle = () => (
   <Wrapper>
@@ -43,11 +44,14 @@ const FeaturedArticle = () => (
     </ImageWrapper>
     <ContentWrapper>
       <ContentWrapperInner>
-        <Title>Title</Title>
-        <Description>
-          Breathtaking Winners of the 2019 International Landscape Photographer of the Year Contest
-        </Description>
-        <Link to="#">Read Article</Link>
+        <CopyWrapper>
+          <Title>Title</Title>
+          <Description>
+            Breathtaking Winners of the 2019 International Landscape Photographer of the Year
+            Contest
+          </Description>
+          <ButtonLink to="#">Read Article</ButtonLink>
+        </CopyWrapper>
       </ContentWrapperInner>
     </ContentWrapper>
   </Wrapper>

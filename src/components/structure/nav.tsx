@@ -5,11 +5,19 @@ const Wrapper = styled.ul`
   display: flex;
   padding: 0;
   margin: 0;
+  text-transform: uppercase;
 `;
 
-const LinkWrapper = styled.li`
+const Link = styled.li`
   list-style-type: none;
-  margin-right: ${props => props.theme.spacing.medium};
+  margin-right: ${props => props.theme.spacing.large};
+  cursor: pointer;
+  transition: color 200ms linear;
+
+  &:focus,
+  &:hover {
+    color: ${props => props.theme.colors.primary};
+  }
 
   &:last-child {
     margin-right: 0;
@@ -18,9 +26,9 @@ const LinkWrapper = styled.li`
 
 const Nav = () => (
   <Wrapper>
-    <LinkWrapper>Reviews</LinkWrapper>
-    <LinkWrapper>Guides</LinkWrapper>
-    <LinkWrapper>Inspiration</LinkWrapper>
+    <Link>Reviews</Link>
+    <Link>Guides</Link>
+    <Link>Inspiration</Link>
   </Wrapper>
 );
 
