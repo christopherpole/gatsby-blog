@@ -1,9 +1,11 @@
 const theme = {
-  maxPageWidth: '60rem',
+  maxPageWidth: '80rem',
   colors: {
-    primary: '#333',
-    secondary: '#999',
-    tertiary: '#eee',
+    primary: '#7fcd91',
+    secondary: '#5b5656',
+    primaryFont: '#161e26',
+    secondaryFont: '#fff',
+    defaultBorderColor: '#e8e8e8',
   },
   spacing: {
     small: '1rem',

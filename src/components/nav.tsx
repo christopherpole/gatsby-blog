@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.ul`
-  background-color: yellow;
   display: flex;
   padding: 0;
   margin: 0;
@@ -19,9 +18,9 @@ const LinkWrapper = styled.li`
 
 const Nav = () => (
   <Wrapper>
-    <LinkWrapper>a</LinkWrapper>
-    <LinkWrapper>a</LinkWrapper>
-    <LinkWrapper>a</LinkWrapper>
+    <LinkWrapper>Reviews</LinkWrapper>
+    <LinkWrapper>Guides</LinkWrapper>
+    <LinkWrapper>Inspiration</LinkWrapper>
   </Wrapper>
 );
 
