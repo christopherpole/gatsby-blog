@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import 'normalize.css';
 
 import Footer from 'src/components/footer';
 import Header from 'src/components/header';
@@ -9,13 +10,18 @@ interface IProps {
 }
 
 const Wrapper = styled.div`
-  border: 1px solid green;
-  max-width: ${props => props.theme.maxPageWidth};
-  margin: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Content = styled.div`
-  border: 1px solid red;
+  max-width: ${props => props.theme.maxPageWidth};
+  padding: ${props => props.theme.spacing.large};
+  flex: 1;
+  background: blue;
+  width: 100%;
 `;
 
 const Layout = ({ children }: IProps) => (
