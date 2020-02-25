@@ -22,6 +22,12 @@ interface IProps {
   children: React.ReactNode;
 }
 
+const HeaderAndContentWrapper = styled.div`
+  padding: 0 ${props => props.theme.spacing.large};
+  flex: 1;
+  width: 100%;
+`;
+
 const Wrapper = styled.div`
   min-height: 100vh;
   display: flex;
@@ -31,9 +37,10 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   max-width: ${props => props.theme.maxPageWidth};
-  padding: ${props => props.theme.spacing.large};
   flex: 1;
   width: 100%;
+  margin: auto;
+  padding: ${props => props.theme.spacing.large} 0;
 `;
 
 const Layout = ({ children }: IProps) => {
@@ -54,8 +61,10 @@ const Layout = ({ children }: IProps) => {
       </Helmet>
 
       <Wrapper>
-        <Header />
-        <Content>{children}</Content>
+        <HeaderAndContentWrapper>
+          <Header />
+          <Content>{children}</Content>
+        </HeaderAndContentWrapper>
         <Footer />
       </Wrapper>
     </>

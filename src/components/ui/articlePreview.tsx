@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Img, { FluidObject } from 'gatsby-image';
+import Img from 'gatsby-image';
 
 import ButtonLink from 'src/components/ui/buttonLink';
+import IArticle from 'src/types/article';
 
 const Wrapper = styled.div`
   position: relative;
@@ -27,15 +28,7 @@ const Description = styled.p`
   margin-bottom: ${props => props.theme.spacing.small};
 `;
 
-interface IProps {
-  title: string;
-  description: string;
-  image: {
-    fluid?: FluidObject | FluidObject[];
-  };
-}
-
-const ArticlePreview = ({ title, description, image }: IProps) => (
+const ArticlePreview = ({ title, description, image }: IArticle) => (
   <Wrapper>
     <ImageWrapper>
       <Img fluid={image.fluid} />

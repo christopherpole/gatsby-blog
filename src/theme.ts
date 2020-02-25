@@ -1,7 +1,7 @@
 const theme = {
   maxPageWidth: '90rem',
   colors: {
-    primary: '#7fcd91',
+    primary: '#70c168',
     secondary: '#f8f8f8',
     primaryFont: '#161e26',
     secondaryFont: '#fff',

@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
+import IArticle from 'src/types/article';
 import Byline from 'src/components/ui/byline';
 import ArticlePreview from 'src/components/ui/articlePreview';
 
@@ -10,6 +11,7 @@ const QUERY = graphql`
     allContentfulArticle(
       filter: { featured: { eq: false } }
       sort: { fields: createdAt, order: DESC }
+      limit: 3
     ) {
       nodes {
         id
@@ -55,7 +57,7 @@ const LatestArticles = () => {
     <Wrapper>
       <Byline>Latest</Byline>
       <ArticlePreviewsWrapper>
-        {nodes.map(({ title, description, image }) => (
+        {nodes.map(({ title, description, image }: IArticle) => (
           <ArticlePreviewWrapper>
             <ArticlePreview title={title} description={description} image={image} />
           </ArticlePreviewWrapper>

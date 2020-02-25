@@ -9,7 +9,8 @@
     "noEmit": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "noUnusedLocals": false
+    "noUnusedLocals": false,
+    "noImplicitAny": true
   },
   "exclude": ["node_modules", "public", ".cache"]
 }

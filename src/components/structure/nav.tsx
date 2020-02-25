@@ -8,11 +8,12 @@ const Wrapper = styled.ul`
   text-transform: uppercase;
 `;
 
-const Link = styled.li`
+const Link = styled.a`
   list-style-type: none;
   margin-right: ${props => props.theme.spacing.large};
-  cursor: pointer;
   transition: color 200ms linear;
+  text-decoration: none;
+  color: inherit;
 
   &:focus,
   &:hover {
@@ -26,9 +27,9 @@ const Link = styled.li`
 
 const Nav = () => (
   <Wrapper>
-    <Link>Reviews</Link>
-    <Link>Guides</Link>
-    <Link>Inspiration</Link>
+    <Link href="/">Reviews</Link>
+    <Link href="/">Guides</Link>
+    <Link href="/">Inspiration</Link>
   </Wrapper>
 );
 
