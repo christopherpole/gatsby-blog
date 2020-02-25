@@ -9,7 +9,7 @@ const Wrapper = styled.header`
 `;
 
 const WrapperInner = styled.div`
-  padding: ${props => props.theme.spacing.large};
+  padding: ${props => props.theme.spacing.large} 0;
   max-width: ${props => props.theme.maxPageWidth};
   display: flex;
   flex-direction: column;

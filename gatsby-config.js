@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: 'Terrarium Blog',
@@ -16,7 +20,7 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: 'fb0igrx2bnzi',
-        accessToken: '4DZr_NUV6OkYnxQtzArfWY82T17XBoj1nLVHLk63SfY',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
     {
