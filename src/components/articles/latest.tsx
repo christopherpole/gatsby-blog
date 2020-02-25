@@ -2,7 +2,8 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
-import ArticlePreview from '../ui/articlePreview';
+import Byline from 'src/components/ui/byline';
+import ArticlePreview from 'src/components/ui/articlePreview';
 
 const QUERY = graphql`
   {
@@ -26,13 +27,23 @@ const QUERY = graphql`
   }
 `;
 
-const Wrapper = styled.ul`
-  display: flex;
+const Wrapper = styled.div`
+  margin-bottom: ${props => props.theme.spacing.large};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
+const ArticlePreviewsWrapper = styled.ul``;
+
 const ArticlePreviewWrapper = styled.li`
+  margin-bottom: ${props => props.theme.spacing.medium};
   list-style-type: none;
-  flex: 1;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const LatestArticles = () => {
@@ -42,11 +53,14 @@ const LatestArticles = () => {
 
   return (
     <Wrapper>
-      {nodes.map(({ title, description, image }) => (
-        <ArticlePreviewWrapper>
-          <ArticlePreview title={title} description={description} image={image} />
-        </ArticlePreviewWrapper>
-      ))}
+      <Byline>Latest</Byline>
+      <ArticlePreviewsWrapper>
+        {nodes.map(({ title, description, image }) => (
+          <ArticlePreviewWrapper>
+            <ArticlePreview title={title} description={description} image={image} />
+          </ArticlePreviewWrapper>
+        ))}
+      </ArticlePreviewsWrapper>
     </Wrapper>
   );
 };

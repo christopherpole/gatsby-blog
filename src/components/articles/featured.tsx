@@ -1,7 +1,9 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import styled from 'styled-components';
 
-import ArticlePreview from '../ui/articlePreview';
+import Byline from 'src/components/ui/byline';
+import ArticlePreview from 'src/components/ui/articlePreview';
 
 const QUERY = graphql`
   {
@@ -25,6 +27,14 @@ const QUERY = graphql`
   }
 `;
 
+const Wrapper = styled.div`
+  margin-bottom: ${props => props.theme.spacing.large};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
 const FeaturedArticle = () => {
   const {
     allContentfulArticle: { nodes },
@@ -32,7 +42,12 @@ const FeaturedArticle = () => {
 
   const { title, description, image } = nodes[0];
 
-  return <ArticlePreview title={title} description={description} image={image} />;
+  return (
+    <Wrapper>
+      <Byline>Featured</Byline>
+      <ArticlePreview title={title} description={description} image={image} />
+    </Wrapper>
+  );
 };
 
 export default FeaturedArticle;
