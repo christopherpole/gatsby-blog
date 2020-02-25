@@ -1,60 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
 
-import ButtonLink from 'src/components/ui/buttonLink';
+import ArticlePreview from '../ui/articlePreview';
 
-const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.secondary};
-  position: relative;
+const QUERY = graphql`
+  {
+    allContentfulArticle(
+      filter: { featured: { eq: true } }
+      sort: { fields: createdAt, order: DESC }
+    ) {
+      nodes {
+        id
+        title
+        description
+        slug
+        image {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+        createdAt
+      }
+    }
+  }
 `;
 
-const ImageWrapper = styled.div``;
+const FeaturedArticle = () => {
+  const {
+    allContentfulArticle: { nodes },
+  } = useStaticQuery(QUERY);
 
-const ContentWrapper = styled.div`
-  position: absolute;
-  right: 0;
-  left: 50%;
-  bottom: 0;
-  top: 0;
-`;
+  const { title, description, image } = nodes[0];
 
-const ContentWrapperInner = styled.div`
-  background-color: rgba(255, 255, 255, 0.5);
-  position: absolute;
-  top: ${props => props.theme.spacing.large};
-  left: ${props => props.theme.spacing.large};
-  right: ${props => props.theme.spacing.large};
-  bottom: ${props => props.theme.spacing.large};
-  padding: ${props => props.theme.spacing.large};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const CopyWrapper = styled.div``;
-
-const Title = styled.p``;
-
-const Description = styled.p``;
-
-const FeaturedArticle = () => (
-  <Wrapper>
-    <ImageWrapper>
-      <img src="https://placehold.it/1000x500" alt="fuckyou" />
-    </ImageWrapper>
-    <ContentWrapper>
-      <ContentWrapperInner>
-        <CopyWrapper>
-          <Title>Title</Title>
-          <Description>
-            Breathtaking Winners of the 2019 International Landscape Photographer of the Year
-            Contest
-          </Description>
-          <ButtonLink to="#">Read Article</ButtonLink>
-        </CopyWrapper>
-      </ContentWrapperInner>
-    </ContentWrapper>
-  </Wrapper>
-);
+  return <ArticlePreview title={title} description={description} image={image} />;
+};
 
 export default FeaturedArticle;

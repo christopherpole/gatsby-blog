@@ -1,5 +1,5 @@
 const theme = {
-  maxPageWidth: '80rem',
+  maxPageWidth: '90rem',
   colors: {
     primary: '#7fcd91',
     secondary: '#f8f8f8',

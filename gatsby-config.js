@@ -13,6 +13,13 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
     {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'fb0igrx2bnzi',
+        accessToken: '4DZr_NUV6OkYnxQtzArfWY82T17XBoj1nLVHLk63SfY',
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
