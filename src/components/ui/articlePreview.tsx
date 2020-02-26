@@ -28,7 +28,7 @@ const Description = styled.p`
   margin-bottom: ${props => props.theme.spacing.small};
 `;
 
-const ArticlePreview = ({ title, description, image }: IArticle) => (
+const ArticlePreview = ({ title, description, image, slug }: IArticle) => (
   <Wrapper>
     <ImageWrapper>
       <Img fluid={image.fluid} />
@@ -36,7 +36,7 @@ const ArticlePreview = ({ title, description, image }: IArticle) => (
     <CopyWrapper>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <ButtonLink to="#">Read Article</ButtonLink>
+      <ButtonLink to={slug}>Read Article</ButtonLink>
     </CopyWrapper>
   </Wrapper>
 );

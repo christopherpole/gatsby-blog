@@ -4,7 +4,7 @@ module.exports = {
     jest: true,
     node: true,
   },
-  extends: ['airbnb-typescript', 'prettier/@typescript-eslint'],
+  extends: ['airbnb-typescript', 'prettier', 'prettier/@typescript-eslint'],
   plugins: ['prettier'],
   parserOptions: {
     project: './tsconfig.json',

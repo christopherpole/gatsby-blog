@@ -6,6 +6,7 @@ const Wrapper = styled.ul`
   padding: 0;
   margin: 0;
   text-transform: uppercase;
+  padding: 0;
 `;
 
 const Link = styled.a`

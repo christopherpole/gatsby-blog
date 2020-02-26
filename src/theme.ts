@@ -8,9 +8,9 @@ const theme = {
     defaultBorderColor: '#e8e8e8',
   },
   spacing: {
-    small: '1rem',
-    medium: '1.5rem',
-    large: '2rem',
+    small: '1.5rem',
+    medium: '2rem',
+    large: '2.5rem',
   },
   sizing: {
     small: '1rem',

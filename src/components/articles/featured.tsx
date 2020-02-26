@@ -40,12 +40,12 @@ const FeaturedArticle = () => {
     allContentfulArticle: { nodes },
   } = useStaticQuery(QUERY);
 
-  const { title, description, image } = nodes[0];
+  const { title, description, image, slug } = nodes[0];
 
   return (
     <Wrapper>
       <Byline>Featured</Byline>
-      <ArticlePreview title={title} description={description} image={image} />
+      <ArticlePreview title={title} description={description} image={image} slug={slug} />
     </Wrapper>
   );
 };

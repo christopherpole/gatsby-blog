@@ -11,7 +11,7 @@ const QUERY = graphql`
     allContentfulArticle(
       filter: { featured: { eq: false } }
       sort: { fields: createdAt, order: DESC }
-      limit: 3
+      limit: 10
     ) {
       nodes {
         id
@@ -37,7 +37,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const ArticlePreviewsWrapper = styled.ul``;
+const ArticlePreviewsWrapper = styled.ul`
+  padding: 0;
+`;
 
 const ArticlePreviewWrapper = styled.li`
   margin-bottom: ${props => props.theme.spacing.medium};
@@ -57,9 +59,16 @@ const LatestArticles = () => {
     <Wrapper>
       <Byline>Latest</Byline>
       <ArticlePreviewsWrapper>
-        {nodes.map(({ title, description, image }: IArticle) => (
+        {nodes.map(({ title, description, image, slug, createdAt, body }: IArticle) => (
           <ArticlePreviewWrapper>
-            <ArticlePreview title={title} description={description} image={image} />
+            <ArticlePreview
+              title={title}
+              description={description}
+              image={image}
+              slug={slug}
+              body={body}
+              createdAt={createdAt}
+            />
           </ArticlePreviewWrapper>
         ))}
       </ArticlePreviewsWrapper>

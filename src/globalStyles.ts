@@ -26,4 +26,22 @@ export default createGlobalStyle`
     margin-right: auto;
     display: block;
   }
+
+  ul, ol {
+    padding-left: 2rem;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, ul, ol, blockquote {
+    margin-top: 0;
+    margin-bottom: ${props => props.theme.spacing.small};
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    margin-top: ${props => props.theme.spacing.large};
+    margin-bottom: ${props => props.theme.spacing.large};
+  }
 `;
