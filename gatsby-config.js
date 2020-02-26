@@ -1,31 +1,46 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
-    title: "Terrarium Blog",
-    description: "A blog about terrariums",
-    author: "Christopher Pole",
+    title: 'Terrarium Blog',
+    description: 'A blog about terrariums',
+    author: 'Christopher Pole',
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-root-import',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-offline',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-styled-components',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-contentful',
       options: {
-        name: "images",
-        path: "${__dirname}/src/images",
+        spaceId: 'fb0igrx2bnzi',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "gatsby-starter-default",
-        short_name: "starter",
-        start_url: "/",
-        background_color: "#663399",
-        theme_color: "#663399",
-        display: "minimal-ui",
-        icon: "src/images/gatsby-icon.png", // This path is relative to the root of the site.
+        name: 'images',
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Terrarium Blog',
+        short_name: 'Terrarium Blogs',
+        start_url: '/',
+        background_color: '#663399',
+        theme_color: '#663399',
+        display: 'standalone',
+        icon: 'src/images/gatsby-icon.png',
       },
     },
   ],
-}
+};
