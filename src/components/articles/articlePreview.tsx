@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled.div`
   flex: 1;
-  margin-right: ${props => props.theme.spacing.large};
+  margin-right: ${props => props.theme.spacing.medium};
 `;
 
 const CopyWrapper = styled.div`

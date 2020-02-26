@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
 import Byline from 'src/components/ui/byline';
-import ArticlePreview from 'src/components/ui/articlePreview';
+import ArticlePreview from 'src/components/articles/articlePreview';
 import IArticle from 'src/types/article';
 
 const QUERY = graphql`

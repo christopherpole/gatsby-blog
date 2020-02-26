@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import IArticle from 'src/types/article';
 import Byline from 'src/components/ui/byline';
-import ArticlePreview from 'src/components/ui/articlePreview';
+import ArticlePreview from 'src/components/articles/articlePreview';
 
 const QUERY = graphql`
   {

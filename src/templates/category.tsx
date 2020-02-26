@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import ArticlePreview from 'src/components/ui/articlePreview';
 import Headline from 'src/components/ui/headline';
 import IArticle from 'src/types/article';
+import ArticlesList from 'src/components/articles/articlesList';
 
 export const QUERY = graphql`
   query($slug: String!) {
@@ -53,10 +53,7 @@ const CategoryPage = ({
 }: IProps) => (
   <Wrapper>
     <Headline>{name}</Headline>
-
-    {nodes.map(node => (
-      <ArticlePreview {...node} />
-    ))}
+    <ArticlesList articles={nodes} />
   </Wrapper>
 );
 
