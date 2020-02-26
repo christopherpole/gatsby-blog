@@ -36,7 +36,7 @@ const ArticlePreview = ({ title, description, image, slug }: IArticle) => (
     <CopyWrapper>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <ButtonLink to={slug}>Read Article</ButtonLink>
+      <ButtonLink to={`article/${slug}`}>Read Article</ButtonLink>
     </CopyWrapper>
   </Wrapper>
 );

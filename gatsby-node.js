@@ -19,7 +19,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   res.data.allContentfulArticle.edges.forEach(({ node: { slug } }) => {
     createPage({
       component: articleTemplate,
-      path: slug,
+      path: `/article/${slug}`,
       context: {
         slug,
       },
