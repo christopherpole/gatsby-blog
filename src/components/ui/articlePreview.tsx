@@ -35,7 +35,7 @@ const ArticlePreview = ({ title, description, category, image, slug }: IArticle)
       <Img fluid={image.fluid} />
     </ImageWrapper>
     <CopyWrapper>
-      <Link to="/">{category.name}</Link>
+      <Link to={`/category/${category.slug}`}>{category.name}</Link>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <ButtonLink to={`article/${slug}`}>Read Article</ButtonLink>
