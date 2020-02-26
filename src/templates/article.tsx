@@ -5,6 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import IArticle from 'src/types/article';
 import Headline from 'src/components/ui/headline';
+import RandomArticles from 'src/components/articles/random';
 import getContentfulRichTextRendererOverrides from 'src/utils/getContentfulRichTextRendererOverrides';
 
 export const QUERY = graphql`
@@ -20,7 +21,11 @@ export const QUERY = graphql`
   }
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.div``;
+
+const ArticleWrapper = styled.article`
+  margin-bottom: ${props => props.theme.spacing.large};
+`;
 
 const PublishDate = styled.p`
   margin-bottom: ${props => props.theme.spacing.medium};
@@ -38,11 +43,14 @@ const Article = ({
   },
 }: IProps) => (
   <Wrapper>
-    <Headline>{title}</Headline>
-    <PublishDate>{createdAt}</PublishDate>
-    {documentToReactComponents(body.json, {
-      renderNode: getContentfulRichTextRendererOverrides(),
-    })}
+    <ArticleWrapper>
+      <Headline>{title}</Headline>
+      <PublishDate>{createdAt}</PublishDate>
+      {documentToReactComponents(body.json, {
+        renderNode: getContentfulRichTextRendererOverrides(),
+      })}
+    </ArticleWrapper>
+    <RandomArticles />
   </Wrapper>
 );
 
