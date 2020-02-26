@@ -5,6 +5,10 @@ interface IArticle {
   title: string;
   description: string;
   slug: string;
+  category: {
+    name: string;
+    slug: string;
+  };
   image: {
     fluid?: FluidObject | FluidObject[];
   };

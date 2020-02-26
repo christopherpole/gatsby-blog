@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Byline from 'src/components/ui/byline';
 import ArticlePreview from 'src/components/ui/articlePreview';
+import IArticle from 'src/types/article';
 
 const QUERY = graphql`
   {
@@ -15,6 +16,10 @@ const QUERY = graphql`
         id
         title
         description
+        category {
+          name
+          slug
+        }
         slug
         image {
           fluid {
@@ -40,12 +45,10 @@ const FeaturedArticle = () => {
     allContentfulArticle: { nodes },
   } = useStaticQuery(QUERY);
 
-  const { title, description, image, slug } = nodes[0];
-
   return (
     <Wrapper>
       <Byline>Featured</Byline>
-      <ArticlePreview title={title} description={description} image={image} slug={slug} />
+      <ArticlePreview {...(nodes[0] as IArticle)} />
     </Wrapper>
   );
 };

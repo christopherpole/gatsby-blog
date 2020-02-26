@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 
 import ButtonLink from 'src/components/ui/buttonLink';
+import Link from 'src/components/ui/link';
 import IArticle from 'src/types/article';
 
 const Wrapper = styled.div`
@@ -28,12 +29,13 @@ const Description = styled.p`
   margin-bottom: ${props => props.theme.spacing.small};
 `;
 
-const ArticlePreview = ({ title, description, image, slug }: IArticle) => (
+const ArticlePreview = ({ title, description, category, image, slug }: IArticle) => (
   <Wrapper>
     <ImageWrapper>
       <Img fluid={image.fluid} />
     </ImageWrapper>
     <CopyWrapper>
+      <Link to="/">{category.name}</Link>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <ButtonLink to={`article/${slug}`}>Read Article</ButtonLink>

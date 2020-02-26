@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Link from 'src/components/ui/link';
+
 const Wrapper = styled.ul`
   display: flex;
   padding: 0;
@@ -9,17 +11,9 @@ const Wrapper = styled.ul`
   padding: 0;
 `;
 
-const Link = styled.a`
+const LinkWrapper = styled.li`
   list-style-type: none;
   margin-right: ${props => props.theme.spacing.large};
-  transition: color 200ms linear;
-  text-decoration: none;
-  color: inherit;
-
-  &:focus,
-  &:hover {
-    color: ${props => props.theme.colors.primary};
-  }
 
   &:last-child {
     margin-right: 0;
@@ -28,9 +22,15 @@ const Link = styled.a`
 
 const Nav = () => (
   <Wrapper>
-    <Link href="/">Reviews</Link>
-    <Link href="/">Guides</Link>
-    <Link href="/">Inspiration</Link>
+    <LinkWrapper>
+      <Link to="/">Reviews</Link>
+    </LinkWrapper>
+    <LinkWrapper>
+      <Link to="/">Guides</Link>
+    </LinkWrapper>
+    <LinkWrapper>
+      <Link to="/">Inspiration</Link>
+    </LinkWrapper>
   </Wrapper>
 );
 

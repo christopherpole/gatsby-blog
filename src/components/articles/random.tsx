@@ -18,6 +18,10 @@ const QUERY = graphql`
         title
         description
         slug
+        category {
+          name
+          slug
+        }
         image {
           fluid {
             ...GatsbyContentfulFluid
@@ -61,16 +65,9 @@ const LatestArticles = () => {
     <Wrapper>
       <Byline>Random</Byline>
       <ArticlePreviewsWrapper>
-        {nodes.map(({ title, description, image, slug, createdAt, body }: IArticle) => (
+        {nodes.map((node: IArticle) => (
           <ArticlePreviewWrapper>
-            <ArticlePreview
-              title={title}
-              description={description}
-              image={image}
-              slug={slug}
-              body={body}
-              createdAt={createdAt}
-            />
+            <ArticlePreview {...(node as IArticle)} />
           </ArticlePreviewWrapper>
         ))}
       </ArticlePreviewsWrapper>

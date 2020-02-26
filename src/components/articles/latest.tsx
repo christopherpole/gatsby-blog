@@ -17,6 +17,10 @@ const QUERY = graphql`
         id
         title
         description
+        category {
+          name
+          slug
+        }
         slug
         image {
           fluid {
@@ -59,16 +63,9 @@ const LatestArticles = () => {
     <Wrapper>
       <Byline>Latest</Byline>
       <ArticlePreviewsWrapper>
-        {nodes.map(({ title, description, image, slug, createdAt, body }: IArticle) => (
+        {nodes.map((node: IArticle) => (
           <ArticlePreviewWrapper>
-            <ArticlePreview
-              title={title}
-              description={description}
-              image={image}
-              slug={slug}
-              body={body}
-              createdAt={createdAt}
-            />
+            <ArticlePreview {...(node as IArticle)} />
           </ArticlePreviewWrapper>
         ))}
       </ArticlePreviewsWrapper>
