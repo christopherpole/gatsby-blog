@@ -38,7 +38,7 @@ const ArticlePreview = ({ title, description, category, image, slug }: IArticleS
       <Link to={`/category/${category.slug}`}>{category.name}</Link>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <ButtonLink to={`article/${slug}`}>Read Article</ButtonLink>
+      <ButtonLink to={`/article/${slug}`}>Read Article</ButtonLink>
     </CopyWrapper>
   </Wrapper>
 );

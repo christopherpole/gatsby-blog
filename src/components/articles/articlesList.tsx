@@ -29,7 +29,7 @@ interface IProps {
 const ArticlesList = ({ articles }: IProps) => (
   <Wrapper>
     {articles.map(article => (
-      <ArticlePreviewWrapper>
+      <ArticlePreviewWrapper key={article.id}>
         <ArticlePreview {...article} />
       </ArticlePreviewWrapper>
     ))}

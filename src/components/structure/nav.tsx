@@ -1,7 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import Link from 'src/components/ui/link';
+import ICategory from 'src/types/category';
+
+const QUERY = graphql`
+  {
+    allContentfulCategory(sort: { fields: name, order: ASC }) {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+  }
+`;
 
 const Wrapper = styled.ul`
   display: flex;
@@ -20,18 +34,20 @@ const LinkWrapper = styled.li`
   }
 `;
 
-const Nav = () => (
-  <Wrapper>
-    <LinkWrapper>
-      <Link to="/">Reviews</Link>
-    </LinkWrapper>
-    <LinkWrapper>
-      <Link to="/">Guides</Link>
-    </LinkWrapper>
-    <LinkWrapper>
-      <Link to="/">Inspiration</Link>
-    </LinkWrapper>
-  </Wrapper>
-);
+const Nav = () => {
+  const {
+    allContentfulCategory: { nodes },
+  } = useStaticQuery(QUERY);
+
+  return (
+    <Wrapper>
+      {nodes.map(({ id, name, slug }: ICategory) => (
+        <LinkWrapper key={id}>
+          <Link to={`/category/${slug}`}>{name}</Link>
+        </LinkWrapper>
+      ))}
+    </Wrapper>
+  );
+};
 
 export default Nav;
