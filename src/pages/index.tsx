@@ -3,16 +3,37 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import Byline from 'src/components/ui/byline';
-import FeaturedArticle from 'src/components/articles/featured';
 import ArticlesList from 'src/components/articles/articlesList';
 import IArticle from 'src/types/article';
 
 export const QUERY = graphql`
   {
-    allContentfulArticle(
+    latestArticles: allContentfulArticle(
       filter: { featured: { eq: false } }
       sort: { fields: createdAt, order: DESC }
       limit: 10
+    ) {
+      nodes {
+        id
+        title
+        description
+        category {
+          name
+          slug
+        }
+        slug
+        image {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+        createdAt
+      }
+    }
+    featuredArticle: allContentfulArticle(
+      filter: { featured: { eq: true } }
+      sort: { fields: createdAt, order: DESC }
+      limit: 1
     ) {
       nodes {
         id
@@ -36,7 +57,7 @@ export const QUERY = graphql`
 
 const Wrapper = styled.div``;
 
-const LatestArticlesWrapper = styled.div`
+const ArticlesWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.large};
 
   &:last-child {
@@ -46,24 +67,26 @@ const LatestArticlesWrapper = styled.div`
 
 interface IProps {
   data: {
-    allContentfulArticle: {
+    featuredArticle: {
+      nodes: IArticle[];
+    };
+    latestArticles: {
       nodes: IArticle[];
     };
   };
 }
 
-const IndexPage = ({
-  data: {
-    allContentfulArticle: { nodes },
-  },
-}: IProps) => (
+const IndexPage = ({ data: { featuredArticle, latestArticles } }: IProps) => (
   <Wrapper>
-    <FeaturedArticle />
+    <ArticlesWrapper>
+      <Byline>Featured</Byline>
+      <ArticlesList articles={[featuredArticle.nodes[0]]} />
+    </ArticlesWrapper>
 
-    <LatestArticlesWrapper>
+    <ArticlesWrapper>
       <Byline>Latest</Byline>
-      <ArticlesList articles={nodes} />
-    </LatestArticlesWrapper>
+      <ArticlesList articles={latestArticles.nodes} />
+    </ArticlesWrapper>
   </Wrapper>
 );
 
