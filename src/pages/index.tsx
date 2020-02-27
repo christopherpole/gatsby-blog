@@ -8,48 +8,22 @@ import IArticle from 'src/types/article';
 
 export const QUERY = graphql`
   {
-    latestArticles: allContentfulArticle(
-      filter: { featured: { eq: false } }
-      sort: { fields: createdAt, order: DESC }
-      limit: 10
-    ) {
-      nodes {
-        id
-        title
-        description
-        category {
-          name
-          slug
-        }
-        slug
-        image {
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-        }
-        createdAt
-      }
-    }
     featuredArticle: allContentfulArticle(
       filter: { featured: { eq: true } }
       sort: { fields: createdAt, order: DESC }
       limit: 1
     ) {
       nodes {
-        id
-        title
-        description
-        category {
-          name
-          slug
-        }
-        slug
-        image {
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-        }
-        createdAt
+        ...articleFields
+      }
+    }
+    latestArticles: allContentfulArticle(
+      filter: { featured: { eq: false } }
+      sort: { fields: createdAt, order: DESC }
+      limit: 10
+    ) {
+      nodes {
+        ...articleFields
       }
     }
   }
