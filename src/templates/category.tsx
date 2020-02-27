@@ -55,12 +55,14 @@ const CategoryPage = ({
     <Headline>{name}</Headline>
     <ArticlesList articles={nodes} />
 
-    <Paginatior
-      previousPagePath={previousPagePath}
-      nextPagePath={nextPagePath}
-      pageNumber={pageNumber}
-      numberOfPages={numberOfPages}
-    />
+    {numberOfPages > 1 && (
+      <Paginatior
+        previousPagePath={previousPagePath}
+        nextPagePath={nextPagePath}
+        pageNumber={pageNumber}
+        numberOfPages={numberOfPages}
+      />
+    )}
   </Wrapper>
 );
 
