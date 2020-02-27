@@ -15,6 +15,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'arrow-parens': ['error', 'as-needed'],
     'react/jsx-props-no-spreading': 'off',
+    'react/no-array-index-key': 'off',
   },
   settings: {
     'import/resolver': {

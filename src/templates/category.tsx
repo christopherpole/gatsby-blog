@@ -1,10 +1,11 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Headline from 'src/components/ui/headline';
 import IArticleSummary from 'src/types/articleSummary';
 import ArticlesList from 'src/components/articles/articlesList';
+import Paginatior from 'src/components/ui/paginator';
 
 export const QUERY = graphql`
   query($slug: String!, $limit: Int!, $skip: Int!) {
@@ -36,8 +37,10 @@ interface IProps {
     };
   };
   pageContext: {
-    previousPagePath: string;
-    nextPagePath: string;
+    previousPagePath?: string;
+    nextPagePath?: string;
+    pageNumber: number;
+    numberOfPages: number;
   };
 }
 
@@ -46,14 +49,18 @@ const CategoryPage = ({
     contentfulCategory: { name },
     allContentfulArticle: { nodes },
   },
-  pageContext: { previousPagePath, nextPagePath },
+  pageContext: { previousPagePath, nextPagePath, pageNumber, numberOfPages },
 }: IProps) => (
   <Wrapper>
     <Headline>{name}</Headline>
     <ArticlesList articles={nodes} />
 
-    {previousPagePath && <Link to={previousPagePath}>Previous page</Link>}
-    {nextPagePath && <Link to={nextPagePath}>Next page</Link>}
+    <Paginatior
+      previousPagePath={previousPagePath}
+      nextPagePath={nextPagePath}
+      pageNumber={pageNumber}
+      numberOfPages={numberOfPages}
+    />
   </Wrapper>
 );
 
