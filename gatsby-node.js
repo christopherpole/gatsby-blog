@@ -1,4 +1,5 @@
 const path = require('path');
+const { paginate } = require('gatsby-awesome-pagination');
 
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -11,12 +12,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
+            category {
+              id
+            }
           }
         }
       }
       allContentfulCategory {
         edges {
           node {
+            id
             slug
           }
         }
@@ -36,10 +41,18 @@ module.exports.createPages = async ({ graphql, actions }) => {
   });
 
   //  Create the category pages
-  res.data.allContentfulCategory.edges.forEach(({ node: { slug } }) => {
-    createPage({
+  res.data.allContentfulCategory.edges.forEach(({ node: { id, slug } }) => {
+    //  Filter the articles for this category
+    const articles = res.data.allContentfulArticle.edges.filter(
+      ({ node }) => node.category.id === id,
+    );
+
+    paginate({
+      createPage,
+      items: articles,
+      itemsPerPage: 2,
+      pathPrefix: `/category/${slug}`,
       component: categoryTemplate,
-      path: `/category/${slug}`,
       context: {
         slug,
       },
