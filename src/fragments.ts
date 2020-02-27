@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 
 export const articleFields = graphql`
-  fragment articleFields on ContentfulArticle {
+  fragment articleSummaryFields on ContentfulArticle {
     id
     title
     description

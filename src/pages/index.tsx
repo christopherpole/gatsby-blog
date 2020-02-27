@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import Byline from 'src/components/ui/byline';
 import ArticlesList from 'src/components/articles/articlesList';
-import IArticle from 'src/types/article';
+import IArticleSummary from 'src/types/articleSummary';
 
 export const QUERY = graphql`
   {
@@ -14,7 +14,7 @@ export const QUERY = graphql`
       limit: 1
     ) {
       nodes {
-        ...articleFields
+        ...articleSummaryFields
       }
     }
     latestArticles: allContentfulArticle(
@@ -23,7 +23,7 @@ export const QUERY = graphql`
       limit: 10
     ) {
       nodes {
-        ...articleFields
+        ...articleSummaryFields
       }
     }
   }
@@ -42,10 +42,10 @@ const ArticlesWrapper = styled.div`
 interface IProps {
   data: {
     featuredArticle: {
-      nodes: IArticle[];
+      nodes: IArticleSummary[];
     };
     latestArticles: {
-      nodes: IArticle[];
+      nodes: IArticleSummary[];
     };
   };
 }

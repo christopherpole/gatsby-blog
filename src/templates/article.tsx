@@ -2,18 +2,21 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Document as ContentfulDocument } from '@contentful/rich-text-types';
 
-import IArticle from 'src/types/article';
+import IArticleSummary from 'src/types/articleSummary';
 import Headline from 'src/components/ui/headline';
-import RandomArticles from 'src/components/articles/random';
+import Byline from 'src/components/ui/byline';
 import getContentfulRichTextRendererOverrides from 'src/utils/getContentfulRichTextRendererOverrides';
+import ArticlesList from 'src/components/articles/articlesList';
 
 export const QUERY = graphql`
   query($slug: String!) {
     contentfulArticle(slug: { eq: $slug }) {
-      id
-      title
-      createdAt(formatString: "dddd Do, YYYY")
+      ...articleSummaryFields
+      relatedArticles {
+        ...articleSummaryFields
+      }
       body {
         json
       }
@@ -31,26 +34,42 @@ const PublishDate = styled.p`
   margin-bottom: ${props => props.theme.spacing.medium};
 `;
 
+const RelatedArticlesWrapper = styled.div``;
+
+interface IFullArticle extends IArticleSummary {
+  relatedArticles?: IArticleSummary[];
+  body: {
+    json: ContentfulDocument;
+  };
+}
+
 interface IProps {
   data: {
-    contentfulArticle: IArticle;
+    contentfulArticle: IFullArticle;
   };
 }
 
 const Article = ({
   data: {
-    contentfulArticle: { title, createdAt, body },
+    contentfulArticle: { title, createdAt, body, relatedArticles },
   },
 }: IProps) => (
   <Wrapper>
     <ArticleWrapper>
       <Headline>{title}</Headline>
       <PublishDate>{createdAt}</PublishDate>
+
       {documentToReactComponents(body.json, {
         renderNode: getContentfulRichTextRendererOverrides(),
       })}
     </ArticleWrapper>
-    <RandomArticles />
+
+    {relatedArticles && relatedArticles.length > 0 && (
+      <RelatedArticlesWrapper>
+        <Byline>Related</Byline>
+        <ArticlesList articles={relatedArticles} />
+      </RelatedArticlesWrapper>
+    )}
   </Wrapper>
 );
 

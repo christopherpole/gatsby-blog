@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import IArticle from 'src/types/article';
+import IArticleSummary from 'src/types/articleSummary';
 import ArticlePreview from 'src/components/articles/articlePreview';
 
 const Wrapper = styled.ul`
@@ -23,7 +23,7 @@ const ArticlePreviewWrapper = styled.li`
 `;
 
 interface IProps {
-  articles: IArticle[];
+  articles: IArticleSummary[];
 }
 
 const ArticlesList = ({ articles }: IProps) => (

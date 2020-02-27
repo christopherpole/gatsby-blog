@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Headline from 'src/components/ui/headline';
-import IArticle from 'src/types/article';
+import IArticleSummary from 'src/types/articleSummary';
 import ArticlesList from 'src/components/articles/articlesList';
 
 export const QUERY = graphql`
@@ -13,20 +13,7 @@ export const QUERY = graphql`
     }
     allContentfulArticle(filter: { category: { slug: { eq: $slug } } }) {
       nodes {
-        id
-        title
-        description
-        category {
-          name
-          slug
-        }
-        slug
-        image {
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-        }
-        createdAt
+        ...articleSummaryFields
       }
     }
   }
@@ -40,7 +27,7 @@ interface IProps {
       name: string;
     };
     allContentfulArticle: {
-      nodes: IArticle[];
+      nodes: IArticleSummary[];
     };
   };
 }
