@@ -10,7 +10,8 @@ const Wrapper = styled(Link)`
   transition: color 200ms linear;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &.current {
     color: ${props => props.theme.colors.primary};
   }
 
@@ -24,6 +25,6 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const StyledLink = (props: IProps) => <Wrapper {...props} />;
+const StyledLink = (props: IProps) => <Wrapper activeClassName="current" {...props} />;
 
 export default StyledLink;
