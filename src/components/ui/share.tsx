@@ -7,25 +7,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faPinterestP } from '@fortawesome/free-brands-svg-icons';
 
 const buttonStyles = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`;
-
-const Wrapper = styled.ul`
-  padding: 0;
-  display: flex;
-`;
-
-const IconWrapper = styled.li`
-  list-style-type: none;
-  margin-right: ${props => props.theme.spacing.small};
+  color: #fff !important;
   height: 4.5rem;
   width: 4.5rem;
   display: flex;
@@ -38,86 +20,93 @@ const IconWrapper = styled.li`
   padding: 0;
   position: relative;
   transition: background-color 200ms linear;
+`;
 
-  button {
-    ${buttonStyles}
-  }
+const Wrapper = styled.ul`
+  padding: 0;
+  display: flex;
+`;
+
+const IconWrapper = styled.li`
+  list-style-type: none;
+  margin-right: ${props => props.theme.spacing.small};
 
   &:last-child {
     margin-right: 0;
   }
 `;
 
-const FacebookButtonWrapper = styled(IconWrapper)`
-  background-color: #3a579a;
-
-  &:hover,
-  &:focus {
-    background-color: ${darken(0.1, '#3a579a')};
-  }
-`;
-
-const TwitterButtonWrapper = styled(IconWrapper)`
-  background-color: #00abf0;
-
-  &:hover,
-  &:focus {
-    background-color: ${darken(0.1, '#00abf0')};
-  }
-`;
-
-const PinterestButtonWrapper = styled(IconWrapper)`
-  background-color: #c92228;
-
-  &:hover,
-  &:focus {
-    background-color: ${darken(0.1, '#c92228')};
-  }
-`;
-
-const EmailButtonWrapper = styled(IconWrapper)`
-  background-color: #f65002;
-
-  &:hover,
-  &:focus {
-    background-color: ${darken(0.1, '#f65002')};
-  }
-`;
-
-const EmailShareButton = styled.a`
+//  POS sharing library
+const FacebookButton = styled(FacebookShareButton)`
   ${buttonStyles}
-  text-decoration: none;
-  color: inherit;
+  background-color: #3a579a !important;
+
+  &:hover,
+  &:focus {
+    background-color: ${darken(0.1, '#3a579a')}!important;
+  }
 `;
 
-interface IProps {}
+const TwitterButton = styled(TwitterShareButton)`
+  ${buttonStyles}
+  background-color: #00abf0!important;
 
-const Share = () => (
+  &:hover,
+  &:focus {
+    background-color: ${darken(0.1, '#00abf0')}!important;
+  }
+`;
+
+const PinterestButton = styled(PinterestShareButton)`
+  ${buttonStyles}
+  background-color: #c92228!important;
+
+  &:hover,
+  &:focus {
+    background-color: ${darken(0.1, '#c92228')}!important;
+  }
+`;
+
+const EmailButton = styled.a`
+  ${buttonStyles}
+  background-color: #f65002!important;
+
+  &:hover,
+  &:focus {
+    background-color: ${darken(0.1, '#f65002')}!important;
+  }
+`;
+
+interface IProps {
+  url: string;
+  title: string;
+  media: string;
+}
+
+const Share = ({ url, title, media }: IProps) => (
   <Wrapper>
-    <FacebookButtonWrapper>
-      <FacebookShareButton url="google.com">
+    <IconWrapper>
+      <FacebookButton url={url} quote={title}>
         <FontAwesomeIcon icon={faFacebookF} />
-      </FacebookShareButton>
-    </FacebookButtonWrapper>
-
-    <TwitterButtonWrapper>
-      <TwitterShareButton url="google.com" title="title" via="@cpole">
-        <FontAwesomeIcon icon={faTwitter} />
-      </TwitterShareButton>
-    </TwitterButtonWrapper>
-
-    <PinterestButtonWrapper>
-      <PinterestShareButton url="google.com" media="">
-        <FontAwesomeIcon icon={faPinterestP} />
-      </PinterestShareButton>
-    </PinterestButtonWrapper>
+      </FacebookButton>
+    </IconWrapper>
 
     <IconWrapper>
-      <EmailButtonWrapper>
-        <EmailShareButton href="mailto:?&amp;subject=&amp;body=Check%20out%20this%20article%20from%20MorningChores%3A%20https://morningchores.com/growing-marshmallow/">
-          <FontAwesomeIcon icon={faEnvelope} />
-        </EmailShareButton>
-      </EmailButtonWrapper>
+      <TwitterButton url={url} title={title}>
+        <FontAwesomeIcon icon={faTwitter} />
+      </TwitterButton>
+    </IconWrapper>
+
+    <IconWrapper>
+      <PinterestButton url={url} media={media} description={title}>
+        <FontAwesomeIcon icon={faPinterestP} />
+      </PinterestButton>
+    </IconWrapper>
+
+    <IconWrapper>
+      <EmailButton href={`mailto:?Subject=${title}&body=Check%20out%20this%20article%3A%20${url}`}>
+        <FontAwesomeIcon icon={faEnvelope} />
+      </EmailButton>
     </IconWrapper>
   </Wrapper>
 );

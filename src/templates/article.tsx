@@ -57,7 +57,7 @@ const Article = ({
 }: IProps) => (
   <Wrapper>
     <ArticleWrapper>
-      <Share />
+      <Share url={window.location.href} title={title} media="https://placehold.it/100x100" />
       <Headline>{title}</Headline>
       <PublishDate>{createdAt}</PublishDate>
 
