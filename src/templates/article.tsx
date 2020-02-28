@@ -9,6 +9,7 @@ import Headline from 'src/components/ui/headline';
 import Byline from 'src/components/ui/byline';
 import getContentfulRichTextRendererOverrides from 'src/utils/getContentfulRichTextRendererOverrides';
 import ArticlesList from 'src/components/articles/articlesList';
+import Share from 'src/components/ui/share';
 
 export const QUERY = graphql`
   query($slug: String!) {
@@ -56,6 +57,7 @@ const Article = ({
 }: IProps) => (
   <Wrapper>
     <ArticleWrapper>
+      <Share />
       <Headline>{title}</Headline>
       <PublishDate>{createdAt}</PublishDate>
 
