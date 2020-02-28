@@ -1,11 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Block, Inline } from '@contentful/rich-text-types';
+import { RenderNode } from '@contentful/rich-text-react-renderer';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import Headline from 'src/components/ui/headline';
 import Byline from 'src/components/ui/byline';
 import Link from 'src/components/ui/link';
 import ArticleImage from 'src/components/ui/articleImage';
-import { Block, Inline } from '@contentful/rich-text-types';
-import { RenderNode } from '@contentful/rich-text-react-renderer';
+import linkStyle from 'src/theme/styles/link';
+
+const StyledOutboundLink = styled(OutboundLink)`
+  ${linkStyle}
+`;
 
 export default (): RenderNode => ({
   'embedded-asset-block': (node: Block | Inline) => {
@@ -26,8 +33,13 @@ export default (): RenderNode => ({
     <Byline>{(node.content[0] as { value: string }).value}</Byline>
   ),
   'entry-hyperlink': node => (
-    <Link to={`article/${node.data.target.fields.slug['en-US']}`}>
+    <Link to={`/article/${node.data.target.fields.slug['en-US']}`}>
       {JSON.stringify(node.data.target.fields.title['en-US'])}
     </Link>
+  ),
+  hyperlink: node => (
+    <StyledOutboundLink rel="noopener noreferrer" target="_blank" href={node.data.uri}>
+      {(node.content[0] as { value: string }).value}
+    </StyledOutboundLink>
   ),
 });

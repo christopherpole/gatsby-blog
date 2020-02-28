@@ -20,6 +20,18 @@ const CopyWrapper = styled.div`
   flex: 2;
 `;
 
+const StyledLink = styled(Link)`
+  color: inherit;
+  display: block;
+  margin-bottom: ${props => props.theme.spacing.small};
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.primary};
+  }
+`;
+
 const Title = styled.p`
   margin-bottom: ${props => props.theme.spacing.small};
   font-size: ${props => props.theme.sizing.large};
@@ -35,7 +47,7 @@ const ArticlePreview = ({ title, description, category, image, slug }: IArticleS
       <Img fluid={image.fluid} />
     </ImageWrapper>
     <CopyWrapper>
-      <Link to={`/category/${category.slug}`}>{category.name}</Link>
+      <StyledLink to={`/category/${category.slug}`}>{category.name}</StyledLink>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <ButtonLink to={`/article/${slug}`}>Read Article</ButtonLink>

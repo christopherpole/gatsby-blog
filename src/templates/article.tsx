@@ -49,24 +49,23 @@ interface IProps {
   data: {
     contentfulArticle: IFullArticle;
   };
+  location: {
+    href: string;
+  };
 }
 
 const Article = ({
   data: {
     contentfulArticle: { title, createdAt, body, relatedArticles, image },
   },
+  location: { href },
 }: IProps) => (
   <Wrapper>
     <ArticleWrapper>
-      <Share
-        url={window.location.href}
-        title={title}
-        media={(image.fluid as { src: string }).src as string}
-      />
+      <Share url={href} title={title} media={(image.fluid as { src: string }).src as string} />
       <Headline>{title}</Headline>
       <PublishDate>{createdAt}</PublishDate>
       <Img fluid={image.fluid} />
-
       {documentToReactComponents(body.json, {
         renderNode: getContentfulRichTextRendererOverrides(),
       })}

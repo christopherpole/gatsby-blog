@@ -34,6 +34,15 @@ const LinkWrapper = styled.li`
   }
 `;
 
+const StyledLink = styled(Link)`
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.primary};
+  }
+`;
+
 const Nav = () => {
   const {
     allContentfulCategory: { nodes },
@@ -43,7 +52,7 @@ const Nav = () => {
     <Wrapper>
       {nodes.map(({ id, name, slug }: ICategory) => (
         <LinkWrapper key={id}>
-          <Link to={`/category/${slug}`}>{name}</Link>
+          <StyledLink to={`/category/${slug}`}>{name}</StyledLink>
         </LinkWrapper>
       ))}
     </Wrapper>
