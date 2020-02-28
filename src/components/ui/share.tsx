@@ -1,4 +1,5 @@
 import React from 'react';
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
 import { FacebookShareButton, TwitterShareButton, PinterestShareButton } from 'react-share';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
@@ -83,28 +84,67 @@ interface IProps {
   media: string;
 }
 
+//  Track the event. We don't actually have to return a Promise here!
+const trackEvent = (source: string) => {
+  trackCustomEvent({
+    category: 'Share buttons',
+    action: 'Click',
+    label: `${source} button`,
+  });
+};
+
 const Share = ({ url, title, media }: IProps) => (
   <Wrapper>
     <IconWrapper>
-      <FacebookButton url={url} quote={title}>
+      <FacebookButton
+        url={url}
+        quote={title}
+        beforeOnClick={
+          (() => {
+            trackEvent('Facebook');
+          }) as () => Promise<void>
+        }
+      >
         <FontAwesomeIcon icon={faFacebookF} />
       </FacebookButton>
     </IconWrapper>
 
     <IconWrapper>
-      <TwitterButton url={url} title={title}>
+      <TwitterButton
+        url={url}
+        title={title}
+        beforeOnClick={
+          (() => {
+            trackEvent('Twitter');
+          }) as () => Promise<void>
+        }
+      >
         <FontAwesomeIcon icon={faTwitter} />
       </TwitterButton>
     </IconWrapper>
 
     <IconWrapper>
-      <PinterestButton url={url} media={media} description={title}>
+      <PinterestButton
+        url={url}
+        media={media}
+        description={title}
+        beforeOnClick={
+          (() => {
+            trackEvent('Pinterest');
+          }) as () => Promise<void>
+        }
+      >
         <FontAwesomeIcon icon={faPinterestP} />
       </PinterestButton>
     </IconWrapper>
 
     <IconWrapper>
-      <EmailButton href={`mailto:?Subject=${title}&body=Check%20out%20this%20article%3A%20${url}`}>
+      <EmailButton
+        href={`mailto:?Subject=${title}&body=Check%20out%20this%20article%3A%20${url}`}
+        onClick={() => {
+          trackEvent('Email');
+        }}
+      >
         <FontAwesomeIcon icon={faEnvelope} />
       </EmailButton>
     </IconWrapper>
