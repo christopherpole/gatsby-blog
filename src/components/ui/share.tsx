@@ -15,7 +15,7 @@ const buttonStyles = css`
   justify-content: center;
   border-radius: 100%;
   color: white;
-  font-size: 2rem;
+  font-size: 2rem !important;
   border: none;
   padding: 0;
   position: relative;

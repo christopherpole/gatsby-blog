@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
@@ -52,14 +53,19 @@ interface IProps {
 
 const Article = ({
   data: {
-    contentfulArticle: { title, createdAt, body, relatedArticles },
+    contentfulArticle: { title, createdAt, body, relatedArticles, image },
   },
 }: IProps) => (
   <Wrapper>
     <ArticleWrapper>
-      <Share url={window.location.href} title={title} media="https://placehold.it/100x100" />
+      <Share
+        url={window.location.href}
+        title={title}
+        media={(image.fluid as { src: string }).src as string}
+      />
       <Headline>{title}</Headline>
       <PublishDate>{createdAt}</PublishDate>
+      <Img fluid={image.fluid} />
 
       {documentToReactComponents(body.json, {
         renderNode: getContentfulRichTextRendererOverrides(),
