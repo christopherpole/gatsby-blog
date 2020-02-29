@@ -11,6 +11,7 @@ import Byline from 'src/components/ui/byline';
 import getContentfulRichTextRendererOverrides from 'src/utils/getContentfulRichTextRendererOverrides';
 import ArticlesList from 'src/components/articles/articlesList';
 import Share from 'src/components/ui/share';
+import SEO from 'src/components/structure/seo';
 
 export const QUERY = graphql`
   query($slug: String!) {
@@ -51,16 +52,25 @@ interface IProps {
   };
   location: {
     href: string;
+    pathname: string;
   };
 }
 
 const Article = ({
   data: {
-    contentfulArticle: { title, createdAt, body, relatedArticles, image },
+    contentfulArticle: { title, description, createdAt, body, relatedArticles, image },
   },
-  location: { href },
+  location: { href, pathname },
 }: IProps) => (
   <Wrapper>
+    <SEO
+      title={title}
+      description={description}
+      pathname={pathname}
+      image={(image.fluid as { src: string }).src as string}
+      isArticle
+    />
+
     <ArticleWrapper>
       <Share url={href} title={title} media={(image.fluid as { src: string }).src as string} />
       <Headline>{title}</Headline>

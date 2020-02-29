@@ -6,6 +6,7 @@ import Headline from 'src/components/ui/headline';
 import IArticleSummary from 'src/types/articleSummary';
 import ArticlesList from 'src/components/articles/articlesList';
 import Paginatior from 'src/components/ui/paginator';
+import SEO from 'src/components/structure/seo';
 
 export const QUERY = graphql`
   query($slug: String!, $limit: Int!, $skip: Int!) {
@@ -42,6 +43,9 @@ interface IProps {
     pageNumber: number;
     numberOfPages: number;
   };
+  location: {
+    pathname: string;
+  };
 }
 
 const CategoryPage = ({
@@ -50,10 +54,12 @@ const CategoryPage = ({
     allContentfulArticle: { nodes },
   },
   pageContext: { previousPagePath, nextPagePath, pageNumber, numberOfPages },
+  location: { pathname },
 }: IProps) => (
   <Wrapper>
     <Headline>{name}</Headline>
     <ArticlesList articles={nodes} />
+    <SEO title={name} pathname={pathname} />
 
     {numberOfPages > 1 && (
       <Paginatior

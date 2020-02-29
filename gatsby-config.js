@@ -7,6 +7,8 @@ module.exports = {
     title: 'Terrarium Blog',
     description: 'A blog about terrariums',
     author: 'Christopher Pole',
+    url: 'google.com',
+    image: 'https://placehold.it/200x200',
   },
   plugins: [
     {

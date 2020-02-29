@@ -1,22 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import 'normalize.css';
 
 import Footer from 'src/components/structure/footer';
 import Header from 'src/components/structure/header';
-
-export const QUERY = graphql`
-  {
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
-  }
-`;
+import SEO from 'src/components/structure/seo';
 
 interface IProps {
   children: React.ReactNode;
@@ -43,32 +32,27 @@ const Content = styled.div`
   padding: ${props => props.theme.spacing.large} 0;
 `;
 
-const Layout = ({ children }: IProps) => {
-  const {
-    site: {
-      siteMetadata: { title, description },
-    },
-  } = useStaticQuery(QUERY);
+const Layout = ({ children }: IProps) => (
+  <>
+    <Helmet>
+      <html lang="en" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link
+        href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
 
-  return (
-    <>
-      <Helmet title={title}>
-        <meta name="description" content={description} />
-        <link
-          href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
+    <SEO />
 
-      <Wrapper>
-        <HeaderAndContentWrapper>
-          <Header />
-          <Content>{children}</Content>
-        </HeaderAndContentWrapper>
-        <Footer />
-      </Wrapper>
-    </>
-  );
-};
+    <Wrapper>
+      <HeaderAndContentWrapper>
+        <Header />
+        <Content>{children}</Content>
+      </HeaderAndContentWrapper>
+      <Footer />
+    </Wrapper>
+  </>
+);
 
 export default Layout;
