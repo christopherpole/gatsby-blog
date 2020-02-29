@@ -16,6 +16,7 @@ module.exports = {
     'arrow-parens': ['error', 'as-needed'],
     'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
+    'no-console': 'off',
   },
   settings: {
     'import/resolver': {
