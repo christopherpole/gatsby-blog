@@ -17,7 +17,9 @@ const QUERY = graphql`
   }
 `;
 
-const Wrapper = styled.ul`
+const Wrapper = styled.nav``;
+
+const LinksWrapper = styled.ul`
   display: flex;
   padding: 0;
   margin: 0;
@@ -50,11 +52,13 @@ const Nav = () => {
 
   return (
     <Wrapper>
-      {nodes.map(({ id, name, slug }: ICategory) => (
-        <LinkWrapper key={id}>
-          <StyledLink to={`/category/${slug}`}>{name}</StyledLink>
-        </LinkWrapper>
-      ))}
+      <LinksWrapper>
+        {nodes.map(({ id, name, slug }: ICategory) => (
+          <LinkWrapper key={id}>
+            <StyledLink to={`/category/${slug}`}>{name}</StyledLink>
+          </LinkWrapper>
+        ))}
+      </LinksWrapper>
     </Wrapper>
   );
 };

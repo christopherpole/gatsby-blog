@@ -24,7 +24,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Content = styled.div`
+const Content = styled.main`
   max-width: ${props => props.theme.maxPageWidth};
   flex: 1;
   width: 100%;

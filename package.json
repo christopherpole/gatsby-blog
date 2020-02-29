@@ -26,6 +26,7 @@
     "gatsby-source-contentful": "^2.1.86",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.3.13",
+    "logrocket": "^1.0.6",
     "normalize.css": "^8.0.1",
     "polished": "^3.4.4",
     "prop-types": "^15.7.2",

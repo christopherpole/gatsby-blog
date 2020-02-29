@@ -5,6 +5,11 @@ import Img from 'gatsby-image';
 
 export const QUERY = graphql`
   query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     image: file(relativePath: { eq: "logo.png" }) {
       childImageSharp {
         fixed(width: 200) {
@@ -24,7 +29,7 @@ const Logo = () => {
 
   return (
     <StyledLink to="/">
-      <Img fixed={data.image.childImageSharp.fixed} />
+      <Img fixed={data.image.childImageSharp.fixed} alt={data.site.siteMetadata.title} />
     </StyledLink>
   );
 };

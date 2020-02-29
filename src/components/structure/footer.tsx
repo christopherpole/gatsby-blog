@@ -4,14 +4,18 @@ import styled from 'styled-components';
 import Link from 'src/components/ui/link';
 
 const Wrapper = styled.footer`
-  background-color: ${props => props.theme.colors.secondary};
   width: 100%;
+`;
+
+const ContentWrapper = styled.div`
+  background-color: ${props => props.theme.colors.secondary};
   padding: ${props => props.theme.spacing.large};
 `;
 
-const WrapperInner = styled.div`
+const ContentWrapperInner = styled.div`
   max-width: ${props => props.theme.maxPageWidth};
   margin: auto;
+  width: 100%;
   display: flex;
 `;
 
@@ -51,9 +55,9 @@ const Copyright = styled.p`
 `;
 
 const Footer = () => (
-  <>
-    <Wrapper>
-      <WrapperInner>
+  <Wrapper>
+    <ContentWrapper>
+      <ContentWrapperInner>
         <Column>
           <LinksWrapper>
             <LinkWrapper>
@@ -76,13 +80,13 @@ const Footer = () => (
         <Column>2</Column>
         <Column>3</Column>
         <Column>4</Column>
-      </WrapperInner>
-    </Wrapper>
+      </ContentWrapperInner>
+    </ContentWrapper>
 
     <CopyrightWrapper>
       <Copyright>Copyright</Copyright>
     </CopyrightWrapper>
-  </>
+  </Wrapper>
 );
 
 export default Footer;
