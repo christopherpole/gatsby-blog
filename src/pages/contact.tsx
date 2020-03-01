@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { lighten } from 'polished';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Recaptcha from 'react-recaptcha';
 
 import Button from 'src/components/ui/button';
 import SEO from 'src/components/structure/seo';
@@ -20,6 +22,7 @@ const ContactSchema = Yup.object().shape({
   message: Yup.string()
     .min(10, 'Message too short')
     .required('Required'),
+  'g-recaptcha-response': Yup.string().required('Please complete the reCAPTCHA'),
 });
 
 const FieldWrapper = styled.div`
@@ -67,6 +70,13 @@ const StyledField = styled(Field)`
     border-color: ${props => props.theme.colors.primary};
   }
 
+  ${props =>
+    props.haserror &&
+    css`
+      border-color: #f00;
+      background-color: ${lighten(0.4, '#f00')};
+    `}
+
   &:last-child {
     margin-bottom: none;
   }
@@ -74,6 +84,14 @@ const StyledField = styled(Field)`
 
 const StyledTextArea = styled(StyledField)`
   height: 20rem;
+`;
+
+const StyledRecaptcha = styled(Recaptcha)`
+  margin-bottom: ${props => props.theme.spacing.small};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const StyledErrorMessage = styled(ErrorMessage)`
@@ -85,29 +103,31 @@ const FormErrorMessage = styled.p`
 `;
 
 const ContactPage = () => {
-  const [formSubmissionStatus, setFormSubmissionStatus] = useState<
-    'error' | 'submitted' | 'unsubmitted'
-  >('unsubmitted');
+  const [formError, setFormError] = useState<string | null>(null);
+  const [formHasSubmitted, setFormHasSubmitted] = useState<boolean>(false);
 
-  const onSubmit = (values: {}) => {
-    console.log(values);
-
+  const onSubmit = (
+    values: {},
+    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
+  ) => {
     axios
       .post(`https://formspree.io/${process.env.GATSBY_FORMSPREE_FORM_ID}`, {
         ...values,
       })
       .then(({ data: { ok } }: { data: { ok: boolean } }) => {
         if (ok) {
-          console.info('Form submitted successfully');
-          setFormSubmissionStatus('submitted');
+          setFormHasSubmitted(true);
         } else {
-          console.info('There was an issue submitting the form');
-          setFormSubmissionStatus('error');
+          console.error('Unknown contact form submission error');
+          setFormError('There was a problem submitting the form');
         }
+
+        setSubmitting(false);
       })
-      .catch(error => {
-        console.error(error);
-        setFormSubmissionStatus('error');
+      .catch((error: { response: { data: { error: string } } }) => {
+        console.error(`Contact form submission error: ${error.response.data.error}`);
+        setFormError(error.response.data.error);
+        setSubmitting(false);
       });
   };
 
@@ -117,45 +137,60 @@ const ContactPage = () => {
       <h1>Contact form</h1>
 
       <FormSectionsWrapper>
-        <ConfirmationWrapper
-          aria-hidden={formSubmissionStatus !== 'submitted'}
-          isHidden={formSubmissionStatus !== 'submitted'}
-        >
+        <ConfirmationWrapper aria-hidden={!formHasSubmitted} isHidden={!formHasSubmitted}>
           Submitted!
         </ConfirmationWrapper>
 
-        <FormWrapper
-          aria-hidden={formSubmissionStatus === 'submitted'}
-          isHidden={formSubmissionStatus === 'submitted'}
-        >
+        <FormWrapper aria-hidden={!!formHasSubmitted} isHidden={!!formHasSubmitted}>
           <Formik
-            initialValues={{ subject: '', email: '', message: '' }}
+            initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}
             validationSchema={ContactSchema}
             onSubmit={onSubmit}
           >
-            {({ isSubmitting }) => (
-              <Form>
+            {({ isSubmitting, errors, setFieldValue, handleSubmit }) => (
+              <Form onSubmit={handleSubmit}>
                 <FieldWrapper>
                   <Label>Subject</Label>
-                  <StyledField component="input" type="text" name="subject" />
+                  <StyledField
+                    component="input"
+                    type="text"
+                    name="subject"
+                    haserror={errors.subject}
+                  />
                   <StyledErrorMessage name="subject" component="p" />
                 </FieldWrapper>
 
                 <FieldWrapper>
                   <Label>Email</Label>
-                  <StyledField component="input" type="email" name="email" />
+                  <StyledField
+                    component="input"
+                    type="email"
+                    name="email"
+                    haserror={errors.email}
+                  />
                   <StyledErrorMessage name="email" component="p" />
                 </FieldWrapper>
 
                 <FieldWrapper>
                   <Label>Message</Label>
-                  <StyledTextArea component="textarea" name="message" />
+                  <StyledTextArea component="textarea" name="message" haserror={errors.message} />
                   <StyledErrorMessage name="message" component="p" />
                 </FieldWrapper>
 
-                {formSubmissionStatus === 'error' && (
-                  <FormErrorMessage>There was a problem submitting the form</FormErrorMessage>
-                )}
+                <FieldWrapper>
+                  <StyledRecaptcha
+                    sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
+                    verifyCallback={(val: string) => {
+                      setFieldValue('g-recaptcha-response', val);
+                    }}
+                    expiredCallback={() => {
+                      setFieldValue('g-recaptcha-response', '');
+                    }}
+                  />
+                  <StyledErrorMessage name="g-recaptcha-response" component="p" />
+                </FieldWrapper>
+
+                {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
 
                 <Button type="submit" disabled={isSubmitting}>
                   Submit

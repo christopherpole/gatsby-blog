@@ -26,6 +26,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-recaptcha',
     {
       resolve: 'gatsby-source-contentful',
       options: {
