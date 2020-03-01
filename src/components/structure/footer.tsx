@@ -67,6 +67,9 @@ const Footer = () => (
               <Link to="/about">About</Link>
             </LinkWrapper>
             <LinkWrapper>
+              <Link to="/disclaimer">Affiliate Disclaimer</Link>
+            </LinkWrapper>
+            <LinkWrapper>
               <Link to="/contact">Contact</Link>
             </LinkWrapper>
             <LinkWrapper>
