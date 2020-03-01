@@ -33,10 +33,6 @@ const FieldWrapper = styled.div`
   }
 `;
 
-const FormSectionsWrapper = styled.div`
-  position: relative;
-`;
-
 const ConfirmationWrapper = styled.div<{ isHidden: boolean }>`
   position: absolute;
   top: 0;
@@ -47,11 +43,11 @@ const ConfirmationWrapper = styled.div<{ isHidden: boolean }>`
   opacity: ${props => (props.isHidden ? '0' : '1')};
 `;
 
-const FormWrapper = styled.div<{ isHidden: boolean }>`
-  transition: opacity 500ms linear;
-  opacity: ${props => (props.isHidden ? '0' : '1')};
-  pointer-events: ${props => (props.isHidden ? 'none' : 'auto')};
+const ConfirmationMessage = styled.p`
+  color: green;
 `;
+
+const FormWrapper = styled.div``;
 
 const Label = styled.label`
   display: block;
@@ -78,12 +74,17 @@ const StyledField = styled(Field)`
     `}
 
   &:last-child {
-    margin-bottom: none;
+    margin-bottom: 0;
   }
 `;
 
 const StyledTextArea = styled(StyledField)`
   height: 20rem;
+  margin-bottom: ${props => props.theme.spacing.small};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const StyledRecaptcha = styled(Recaptcha)`
@@ -100,6 +101,15 @@ const StyledErrorMessage = styled(ErrorMessage)`
 
 const FormErrorMessage = styled.p`
   color: #f00;
+`;
+
+const SubmitWrapper = styled.div`
+  position: relative;
+`;
+
+const StyledSubmitButton = styled(Button)<{ isHidden: boolean }>`
+  transition: opacity 500ms linear;
+  opacity: ${props => (props.isHidden ? '0' : '1')};
 `;
 
 const ContactPage = () => {
@@ -120,9 +130,8 @@ const ContactPage = () => {
         } else {
           console.error('Unknown contact form submission error');
           setFormError('There was a problem submitting the form');
+          setSubmitting(false);
         }
-
-        setSubmitting(false);
       })
       .catch((error: { response: { data: { error: string } } }) => {
         console.error(`Contact form submission error: ${error.response.data.error}`);
@@ -136,70 +145,70 @@ const ContactPage = () => {
       <SEO title="Contact" pathname="/contact" />
       <h1>Contact form</h1>
 
-      <FormSectionsWrapper>
-        <ConfirmationWrapper aria-hidden={!formHasSubmitted} isHidden={!formHasSubmitted}>
-          Submitted!
-        </ConfirmationWrapper>
+      <FormWrapper>
+        <Formik
+          initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}
+          validationSchema={ContactSchema}
+          onSubmit={onSubmit}
+        >
+          {({ isSubmitting, errors, setFieldValue, handleSubmit }) => (
+            <Form onSubmit={handleSubmit}>
+              <FieldWrapper>
+                <Label>Subject</Label>
+                <StyledField
+                  component="input"
+                  type="text"
+                  name="subject"
+                  haserror={errors.subject}
+                />
+                <StyledErrorMessage name="subject" component="p" />
+              </FieldWrapper>
 
-        <FormWrapper aria-hidden={!!formHasSubmitted} isHidden={!!formHasSubmitted}>
-          <Formik
-            initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}
-            validationSchema={ContactSchema}
-            onSubmit={onSubmit}
-          >
-            {({ isSubmitting, errors, setFieldValue, handleSubmit }) => (
-              <Form onSubmit={handleSubmit}>
-                <FieldWrapper>
-                  <Label>Subject</Label>
-                  <StyledField
-                    component="input"
-                    type="text"
-                    name="subject"
-                    haserror={errors.subject}
-                  />
-                  <StyledErrorMessage name="subject" component="p" />
-                </FieldWrapper>
+              <FieldWrapper>
+                <Label>Email</Label>
+                <StyledField component="input" type="email" name="email" haserror={errors.email} />
+                <StyledErrorMessage name="email" component="p" />
+              </FieldWrapper>
 
-                <FieldWrapper>
-                  <Label>Email</Label>
-                  <StyledField
-                    component="input"
-                    type="email"
-                    name="email"
-                    haserror={errors.email}
-                  />
-                  <StyledErrorMessage name="email" component="p" />
-                </FieldWrapper>
+              <FieldWrapper>
+                <Label>Message</Label>
+                <StyledTextArea component="textarea" name="message" haserror={errors.message} />
+                <StyledErrorMessage name="message" component="p" />
+              </FieldWrapper>
 
-                <FieldWrapper>
-                  <Label>Message</Label>
-                  <StyledTextArea component="textarea" name="message" haserror={errors.message} />
-                  <StyledErrorMessage name="message" component="p" />
-                </FieldWrapper>
+              <FieldWrapper>
+                <StyledRecaptcha
+                  sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
+                  verifyCallback={(val: string) => {
+                    setFieldValue('g-recaptcha-response', val);
+                  }}
+                  expiredCallback={() => {
+                    setFieldValue('g-recaptcha-response', '');
+                  }}
+                />
+                <StyledErrorMessage name="g-recaptcha-response" component="p" />
+              </FieldWrapper>
 
-                <FieldWrapper>
-                  <StyledRecaptcha
-                    sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
-                    verifyCallback={(val: string) => {
-                      setFieldValue('g-recaptcha-response', val);
-                    }}
-                    expiredCallback={() => {
-                      setFieldValue('g-recaptcha-response', '');
-                    }}
-                  />
-                  <StyledErrorMessage name="g-recaptcha-response" component="p" />
-                </FieldWrapper>
+              {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
 
-                {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+              <SubmitWrapper>
+                <ConfirmationWrapper aria-hidden={!formHasSubmitted} isHidden={!formHasSubmitted}>
+                  <ConfirmationMessage>Submitted!</ConfirmationMessage>
+                </ConfirmationWrapper>
 
-                <Button type="submit" disabled={isSubmitting}>
+                <StyledSubmitButton
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-hidden={!!formHasSubmitted}
+                  isHidden={!!formHasSubmitted}
+                >
                   Submit
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        </FormWrapper>
-      </FormSectionsWrapper>
+                </StyledSubmitButton>
+              </SubmitWrapper>
+            </Form>
+          )}
+        </Formik>
+      </FormWrapper>
     </Wrapper>
   );
 };
