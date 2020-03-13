@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Link from 'src/components/ui/link';
+import Newsletter from 'src/components/structure/newsletter';
 
 const Wrapper = styled.footer`
   width: 100%;
@@ -82,7 +83,9 @@ const Footer = () => (
         </Column>
         <Column>2</Column>
         <Column>3</Column>
-        <Column>4</Column>
+        <Column>
+          <Newsletter />
+        </Column>
       </ContentWrapperInner>
     </ContentWrapper>
 

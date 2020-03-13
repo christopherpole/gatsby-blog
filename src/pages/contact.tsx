@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { lighten } from 'polished';
+import styled from 'styled-components';
 import * as Yup from 'yup';
 import axios from 'axios';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import Recaptcha from 'react-recaptcha';
 
-import Button from 'src/components/ui/button';
+import ErrorMessage from 'src/components/ui/form/errorMessage';
+import FieldWrapper from 'src/components/ui/form/fieldWrapper';
+import Submission from 'src/components/ui/form/submission';
+import Input from 'src/components/ui/form/input';
+import Label from 'src/components/ui/form/label';
+import TextArea from 'src/components/ui/form/textArea';
 import SEO from 'src/components/structure/seo';
 
 const Wrapper = styled.div``;
@@ -25,68 +29,6 @@ const ContactSchema = Yup.object().shape({
   'g-recaptcha-response': Yup.string().required('Please complete the reCAPTCHA'),
 });
 
-const FieldWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.medium};
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const ConfirmationWrapper = styled.div<{ isHidden: boolean }>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  transition: opacity 500ms linear;
-  transition-delay: 500ms;
-  opacity: ${props => (props.isHidden ? '0' : '1')};
-`;
-
-const ConfirmationMessage = styled.p`
-  color: green;
-`;
-
-const FormWrapper = styled.div``;
-
-const Label = styled.label`
-  display: block;
-  margin-bottom: ${props => props.theme.spacing.small};
-`;
-
-const StyledField = styled(Field)`
-  padding: 0.5rem;
-  width: 100%;
-  border: 1px solid #aaa;
-  margin-bottom: ${props => props.theme.spacing.small};
-  transform: border-color 200ms linear;
-
-  &:focus {
-    outline: none;
-    border-color: ${props => props.theme.colors.primary};
-  }
-
-  ${props =>
-    props.haserror &&
-    css`
-      border-color: #f00;
-      background-color: ${lighten(0.4, '#f00')};
-    `}
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const StyledTextArea = styled(StyledField)`
-  height: 20rem;
-  margin-bottom: ${props => props.theme.spacing.small};
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
 const StyledRecaptcha = styled(Recaptcha)`
   margin-bottom: ${props => props.theme.spacing.small};
 
@@ -95,21 +37,8 @@ const StyledRecaptcha = styled(Recaptcha)`
   }
 `;
 
-const StyledErrorMessage = styled(ErrorMessage)`
-  color: #f00;
-`;
-
 const FormErrorMessage = styled.p`
   color: #f00;
-`;
-
-const SubmitWrapper = styled.div`
-  position: relative;
-`;
-
-const StyledSubmitButton = styled(Button)<{ isHidden: boolean }>`
-  transition: opacity 500ms linear;
-  opacity: ${props => (props.isHidden ? '0' : '1')};
 `;
 
 const ContactPage = () => {
@@ -121,7 +50,7 @@ const ContactPage = () => {
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
   ) => {
     axios
-      .post(`https://formspree.io/${process.env.GATSBY_FORMSPREE_FORM_ID}`, {
+      .post(`https://formspree.io/${process.env.GATSBY_FORMSPREE_CONTACT_FORM_ID}`, {
         ...values,
       })
       .then(({ data: { ok } }: { data: { ok: boolean } }) => {
@@ -145,70 +74,50 @@ const ContactPage = () => {
       <SEO title="Contact" pathname="/contact" />
       <h1>Contact form</h1>
 
-      <FormWrapper>
-        <Formik
-          initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}
-          validationSchema={ContactSchema}
-          onSubmit={onSubmit}
-        >
-          {({ isSubmitting, errors, setFieldValue, handleSubmit }) => (
-            <Form onSubmit={handleSubmit}>
-              <FieldWrapper>
-                <Label>Subject</Label>
-                <StyledField
-                  component="input"
-                  type="text"
-                  name="subject"
-                  haserror={errors.subject}
-                />
-                <StyledErrorMessage name="subject" component="p" />
-              </FieldWrapper>
+      <Formik
+        initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}
+        validationSchema={ContactSchema}
+        onSubmit={onSubmit}
+      >
+        {({ isSubmitting, errors, setFieldValue, handleSubmit }) => (
+          <Form onSubmit={handleSubmit}>
+            <FieldWrapper>
+              <Label>Subject</Label>
+              <Input component="input" type="text" name="subject" haserror={errors.subject} />
+              <ErrorMessage name="subject" component="p" />
+            </FieldWrapper>
 
-              <FieldWrapper>
-                <Label>Email</Label>
-                <StyledField component="input" type="email" name="email" haserror={errors.email} />
-                <StyledErrorMessage name="email" component="p" />
-              </FieldWrapper>
+            <FieldWrapper>
+              <Label>Email</Label>
+              <Input component="input" type="email" name="email" haserror={errors.email} />
+              <ErrorMessage name="email" component="p" />
+            </FieldWrapper>
 
-              <FieldWrapper>
-                <Label>Message</Label>
-                <StyledTextArea component="textarea" name="message" haserror={errors.message} />
-                <StyledErrorMessage name="message" component="p" />
-              </FieldWrapper>
+            <FieldWrapper>
+              <Label>Message</Label>
+              <TextArea component="textarea" name="message" haserror={errors.message} />
+              <ErrorMessage name="message" component="p" />
+            </FieldWrapper>
 
-              <FieldWrapper>
-                <StyledRecaptcha
-                  sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
-                  verifyCallback={(val: string) => {
-                    setFieldValue('g-recaptcha-response', val);
-                  }}
-                  expiredCallback={() => {
-                    setFieldValue('g-recaptcha-response', '');
-                  }}
-                />
-                <StyledErrorMessage name="g-recaptcha-response" component="p" />
-              </FieldWrapper>
+            <FieldWrapper>
+              <StyledRecaptcha
+                sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
+                verifyCallback={(val: string) => {
+                  setFieldValue('g-recaptcha-response', val);
+                }}
+                expiredCallback={() => {
+                  setFieldValue('g-recaptcha-response', '');
+                }}
+              />
+              <ErrorMessage name="g-recaptcha-response" component="p" />
+            </FieldWrapper>
 
-              {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+            {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
 
-              <SubmitWrapper>
-                <ConfirmationWrapper aria-hidden={!formHasSubmitted} isHidden={!formHasSubmitted}>
-                  <ConfirmationMessage>Submitted!</ConfirmationMessage>
-                </ConfirmationWrapper>
-
-                <StyledSubmitButton
-                  type="submit"
-                  disabled={isSubmitting}
-                  aria-hidden={!!formHasSubmitted}
-                  isHidden={!!formHasSubmitted}
-                >
-                  Submit
-                </StyledSubmitButton>
-              </SubmitWrapper>
-            </Form>
-          )}
-        </Formik>
-      </FormWrapper>
+            <Submission showConfirmation={!!formHasSubmitted} isSubmitting={isSubmitting} />
+          </Form>
+        )}
+      </Formik>
     </Wrapper>
   );
 };
