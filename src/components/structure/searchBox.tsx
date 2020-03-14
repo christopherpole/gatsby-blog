@@ -14,7 +14,7 @@ const Wrapper = styled.div``;
 
 const SearchBox = () => {
   const onSubmit = ({ query }: { query: string }) => {
-    navigate(`/search/${query}`);
+    navigate(`/search/${encodeURIComponent(query)}`);
   };
 
   return (
@@ -23,7 +23,7 @@ const SearchBox = () => {
         {({ errors, handleSubmit, values }) => (
           <Form role="search" onSubmit={handleSubmit}>
             <Input component="input" type="text" name="query" haserror={errors.query} />
-            <Link to={`/search/${values.query}`}>Search</Link>
+            <Link to={`/search/${encodeURIComponent(values.query)}`}>Search</Link>
           </Form>
         )}
       </Formik>
