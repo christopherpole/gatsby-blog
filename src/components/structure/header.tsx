@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Logo from 'src/components/structure/logo';
 import Nav from 'src/components/structure/nav';
+import SearchBox from 'src/components/structure/searchBox';
 
 const Wrapper = styled.header`
   width: 100%;
@@ -29,6 +30,7 @@ const Header = () => (
         <Logo />
       </LogoWrapper>
       <Nav />
+      <SearchBox />
     </WrapperInner>
   </Wrapper>
 );
