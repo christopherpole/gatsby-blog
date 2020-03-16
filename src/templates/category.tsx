@@ -38,6 +38,7 @@ interface IProps {
     };
   };
   pageContext: {
+    slug: string;
     previousPagePath?: string;
     nextPagePath?: string;
     pageNumber: number;
@@ -53,7 +54,7 @@ const CategoryPage = ({
     contentfulCategory: { name },
     allContentfulArticle: { nodes },
   },
-  pageContext: { previousPagePath, nextPagePath, pageNumber, numberOfPages },
+  pageContext: { slug, previousPagePath, nextPagePath, pageNumber, numberOfPages },
   location: { pathname },
 }: IProps) => (
   <Wrapper>
@@ -63,6 +64,7 @@ const CategoryPage = ({
 
     {numberOfPages > 1 && (
       <Paginatior
+        baseUrl={`category/${slug}`}
         previousPagePath={previousPagePath}
         nextPagePath={nextPagePath}
         pageNumber={pageNumber}

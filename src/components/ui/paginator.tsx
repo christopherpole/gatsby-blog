@@ -54,13 +54,20 @@ const StyledLink = styled(Link)`
 `;
 
 interface IProps {
+  baseUrl: string;
   pageNumber: number;
   numberOfPages: number;
   previousPagePath?: string;
   nextPagePath?: string;
 }
 
-const Paginatior = ({ previousPagePath, nextPagePath, numberOfPages, pageNumber }: IProps) => (
+const Paginatior = ({
+  baseUrl,
+  previousPagePath,
+  nextPagePath,
+  numberOfPages,
+  pageNumber,
+}: IProps) => (
   <Wrapper>
     <LinkContainer disabled={!previousPagePath}>
       {!!previousPagePath && (
@@ -73,7 +80,7 @@ const Paginatior = ({ previousPagePath, nextPagePath, numberOfPages, pageNumber 
 
     {[...Array(numberOfPages)].map((_, i) => (
       <LinkContainer key={`link-container-${i}`} active={pageNumber === i}>
-        <StyledLink to={`/category/cat-1/${i === 0 ? '' : i + 1}`}>{i + 1}</StyledLink>
+        <StyledLink to={`${baseUrl}/${i === 0 ? '' : i + 1}`}>{i + 1}</StyledLink>
       </LinkContainer>
     ))}
 

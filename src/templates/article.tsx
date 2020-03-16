@@ -17,9 +17,6 @@ export const QUERY = graphql`
   query($slug: String!) {
     contentfulArticle(slug: { eq: $slug }) {
       ...articleSummaryFields
-      relatedArticles {
-        ...articleSummaryFields
-      }
       body {
         json
       }
