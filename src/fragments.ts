@@ -5,7 +5,7 @@ export const articleFields = graphql`
     id
     title
     description
-    category {
+    tags {
       name
       slug
     }

@@ -10,13 +10,13 @@ import SEO from 'src/components/structure/seo';
 
 export const QUERY = graphql`
   query($slug: String!, $limit: Int!, $skip: Int!) {
-    contentfulCategory(slug: { eq: $slug }) {
+    contentfulTag(slug: { eq: $slug }) {
       name
     }
     allContentfulArticle(
       limit: $limit
       skip: $skip
-      filter: { category: { slug: { eq: $slug } } }
+      filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
       sort: { fields: createdAt, order: DESC }
     ) {
       nodes {
@@ -30,7 +30,7 @@ const Wrapper = styled.div``;
 
 interface IProps {
   data: {
-    contentfulCategory: {
+    contentfulTag: {
       name: string;
     };
     allContentfulArticle: {
@@ -49,9 +49,9 @@ interface IProps {
   };
 }
 
-const CategoryPage = ({
+const TagPage = ({
   data: {
-    contentfulCategory: { name },
+    contentfulTag: { name },
     allContentfulArticle: { nodes },
   },
   pageContext: { slug, previousPagePath, nextPagePath, pageNumber, numberOfPages },
@@ -64,7 +64,7 @@ const CategoryPage = ({
 
     {numberOfPages > 1 && (
       <Paginatior
-        baseUrl={`category/${slug}`}
+        baseUrl={`tag/${slug}`}
         previousPagePath={previousPagePath}
         nextPagePath={nextPagePath}
         pageNumber={pageNumber}
@@ -74,4 +74,4 @@ const CategoryPage = ({
   </Wrapper>
 );
 
-export default CategoryPage;
+export default TagPage;

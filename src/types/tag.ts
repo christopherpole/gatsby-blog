@@ -1,7 +1,7 @@
-interface ICategory {
+interface ITag {
   id: string;
   slug: string;
   name: string;
 }
 
-export default ICategory;
+export default ITag;

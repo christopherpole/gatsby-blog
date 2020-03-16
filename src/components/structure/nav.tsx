@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Link from 'src/components/ui/link';
-import ICategory from 'src/types/category';
+import ITag from 'src/types/tag';
 
 const QUERY = graphql`
   {
-    allContentfulCategory(sort: { fields: name, order: ASC }) {
+    allContentfulTag(sort: { fields: name, order: ASC }) {
       nodes {
         id
         name
@@ -47,15 +47,15 @@ const StyledLink = styled(Link)`
 
 const Nav = () => {
   const {
-    allContentfulCategory: { nodes },
+    allContentfulTag: { nodes },
   } = useStaticQuery(QUERY);
 
   return (
     <Wrapper>
       <LinksWrapper>
-        {nodes.map(({ id, name, slug }: ICategory) => (
+        {nodes.map(({ id, name, slug }: ITag) => (
           <LinkWrapper key={id}>
-            <StyledLink to={`/category/${slug}`}>{name}</StyledLink>
+            <StyledLink to={`/tag/${slug}`}>{name}</StyledLink>
           </LinkWrapper>
         ))}
       </LinksWrapper>

@@ -4,7 +4,7 @@ const { paginate } = require('gatsby-awesome-pagination');
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const articleTemplate = path.resolve('./src/templates/article.tsx');
-  const categoryTemplate = path.resolve('./src/templates/category.tsx');
+  const tagTemplate = path.resolve('./src/templates/tag.tsx');
 
   const res = await graphql(`
     {
@@ -12,13 +12,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             slug
-            category {
+            tags {
               id
             }
           }
         }
       }
-      allContentfulCategory {
+      allContentfulTag {
         edges {
           node {
             id
@@ -40,19 +40,19 @@ module.exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  //  Create the category pages
-  res.data.allContentfulCategory.edges.forEach(({ node: { id, slug } }) => {
-    //  Filter the articles for this category
+  //  Create the tag pages
+  res.data.allContentfulTag.edges.forEach(({ node: { id, slug } }) => {
+    //  Filter the articles for this tag
     const articles = res.data.allContentfulArticle.edges.filter(
-      ({ node }) => node.category.id === id,
+      ({ node }) => !!node.tags.find(tag => tag.id === id),
     );
 
     paginate({
       createPage,
       items: articles,
       itemsPerPage: 2,
-      pathPrefix: `/category/${slug}`,
-      component: categoryTemplate,
+      pathPrefix: `/tag/${slug}`,
+      component: tagTemplate,
       context: {
         slug,
       },

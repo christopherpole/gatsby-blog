@@ -82,7 +82,7 @@ module.exports = {
                 id
                 title
                 description
-                category {
+                tags {
                   name
                   slug
                 }
@@ -105,12 +105,12 @@ module.exports = {
           }
         `,
         ref: 'id',
-        index: ['title', 'description', 'category_name', 'content'],
-        store: ['id', 'title', 'description', 'category', 'slug', 'image', 'createdAt'],
+        index: ['title', 'description', 'tags', 'content'],
+        store: ['id', 'title', 'description', 'tags', 'slug', 'image', 'createdAt'],
         normalizer: ({ data }) =>
           data.allContentfulArticle.nodes.map(article => ({
             ...article,
-            category_name: article.category.name,
+            tags: article.tags.map(tag => tag.name).join(' '),
             content: getContent(article.body.json),
           })),
       },

@@ -1,13 +1,13 @@
 import { FluidObject } from 'gatsby-image';
 
-import ICategory from 'src/types/category';
+import ITag from 'src/types/tag';
 
 interface IArticleSummary {
   id: string;
   title: string;
   description: string;
   slug: string;
-  category: ICategory;
+  tag: ITag;
   image: {
     fluid?: FluidObject | FluidObject[];
   };
