@@ -13,9 +13,11 @@ const ConfirmationWrapper = styled.div<{ isHidden: boolean }>`
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   transition: opacity 500ms linear;
   transition-delay: 500ms;
   opacity: ${props => (props.isHidden ? '0' : '1')};
+  pointer-events: ${props => (props.isHidden ? 'none' : 'default')};
 `;
 
 const SubmitWrapper = styled.div`

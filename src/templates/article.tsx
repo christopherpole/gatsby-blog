@@ -69,9 +69,9 @@ const Article = ({
     />
 
     <ArticleWrapper>
-      <Share url={href} title={title} media={(image.fluid as { src: string }).src as string} />
       <Headline>{title}</Headline>
       <PublishDate>{createdAt}</PublishDate>
+      <Share url={href} title={title} media={(image.fluid as { src: string }).src as string} />
       <Img fluid={image.fluid} />
       {documentToReactComponents(body.json, {
         renderNode: getContentfulRichTextRendererOverrides(),

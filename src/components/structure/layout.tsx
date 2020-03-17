@@ -5,6 +5,7 @@ import 'normalize.css';
 
 import Footer from 'src/components/structure/footer';
 import Header from 'src/components/structure/header';
+import Sidebar from 'src/components/structure/sidebar';
 import SEO from 'src/components/structure/seo';
 
 interface IProps {
@@ -24,11 +25,23 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Content = styled.main`
+const ContentAndSidebarWrapper = styled.div`
+  margin: auto;
+  display: flex;
+  align-items: flex-start;
   max-width: ${props => props.theme.maxPageWidth};
-  flex: 1;
+`;
+
+const ContentWrapper = styled.main`
+  flex: 3;
   width: 100%;
   margin: auto;
+  padding: ${props => props.theme.spacing.large} 0;
+  margin-right: ${props => props.theme.spacing.large};
+`;
+
+const SidebarWrapper = styled.div`
+  flex: 1;
   padding: ${props => props.theme.spacing.large} 0;
 `;
 
@@ -48,7 +61,12 @@ const Layout = ({ children }: IProps) => (
     <Wrapper>
       <HeaderAndContentWrapper>
         <Header />
-        <Content>{children}</Content>
+        <ContentAndSidebarWrapper>
+          <ContentWrapper>{children}</ContentWrapper>
+          <SidebarWrapper>
+            <Sidebar />
+          </SidebarWrapper>
+        </ContentAndSidebarWrapper>
       </HeaderAndContentWrapper>
       <Footer />
     </Wrapper>
