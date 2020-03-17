@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Img, { FluidObject } from 'gatsby-image';
 
 const Wrapper = styled.div`
-  display: inline-block;
   margin-bottom: ${props => props.theme.spacing.medium};
 
   &:last-child {
@@ -10,28 +10,20 @@ const Wrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.small};
-`;
-
 const Description = styled.em`
+  margin-top: ${props => props.theme.spacing.small};
   font-size: ${props => props.theme.sizing.small};
 `;
 
 interface IProps {
-  src: string;
-  alt: string;
   description?: string;
-  height: number;
-  width: number;
+  fluid: FluidObject | FluidObject[] | undefined;
 }
 
-const ArticleImage = ({ src, alt, description, height, width }: IProps) => (
+const ArticleImage = ({ fluid, description }: IProps) => (
   <Wrapper>
-    <ImageWrapper>
-      <img src={src} alt={alt} width={width} height={height} />
-    </ImageWrapper>
-    <Description>{description}</Description>
+    <Img fluid={fluid} />
+    {description && <Description>{description}</Description>}
   </Wrapper>
 );
 
