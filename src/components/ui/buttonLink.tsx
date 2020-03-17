@@ -1,21 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { darken } from 'polished';
+
+import buttonStyles from 'src/theme/styles/button';
 
 const Wrapper = styled(Link)`
-  display: inline-block;
-  background-color: ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.secondaryFont};
-  padding: ${props => props.theme.spacing.small};
-  border: none;
-  text-decoration: none;
-  transition: background-color 200ms linear;
-
-  &:focus,
-  &:hover {
-    background-color: ${props => darken(0.2, props.theme.colors.primary)};
-  }
+  ${buttonStyles};
 `;
 
 interface IProps {

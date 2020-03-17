@@ -12,7 +12,7 @@ export const QUERY = graphql`
     }
     image: file(relativePath: { eq: "logo.png" }) {
       childImageSharp {
-        fixed(width: 200) {
+        fixed(width: 150) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }

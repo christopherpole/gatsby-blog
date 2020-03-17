@@ -13,14 +13,17 @@ const WrapperInner = styled.div`
   padding: ${props => props.theme.spacing.large} 0;
   max-width: ${props => props.theme.maxPageWidth};
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
   border-bottom: 1px solid ${props => props.theme.colors.defaultBorderColor};
 `;
 
-const LogoWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.medium};
+const LogoWrapper = styled.div``;
+
+const NavSearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const Header = () => (
@@ -29,8 +32,10 @@ const Header = () => (
       <LogoWrapper>
         <Logo />
       </LogoWrapper>
-      <Nav />
-      <SearchBox />
+      <NavSearchWrapper>
+        <Nav />
+        <SearchBox />
+      </NavSearchWrapper>
     </WrapperInner>
   </Wrapper>
 );

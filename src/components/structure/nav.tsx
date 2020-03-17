@@ -7,7 +7,7 @@ import ITag from 'src/types/tag';
 
 const QUERY = graphql`
   {
-    allContentfulTag(sort: { fields: name, order: ASC }) {
+    allContentfulTag(filter: { showInNav: { eq: true } }, sort: { fields: name, order: ASC }) {
       nodes {
         id
         name
@@ -17,7 +17,9 @@ const QUERY = graphql`
   }
 `;
 
-const Wrapper = styled.nav``;
+const Wrapper = styled.nav`
+  margin-right: ${props => props.theme.spacing.large};
+`;
 
 const LinksWrapper = styled.ul`
   display: flex;
