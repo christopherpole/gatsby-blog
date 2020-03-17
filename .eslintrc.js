@@ -17,6 +17,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/no-array-index-key': 'off',
     'no-console': 'off',
+    'react/jsx-one-expression-per-line': 'off',
   },
   settings: {
     'import/resolver': {

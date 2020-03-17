@@ -25,24 +25,12 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const ContentAndSidebarWrapper = styled.div`
-  margin: auto;
-  display: flex;
-  align-items: flex-start;
-  max-width: ${props => props.theme.maxPageWidth};
-`;
-
 const ContentWrapper = styled.main`
   flex: 3;
   width: 100%;
   margin: auto;
   padding: ${props => props.theme.spacing.large} 0;
-  margin-right: ${props => props.theme.spacing.large};
-`;
-
-const SidebarWrapper = styled.div`
-  flex: 1;
-  padding: ${props => props.theme.spacing.large} 0;
+  max-width: ${props => props.theme.maxPageWidth};
 `;
 
 const Layout = ({ children }: IProps) => (
@@ -61,12 +49,7 @@ const Layout = ({ children }: IProps) => (
     <Wrapper>
       <HeaderAndContentWrapper>
         <Header />
-        <ContentAndSidebarWrapper>
-          <ContentWrapper>{children}</ContentWrapper>
-          <SidebarWrapper>
-            <Sidebar />
-          </SidebarWrapper>
-        </ContentAndSidebarWrapper>
+        <ContentWrapper>{children}</ContentWrapper>
       </HeaderAndContentWrapper>
       <Footer />
     </Wrapper>
