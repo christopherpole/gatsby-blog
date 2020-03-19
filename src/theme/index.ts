@@ -1,21 +1,33 @@
 const theme = {
   maxPageWidth: '100rem',
   colors: {
-    primary: '#70c168',
+    primary: '#41961f',
     secondary: '#f8f8f8',
-    primaryFont: '#161e26',
-    secondaryFont: '#fff',
-    defaultBorderColor: '#e8e8e8',
+    tertiary: '#373941',
+    border: '#e8e8e8',
+    disabled: '#ccc',
+    error: {
+      primary: '#f00',
+      secondary: '#f00',
+    },
+    fonts: {
+      primary: '#444',
+      secondary: '#fff',
+    },
   },
   spacing: {
+    extraSmall: '1rem',
     small: '1.5rem',
     medium: '2rem',
     large: '2.5rem',
+    extraLarge: '3rem',
   },
   sizing: {
+    extraSmall: '.5rem',
     small: '1rem',
     medium: '1.5rem',
     large: '2rem',
+    extraLarge: '2.5rem',
   },
 };
 

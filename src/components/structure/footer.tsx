@@ -61,7 +61,8 @@ const CopyrightWrapper = styled.div`
   display: flex;
   justify-content: center;
   background-color: black;
-  color: white;
+  background-color: ${props => props.theme.colors.tertiary};
+  color: ${props => props.theme.colors.secondary};
   width: 100%;
 `;
 

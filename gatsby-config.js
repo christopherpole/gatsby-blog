@@ -75,8 +75,9 @@ module.exports = {
         name: 'articles',
         engine: 'flexsearch',
         engineOptions: 'speed',
+        //  @FIXME: any way to use fragments here?
         query: `
-          query {
+          {
             allContentfulArticle {
               nodes {
                 id

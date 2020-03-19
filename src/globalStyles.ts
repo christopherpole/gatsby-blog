@@ -16,7 +16,7 @@ export default createGlobalStyle`
   body {
     font-family: 'Karla', HelveticaNeue, "Helvetica Neue", sans-serif;
     font-size: ${props => props.theme.sizing.medium};
-    color: ${props => props.theme.colors.primaryFont};
+    color: ${props => props.theme.colors.fonts.primary};
   }
   
   img {

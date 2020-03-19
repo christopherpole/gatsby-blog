@@ -24,14 +24,13 @@ const LinkContainer = styled.li<{ active?: boolean; disabled?: boolean }>`
     props.active &&
     css`
       background-color: ${props.theme.colors.primary};
-      color: ${props.theme.colors.secondaryFont};
+      color: ${props.theme.colors.fonts.secondary};
     `}
 
   ${props =>
     props.disabled &&
     css`
-      background-color: grey;
-      color: ${props.theme.colors.secondaryFont};
+      background-color: ${props.theme.colors.disabled};
       cursor: not-allowed;
     `}
 

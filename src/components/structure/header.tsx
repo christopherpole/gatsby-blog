@@ -16,7 +16,7 @@ const WrapperInner = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  border-bottom: 1px solid ${props => props.theme.colors.defaultBorderColor};
+  border-bottom: 1px solid ${props => props.theme.colors.border};
 `;
 
 const LogoWrapper = styled.div``;
