@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import HighlightedArticles from 'src/components/articles/highlightedArticles';
+import Articles from 'src/components/articles';
 import Headline from 'src/components/ui/headline';
 import IArticleSummary from 'src/types/articleSummary';
 import Paginatior from 'src/components/ui/paginator';
@@ -59,7 +59,7 @@ const TagPage = ({
 }: IProps) => (
   <Wrapper>
     <Headline>{name}</Headline>
-    <HighlightedArticles articles={nodes} />
+    <Articles articles={nodes} />
     <SEO title={name} pathname={pathname} />
 
     {numberOfPages > 1 && (

@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import Headline from 'src/components/ui/headline';
-import ArticleSpotlight from 'src/components/articles/articleSpotlight';
-import HighlightedArticles from 'src/components/articles/highlightedArticles';
+import ArticleSpotlight from 'src/components/articleSpotlight';
+import Articles from 'src/components/articles';
 import IArticleSummary from 'src/types/articleSummary';
 
 export const QUERY = graphql`
@@ -82,7 +82,7 @@ const IndexPage = ({
     </ArticlesWrapper>
 
     <ArticlesWrapper>
-      <HighlightedArticles articles={latestArticles.nodes} />
+      <Articles articles={latestArticles.nodes} />
     </ArticlesWrapper>
   </Wrapper>
 );

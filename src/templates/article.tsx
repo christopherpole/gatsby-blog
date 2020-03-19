@@ -9,7 +9,7 @@ import IArticleSummary from 'src/types/articleSummary';
 import Headline from 'src/components/ui/headline';
 import Byline from 'src/components/ui/byline';
 import getContentfulRichTextRendererOverrides from 'src/utils/getContentfulRichTextRendererOverrides';
-import ArticlesList from 'src/components/articles/articlesList';
+import Articles from 'src/components/articles';
 import Share from 'src/components/ui/share';
 import SEO from 'src/components/structure/seo';
 
@@ -81,7 +81,7 @@ const Article = ({
     {relatedArticles && relatedArticles.length > 0 && (
       <RelatedArticlesWrapper>
         <Byline>Related</Byline>
-        <ArticlesList articles={relatedArticles} />
+        <Articles articles={relatedArticles} />
       </RelatedArticlesWrapper>
     )}
   </Wrapper>

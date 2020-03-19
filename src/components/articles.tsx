@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import IArticleSummary from 'src/types/articleSummary';
-import HighlightedArticle from 'src/components/articles/highlightedArticle';
+import Article from 'src/components/article';
 
 const Wrapper = styled.ul`
   margin-bottom: ${props => props.theme.spacing.large};
@@ -43,7 +43,7 @@ const HighlightedArticles = ({ articles }: IProps) => (
       <ArticlesPreviewRow>
         {articles.slice(index * 3, index * 3 + 3).map(article => (
           <ArticlePreviewWrapper key={article.id}>
-            <HighlightedArticle {...article} />
+            <Article {...article} />
           </ArticlePreviewWrapper>
         ))}
       </ArticlesPreviewRow>
