@@ -11,8 +11,13 @@ const Wrapper = styled(Link)`
 interface IProps {
   children: string;
   to: string;
+  className?: string;
 }
 
-const ButtonLink = ({ children, to }: IProps) => <Wrapper to={to}>{children}</Wrapper>;
+const ButtonLink = ({ children, className, to }: IProps) => (
+  <Wrapper className={className} to={to}>
+    {children}
+  </Wrapper>
+);
 
 export default ButtonLink;

@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import IArticleSummary from 'src/types/articleSummary';
-import ArticlePreview from 'src/components/articles/articlePreview';
+import HighlightedArticle from 'src/components/articles/highlightedArticle';
 
 const Wrapper = styled.ul`
   margin-bottom: ${props => props.theme.spacing.large};
   padding: 0;
+  display: flex;
 
   &:last-child {
     margin-bottom: 0;
@@ -14,11 +15,12 @@ const Wrapper = styled.ul`
 `;
 
 const ArticlePreviewWrapper = styled.li`
-  margin-bottom: ${props => props.theme.spacing.medium};
   list-style-type: none;
+  margin-right: ${props => props.theme.spacing.large};
+  flex: 1;
 
   &:last-child {
-    margin-bottom: 0;
+    margin-right: 0;
   }
 `;
 
@@ -26,14 +28,14 @@ interface IProps {
   articles: IArticleSummary[];
 }
 
-const ArticlesList = ({ articles }: IProps) => (
+const HighlightedArticles = ({ articles }: IProps) => (
   <Wrapper>
     {articles.map(article => (
       <ArticlePreviewWrapper key={article.id}>
-        <ArticlePreview {...article} />
+        <HighlightedArticle {...article} />
       </ArticlePreviewWrapper>
     ))}
   </Wrapper>
 );
 
-export default ArticlesList;
+export default HighlightedArticles;

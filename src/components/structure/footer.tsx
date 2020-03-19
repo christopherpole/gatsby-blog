@@ -110,11 +110,6 @@ const Footer = () => {
             ))}
           </Column>
           <Column>
-            We participate in the Amazon Services, LLC Associates program, and affiliate advertising
-            program designed to provide a means for us to earn fees by linking to Amazon.com and
-            affiliate sites.
-          </Column>
-          <Column>
             <Newsletter />
           </Column>
         </ContentWrapperInner>

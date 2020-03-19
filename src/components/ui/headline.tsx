@@ -5,8 +5,9 @@ const Wrapper = styled.h1``;
 
 interface IProps {
   children: string;
+  className?: string;
 }
 
-const Headline = ({ children }: IProps) => <Wrapper>{children}</Wrapper>;
+const Headline = (props: IProps) => <Wrapper {...props} />;
 
 export default Headline;

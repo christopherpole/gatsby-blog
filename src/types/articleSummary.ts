@@ -11,6 +11,9 @@ interface IArticleSummary {
   image: {
     fluid?: FluidObject | FluidObject[];
   };
+  thumbnail: {
+    fluid?: FluidObject | FluidObject[];
+  };
   createdAt: string;
 }
 

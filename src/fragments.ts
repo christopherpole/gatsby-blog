@@ -15,6 +15,11 @@ export const articleFields = graphql`
         ...GatsbyContentfulFluid
       }
     }
+    thumbnail: image {
+      fluid(maxHeight: 350, maxWidth: 600) {
+        ...GatsbyContentfulFluid
+      }
+    }
     createdAt
   }
 `;

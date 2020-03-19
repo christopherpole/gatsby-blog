@@ -5,7 +5,6 @@ import 'normalize.css';
 
 import Footer from 'src/components/structure/footer';
 import Header from 'src/components/structure/header';
-import Sidebar from 'src/components/structure/sidebar';
 import SEO from 'src/components/structure/seo';
 
 interface IProps {

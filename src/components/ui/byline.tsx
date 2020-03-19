@@ -10,6 +10,6 @@ interface IProps {
   children: string;
 }
 
-const Byline = ({ children }: IProps) => <Wrapper>{children}</Wrapper>;
+const Byline = (props: IProps) => <Wrapper {...props} />;
 
 export default Byline;

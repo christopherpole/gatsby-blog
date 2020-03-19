@@ -2,12 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
-import Byline from 'src/components/ui/byline';
+import Headline from 'src/components/ui/headline';
+import ArticleSpotlight from 'src/components/articles/articleSpotlight';
 import ArticlesList from 'src/components/articles/articlesList';
+import HighlightedArticles from 'src/components/articles/highlightedArticles';
 import IArticleSummary from 'src/types/articleSummary';
+import Byline from 'src/components/ui/byline';
 
 export const QUERY = graphql`
   {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     featuredArticle: allContentfulArticle(
       filter: { featured: { eq: true } }
       sort: { fields: createdAt, order: DESC }
@@ -31,6 +39,14 @@ export const QUERY = graphql`
 
 const Wrapper = styled.div``;
 
+const StyledByline = styled(Byline)`
+  text-align: center;
+`;
+
+const HiddenHeadline = styled(Headline)`
+  display: none;
+`;
+
 const ArticlesWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.large};
 
@@ -41,6 +57,11 @@ const ArticlesWrapper = styled.div`
 
 interface IProps {
   data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      };
+    };
     featuredArticle: {
       nodes: IArticleSummary[];
     };
@@ -50,11 +71,25 @@ interface IProps {
   };
 }
 
-const IndexPage = ({ data: { featuredArticle, latestArticles } }: IProps) => (
+const IndexPage = ({
+  data: {
+    site: {
+      siteMetadata: { title },
+    },
+    featuredArticle,
+    latestArticles,
+  },
+}: IProps) => (
   <Wrapper>
+    <HiddenHeadline>{title}</HiddenHeadline>
+
     <ArticlesWrapper>
-      <Byline>Featured</Byline>
-      <ArticlesList articles={[featuredArticle.nodes[0]]} />
+      <ArticleSpotlight {...featuredArticle.nodes[0]} />
+    </ArticlesWrapper>
+
+    <ArticlesWrapper>
+      <StyledByline>Popular</StyledByline>
+      <HighlightedArticles articles={latestArticles.nodes.slice(0, 3)} />
     </ArticlesWrapper>
 
     <ArticlesWrapper>
