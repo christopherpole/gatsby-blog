@@ -7,6 +7,15 @@ import HighlightedArticle from 'src/components/articles/highlightedArticle';
 const Wrapper = styled.ul`
   margin-bottom: ${props => props.theme.spacing.large};
   padding: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const ArticlesPreviewRow = styled.ul`
+  margin-bottom: ${props => props.theme.spacing.large};
+  padding: 0;
   display: flex;
 
   &:last-child {
@@ -30,10 +39,14 @@ interface IProps {
 
 const HighlightedArticles = ({ articles }: IProps) => (
   <Wrapper>
-    {articles.map(article => (
-      <ArticlePreviewWrapper key={article.id}>
-        <HighlightedArticle {...article} />
-      </ArticlePreviewWrapper>
+    {[...new Array(Math.ceil(articles.length / 3))].map((_, index: number) => (
+      <ArticlesPreviewRow>
+        {articles.slice(index * 3, index * 3 + 3).map(article => (
+          <ArticlePreviewWrapper key={article.id}>
+            <HighlightedArticle {...article} />
+          </ArticlePreviewWrapper>
+        ))}
+      </ArticlesPreviewRow>
     ))}
   </Wrapper>
 );

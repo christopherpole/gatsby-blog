@@ -90,6 +90,15 @@ module.exports = {
                   json
                 }
                 slug
+                thumbnail: image {
+                  fluid(maxHeight: 350, maxWidth: 600) {
+                    src
+                    srcSet
+                    sizes
+                    base64
+                    aspectRatio
+                  }
+                }
                 image {
                   fluid {
                     src
@@ -106,7 +115,7 @@ module.exports = {
         `,
         ref: 'id',
         index: ['title', 'description', 'tags', 'content'],
-        store: ['id', 'title', 'description', 'tags', 'slug', 'image', 'createdAt'],
+        store: ['id', 'title', 'description', 'tags', 'slug', 'thumbnail', 'image', 'createdAt'],
         normalizer: ({ data }) =>
           data.allContentfulArticle.nodes.map(article => ({
             ...article,

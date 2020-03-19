@@ -3,8 +3,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { useFlexSearch } from 'react-use-flexsearch';
 
+import HighlightedArticles from 'src/components/articles/highlightedArticles';
 import SearchBox from 'src/components/structure/searchBox';
-import ArticlesList from 'src/components/articles/articlesList';
 
 const Wrapper = styled.div``;
 
@@ -45,7 +45,7 @@ const SearchPage = (props: IProps) => {
       {query.length > 0 && (
         <>
           <p>{query}</p>
-          <ArticlesList articles={useFlexSearch(query, index, JSON.parse(store))} />
+          <HighlightedArticles articles={useFlexSearch(query, index, JSON.parse(store))} />
         </>
       )}
     </Wrapper>

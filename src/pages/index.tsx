@@ -4,10 +4,8 @@ import { graphql } from 'gatsby';
 
 import Headline from 'src/components/ui/headline';
 import ArticleSpotlight from 'src/components/articles/articleSpotlight';
-import ArticlesList from 'src/components/articles/articlesList';
 import HighlightedArticles from 'src/components/articles/highlightedArticles';
 import IArticleSummary from 'src/types/articleSummary';
-import Byline from 'src/components/ui/byline';
 
 export const QUERY = graphql`
   {
@@ -28,7 +26,7 @@ export const QUERY = graphql`
     latestArticles: allContentfulArticle(
       filter: { featured: { eq: false } }
       sort: { fields: createdAt, order: DESC }
-      limit: 10
+      limit: 9
     ) {
       nodes {
         ...articleSummaryFields
@@ -38,10 +36,6 @@ export const QUERY = graphql`
 `;
 
 const Wrapper = styled.div``;
-
-const StyledByline = styled(Byline)`
-  text-align: center;
-`;
 
 const HiddenHeadline = styled(Headline)`
   display: none;
@@ -88,13 +82,7 @@ const IndexPage = ({
     </ArticlesWrapper>
 
     <ArticlesWrapper>
-      <StyledByline>Popular</StyledByline>
-      <HighlightedArticles articles={latestArticles.nodes.slice(0, 3)} />
-    </ArticlesWrapper>
-
-    <ArticlesWrapper>
-      <Byline>Latest</Byline>
-      <ArticlesList articles={latestArticles.nodes} />
+      <HighlightedArticles articles={latestArticles.nodes} />
     </ArticlesWrapper>
   </Wrapper>
 );
