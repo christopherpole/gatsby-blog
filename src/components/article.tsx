@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
-import ButtonLink from 'src/components/ui/buttonLink';
+import Link from 'src/components/ui/link';
 import IArticleSummary from 'src/types/articleSummary';
 
 const Wrapper = styled.div`
@@ -36,6 +36,8 @@ const TitleAndDescriptionWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.small};
 `;
 
+const LinkWrapper = styled.div``;
+
 const HighlightedArticle = ({ title, description, thumbnail, slug }: IArticleSummary) => (
   <Wrapper>
     <ImageWrapper>
@@ -46,7 +48,9 @@ const HighlightedArticle = ({ title, description, thumbnail, slug }: IArticleSum
         <Title>{title}</Title>
         <Description>{description}</Description>
       </TitleAndDescriptionWrapper>
-      <ButtonLink to={`/article/${slug}`}>Read Article</ButtonLink>
+      <LinkWrapper>
+        <Link to={`/article/${slug}`}>Read more →</Link>
+      </LinkWrapper>
     </CopyWrapper>
   </Wrapper>
 );

@@ -17,6 +17,8 @@ const ArticlesPreviewRow = styled.ul`
   margin-bottom: ${props => props.theme.spacing.large};
   padding: 0;
   display: flex;
+  margin-right: -${props => props.theme.spacing.small};
+  margin-left: -${props => props.theme.spacing.small};
 
   &:last-child {
     margin-bottom: 0;
@@ -25,8 +27,8 @@ const ArticlesPreviewRow = styled.ul`
 
 const ArticlePreviewWrapper = styled.li`
   list-style-type: none;
-  margin-right: ${props => props.theme.spacing.large};
-  flex: 1;
+  padding: 0 ${props => props.theme.spacing.small};
+  width: 33.33333%;
 
   &:last-child {
     margin-right: 0;

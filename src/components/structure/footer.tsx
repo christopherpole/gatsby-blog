@@ -23,7 +23,7 @@ const Wrapper = styled.footer`
 `;
 
 const ContentWrapper = styled.div`
-  background-color: ${props => props.theme.colors.secondary};
+  background-color: ${props => props.theme.colors.tertiary};
   padding: ${props => props.theme.spacing.large};
 `;
 
@@ -60,9 +60,8 @@ const CopyrightWrapper = styled.div`
   padding: ${props => props.theme.spacing.small};
   display: flex;
   justify-content: center;
-  background-color: black;
-  background-color: ${props => props.theme.colors.tertiary};
-  color: ${props => props.theme.colors.secondary};
+  background-color: ${props => props.theme.colors.quaternary};
+  color: ${props => props.theme.colors.fonts.secondary};
   width: 100%;
 `;
 

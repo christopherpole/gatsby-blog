@@ -2,8 +2,9 @@ const theme = {
   maxPageWidth: '100rem',
   colors: {
     primary: '#41961f',
-    secondary: '#f8f8f8',
-    tertiary: '#373941',
+    secondary: '#ff6969',
+    tertiary: '#f8f8f8',
+    quaternary: '#373941',
     border: '#e8e8e8',
     disabled: '#ccc',
     error: {

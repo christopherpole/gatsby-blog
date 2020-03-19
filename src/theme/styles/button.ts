@@ -3,7 +3,7 @@ import { darken } from 'polished';
 
 export default css<{ disabled?: boolean }>`
   display: inline-block;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.fonts.secondary};
   padding: ${props => props.theme.spacing.small};
   border: none;

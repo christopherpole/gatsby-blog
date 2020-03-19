@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import linkStyle from 'src/theme/styles/link';
 
 const Wrapper = styled(Link)`
-  ${linkStyle}
+  ${linkStyle};
 `;
 
 interface IProps {
