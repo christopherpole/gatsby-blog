@@ -20,6 +20,18 @@ export const QUERY = graphql`
       body {
         json
       }
+      relatedArticles {
+        ...articleSummaryFields
+      }
+    }
+    latestArticles: allContentfulArticle(
+      filter: { slug: { ne: $slug } }
+      sort: { fields: createdAt, order: DESC }
+      limit: 3
+    ) {
+      nodes {
+        ...articleSummaryFields
+      }
     }
   }
 `;
@@ -34,7 +46,7 @@ const PublishDate = styled.p`
   margin-bottom: ${props => props.theme.spacing.medium};
 `;
 
-const RelatedArticlesWrapper = styled.div``;
+const SuggestedArticlesWrapper = styled.div``;
 
 interface IFullArticle extends IArticleSummary {
   relatedArticles?: IArticleSummary[];
@@ -46,6 +58,9 @@ interface IFullArticle extends IArticleSummary {
 interface IProps {
   data: {
     contentfulArticle: IFullArticle;
+    latestArticles: {
+      nodes: IFullArticle[];
+    };
   };
   location: {
     href: string;
@@ -56,6 +71,7 @@ interface IProps {
 const Article = ({
   data: {
     contentfulArticle: { title, description, createdAt, body, relatedArticles, image },
+    latestArticles,
   },
   location: { href, pathname },
 }: IProps) => (
@@ -79,10 +95,17 @@ const Article = ({
     </ArticleWrapper>
 
     {relatedArticles && relatedArticles.length > 0 && (
-      <RelatedArticlesWrapper>
+      <SuggestedArticlesWrapper>
         <Byline>Related</Byline>
         <Articles articles={relatedArticles} />
-      </RelatedArticlesWrapper>
+      </SuggestedArticlesWrapper>
+    )}
+
+    {!relatedArticles && (
+      <SuggestedArticlesWrapper>
+        <Byline>Latest</Byline>
+        <Articles articles={latestArticles.nodes} />
+      </SuggestedArticlesWrapper>
     )}
   </Wrapper>
 );

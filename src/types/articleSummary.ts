@@ -7,7 +7,7 @@ interface IArticleSummary {
   title: string;
   description: string;
   slug: string;
-  tag: ITag;
+  tags: ITag[];
   image: {
     fluid?: FluidObject | FluidObject[];
   };
