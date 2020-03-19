@@ -14,10 +14,6 @@ interface IProps {
   className?: string;
 }
 
-const ButtonLink = ({ children, className, to }: IProps) => (
-  <Wrapper className={className} to={to}>
-    {children}
-  </Wrapper>
-);
+const ButtonLink = (props: IProps) => <Wrapper {...props} />;
 
 export default ButtonLink;

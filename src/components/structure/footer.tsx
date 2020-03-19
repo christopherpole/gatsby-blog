@@ -57,7 +57,7 @@ const LinkWrapper = styled.li`
 `;
 
 const CopyrightWrapper = styled.div`
-  padding: ${props => props.theme.spacing.small};
+  padding: ${props => props.theme.spacing.medium};
   display: flex;
   justify-content: center;
   background-color: ${props => props.theme.colors.quaternary};
@@ -66,6 +66,7 @@ const CopyrightWrapper = styled.div`
 `;
 
 const Copyright = styled.p`
+  line-height: 1;
   font-size: ${props => props.theme.sizing.small};
 `;
 

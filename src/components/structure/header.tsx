@@ -19,7 +19,9 @@ const WrapperInner = styled.div`
   border-bottom: 1px solid ${props => props.theme.colors.border};
 `;
 
-const LogoWrapper = styled.div``;
+const LogoWrapper = styled.div`
+  display: inline-flex;
+`;
 
 const NavSearchWrapper = styled.div`
   display: flex;

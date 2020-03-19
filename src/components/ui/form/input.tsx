@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 import { Field } from 'formik';
-import { lighten } from 'polished';
 
 const StyledField = styled(Field)`
-  padding: 0.5rem;
+  padding: ${props => props.theme.spacing.small};
   width: 100%;
   border: 1px solid #aaa;
   margin-bottom: ${props => props.theme.spacing.small};
@@ -17,8 +16,8 @@ const StyledField = styled(Field)`
   ${props =>
     props.haserror &&
     css`
-      border-color: #f00;
-      background-color: ${lighten(0.4, '#f00')};
+      border-color: ${props.theme.colors.error.primary};
+      background-color: ${props.theme.colors.error.secondary};
     `}
 
   &:last-child {

@@ -12,7 +12,8 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled(Link)`
+  display: block;
   margin-bottom: ${props => props.theme.spacing.medium};
 `;
 
@@ -23,29 +24,50 @@ const CopyWrapper = styled.div`
   flex-grow: 1;
 `;
 
-const Title = styled.p`
+const Title = styled(Link)`
   margin-bottom: ${props => props.theme.spacing.small};
   font-size: ${props => props.theme.sizing.large};
+  line-height: 1.3;
+  font-weight: bold;
+
+  &,
+  &:hover,
+  &:focus {
+    color: ${props => props.theme.colors.fonts.primary};
+  }
+`;
+
+const PublishedOn = styled.p`
+  font-size: ${props => props.theme.sizing.small};
+  margin-bottom: ${props => props.theme.spacing.medium};
+  color: ${props => props.theme.colors.fonts.tertiary};
 `;
 
 const Description = styled.p`
-  margin-bottom: ${props => props.theme.spacing.small};
+  margin-bottom: ${props => props.theme.spacing.medium};
 `;
 
 const TitleAndDescriptionWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.small};
+  margin-bottom: ${props => props.theme.spacing.medium};
 `;
 
 const LinkWrapper = styled.div``;
 
-const HighlightedArticle = ({ title, description, thumbnail, slug }: IArticleSummary) => (
+const HighlightedArticle = ({
+  title,
+  description,
+  thumbnail,
+  slug,
+  createdAt,
+}: IArticleSummary) => (
   <Wrapper>
-    <ImageWrapper>
+    <ImageWrapper to={`/article/${slug}`}>
       <Img fluid={thumbnail.fluid} />
     </ImageWrapper>
     <CopyWrapper>
       <TitleAndDescriptionWrapper>
-        <Title>{title}</Title>
+        <Title to={`/article/${slug}`}>{title}</Title>
+        <PublishedOn>{createdAt}</PublishedOn>
         <Description>{description}</Description>
       </TitleAndDescriptionWrapper>
       <LinkWrapper>

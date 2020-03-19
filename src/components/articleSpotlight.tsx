@@ -25,17 +25,17 @@ const CopyWrapper = styled.div`
 
 const CopyWrapperInner = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
-  padding: ${props => props.theme.spacing.large};
+  padding: ${props => props.theme.spacing.extraLarge};
   color: white;
 `;
 
-const Title = styled.p`
-  margin-bottom: ${props => props.theme.spacing.small};
-  font-size: ${props => props.theme.sizing.large};
+const Title = styled.h3`
+  margin-bottom: ${props => props.theme.spacing.medium};
+  font-size: ${props => props.theme.sizing.extraLarge};
 `;
 
 const Description = styled.p`
-  margin-bottom: ${props => props.theme.spacing.small};
+  margin-bottom: ${props => props.theme.spacing.large};
 `;
 
 const StyledButtonLink = styled(ButtonLink)`
@@ -59,7 +59,7 @@ const ArticleSpotlight = ({ title, description, image, slug }: IArticleSummary) 
       <CopyWrapperInner>
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <StyledButtonLink to={`/article/${slug}`}>Read Article</StyledButtonLink>
+        <StyledButtonLink to={`/article/${slug}`}>Read More</StyledButtonLink>
       </CopyWrapperInner>
     </CopyWrapper>
   </Wrapper>

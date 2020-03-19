@@ -20,6 +20,6 @@ export const articleFields = graphql`
         ...GatsbyContentfulFluid
       }
     }
-    createdAt
+    createdAt(formatString: "DD MMMM, YYYY")
   }
 `;
