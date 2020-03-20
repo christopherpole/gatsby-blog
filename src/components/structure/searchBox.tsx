@@ -1,4 +1,5 @@
 import React from 'react';
+import { darken } from 'polished';
 import { Link, navigate } from 'gatsby';
 import styled, { css } from 'styled-components';
 import * as Yup from 'yup';
@@ -26,19 +27,13 @@ const StyledInput = styled(Input)`
   border-right: none;
 `;
 
-const StyledLink = styled(Link)<{ disabled: boolean }>`
+const StyledLink = styled(Link)`
   ${buttonStyles};
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  border: 1px solid ${props => props.theme.colors.primary};
-
-  ${props =>
-    props.disabled &&
-    css`
-      border-color: #ccc;
-    `}
+  padding: ${props => props.theme.spacing.medium};
+  transition-property: border-color background-color;
 `;
 
 const SearchBox = () => {
@@ -53,10 +48,7 @@ const SearchBox = () => {
           <Form role="search" onSubmit={handleSubmit}>
             <InputWrapper>
               <StyledInput component="input" type="text" name="query" />
-              <StyledLink
-                to={`/search/${encodeURIComponent(values.query)}`}
-                disabled={!values.query.length}
-              >
+              <StyledLink to={`/search/${encodeURIComponent(values.query)}`}>
                 <FontAwesomeIcon icon={faSearch} />
               </StyledLink>
             </InputWrapper>

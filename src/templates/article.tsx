@@ -68,7 +68,7 @@ interface IProps {
   };
 }
 
-const Article = ({
+const ArticlePage = ({
   data: {
     contentfulArticle: { title, description, createdAt, body, relatedArticles, image },
     latestArticles,
@@ -110,4 +110,4 @@ const Article = ({
   </Wrapper>
 );
 
-export default Article;
+export default ArticlePage;

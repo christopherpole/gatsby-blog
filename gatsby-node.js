@@ -5,6 +5,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const articleTemplate = path.resolve('./src/templates/article.tsx');
   const tagTemplate = path.resolve('./src/templates/tag.tsx');
+  const indexTemplate = path.resolve('./src/templates/index.tsx');
 
   const res = await graphql(`
     {
@@ -38,6 +39,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
         slug,
       },
     });
+  });
+
+  //  Create the index pages
+  paginate({
+    createPage,
+    items: res.data.allContentfulArticle.edges,
+    itemsPerPage: 6,
+    pathPrefix: `/`,
+    component: indexTemplate,
   });
 
   //  Create the tag pages

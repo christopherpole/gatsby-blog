@@ -43,7 +43,7 @@ const StyledButtonLink = styled(ButtonLink)`
   background-color: transparent;
 
   &:hover,
-  &:active {
+  &:focus {
     background-color: white;
     color: black;
   }
