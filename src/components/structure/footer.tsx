@@ -24,6 +24,8 @@ const Wrapper = styled.footer`
 
 const ContentWrapper = styled.div`
   background-color: ${props => props.theme.colors.tertiary};
+  font-size: ${props => props.theme.sizing.small};
+  color: ${props => props.theme.colors.fonts.secondary};
   padding: ${props => props.theme.spacing.large};
 `;
 
@@ -43,13 +45,27 @@ const Column = styled.div`
   }
 `;
 
+const ColumnHeader = styled.h4`
+  font-size: ${props => props.theme.sizing.medium};
+  margin-bottom: ${props => props.theme.spacing.medium};
+
+  &:after {
+    content: '';
+    margin-top: ${props => props.theme.spacing.extraSmall};
+    display: block;
+    background: white;
+    width: 40%;
+    height: 0.3rem;
+  }
+`;
+
 const LinksWrapper = styled.ul`
   padding: 0;
 `;
 
 const LinkWrapper = styled.li`
   list-style-type: none;
-  margin-bottom: ${props => props.theme.spacing.small};
+  margin-bottom: ${props => props.theme.spacing.extraSmall};
 
   &:last-child {
     margin-bottom: 0;
@@ -78,46 +94,60 @@ const Footer = () => {
       <ContentWrapper>
         <ContentWrapperInner>
           <Column>
+            <ColumnHeader>Links</ColumnHeader>
             <LinksWrapper>
               <LinkWrapper>
-                <Link to="/">Home</Link>
+                <Link alternate to="/">
+                  Home
+                </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link to="/about">About</Link>
+                <Link alternate to="/about">
+                  About
+                </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link to="/disclaimer">Affiliate Disclaimer</Link>
+                <Link alternate to="/disclaimer">
+                  Affiliate Disclaimer
+                </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link to="/contact">Contact</Link>
+                <Link alternate to="/contact">
+                  Contact
+                </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link to="/privacy">Privary Policy</Link>
+                <Link alternate to="/privacy">
+                  Privary Policy
+                </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link to="/terms">Terms of Use</Link>
+                <Link alternate to="/terms">
+                  Terms of Use
+                </Link>
               </LinkWrapper>
             </LinksWrapper>
           </Column>
           <Column>
-            Tags:{' '}
+            <ColumnHeader>Tags</ColumnHeader>
             {data.allContentfulTag.nodes.map(({ id, slug, name }: ITag, index: number) => (
               <>
-                <Link key={id} to={`/tag/${slug}`}>
+                <Link alternate key={id} to={`/tag/${slug}`}>
                   {name}
                 </Link>
-                {index < data.allContentfulTag.nodes.length - 1 && `, `}
+                {index < data.allContentfulTag.nodes.length - 1 && ` | `}
               </>
             ))}
           </Column>
           <Column>
+            <ColumnHeader>Newsletter</ColumnHeader>
             <Newsletter />
           </Column>
         </ContentWrapperInner>
       </ContentWrapper>
 
       <CopyrightWrapper>
-        <Copyright>Copyright</Copyright>
+        <Copyright>&copy; 2020, Terrarium Blog</Copyright>
       </CopyrightWrapper>
     </Wrapper>
   );

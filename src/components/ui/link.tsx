@@ -11,6 +11,7 @@ const Wrapper = styled(Link)`
 interface IProps {
   to: string;
   children: React.ReactNode;
+  alternate?: boolean;
 }
 
 const StyledLink = (props: IProps) => <Wrapper activeClassName="current" {...props} />;

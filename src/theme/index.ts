@@ -3,8 +3,8 @@ const theme = {
   colors: {
     primary: '#228B22',
     secondary: '#ff3434',
-    tertiary: '#f8f8f8',
-    quaternary: '#373941',
+    tertiary: '#222222',
+    quaternary: '#191919',
     border: '#e8e8e8',
     disabled: '#ccc',
     error: {
@@ -18,17 +18,18 @@ const theme = {
     },
   },
   spacing: {
-    extraLarge: '3rem',
-    large: '2.5rem',
-    medium: '1rem',
-    small: '.5rem',
-    extraSmall: '.25rem',
+    extraLarge: '2.5rem',
+    large: '2rem',
+    medium: '1.5rem',
+    small: '1rem',
+    extraSmall: '.5rem',
   },
   sizing: {
     extraLarge: '3rem',
     large: '2rem',
     medium: '1.6rem',
     small: '1.4rem',
+    extraSmall: '1.2rem',
   },
 };
 

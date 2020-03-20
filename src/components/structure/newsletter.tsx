@@ -53,13 +53,11 @@ const NewsLetter = () => {
 
   return (
     <Wrapper>
-      <p>Newsletter</p>
-
       <Formik initialValues={{ email: '' }} validationSchema={NewsLetterSchema} onSubmit={onSubmit}>
         {({ isSubmitting, errors, handleSubmit }) => (
           <Form onSubmit={handleSubmit}>
             <FieldWrapper>
-              <Label>Email</Label>
+              <Label>Get the care info you need to keep your houseplants happy and healthy!</Label>
               <Input component="input" type="email" name="email" haserror={errors.email} />
               <ErrorMessage name="email" component="p" />
             </FieldWrapper>

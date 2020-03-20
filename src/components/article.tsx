@@ -25,7 +25,7 @@ const CopyWrapper = styled.div`
 `;
 
 const Title = styled(Link)`
-  margin-bottom: ${props => props.theme.spacing.small};
+  margin-bottom: ${props => props.theme.spacing.extraSmall};
   font-size: ${props => props.theme.sizing.large};
   line-height: 1.3;
   font-weight: bold;
