@@ -102,32 +102,32 @@ const Footer = () => {
             <ColumnHeader>Links</ColumnHeader>
             <LinksWrapper>
               <LinkWrapper>
-                <Link alternate to="/">
+                <Link altStyle to="/">
                   Home
                 </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link alternate to="/about">
+                <Link altStyle to="/about">
                   About
                 </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link alternate to="/disclaimer">
+                <Link altStyle to="/disclaimer">
                   Affiliate Disclaimer
                 </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link alternate to="/contact">
+                <Link altStyle to="/contact">
                   Contact
                 </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link alternate to="/privacy">
+                <Link altStyle to="/privacy">
                   Privary Policy
                 </Link>
               </LinkWrapper>
               <LinkWrapper>
-                <Link alternate to="/terms">
+                <Link altStyle to="/terms">
                   Terms of Use
                 </Link>
               </LinkWrapper>
@@ -136,12 +136,12 @@ const Footer = () => {
           <Column>
             <ColumnHeader>Tags</ColumnHeader>
             {data.allContentfulTag.nodes.map(({ id, slug, name }: ITag, index: number) => (
-              <>
-                <Link alternate key={id} to={`/tag/${slug}`}>
+              <React.Fragment key={id}>
+                <Link altStyle key={id} to={`/tag/${slug}`}>
                   {name}
                 </Link>
                 {index < data.allContentfulTag.nodes.length - 1 && ` | `}
-              </>
+              </React.Fragment>
             ))}
           </Column>
           <Column>

@@ -18,6 +18,7 @@ module.exports = {
     'react/no-array-index-key': 'off',
     'no-console': 'off',
     'react/jsx-one-expression-per-line': 'off',
+    'react/button-has-type': 'off',
   },
   settings: {
     'import/resolver': {

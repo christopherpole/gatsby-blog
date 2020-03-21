@@ -25,7 +25,7 @@ const LinkContainer = styled.li`
   }
 `;
 
-const StyledLink = styled(ButtonLink)<{ isActive?: boolean }>`
+const StyledLink = styled(({ isActive, ...rest }) => <ButtonLink {...rest} />)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +81,7 @@ const Paginatior = ({
     </LinkContainer>
 
     <LinkContainer>
-      <StyledLink disabled={!previousPagePath} to={previousPagePath || '/'}>
+      <StyledLink disabled={!previousPagePath} to={previousPagePath || baseUrl}>
         &lt;
       </StyledLink>
     </LinkContainer>
@@ -95,7 +95,7 @@ const Paginatior = ({
     ))}
 
     <LinkContainer>
-      <StyledLink disabled={!nextPagePath} to={nextPagePath || '/'}>
+      <StyledLink disabled={!nextPagePath} to={nextPagePath || baseUrl}>
         &gt;
       </StyledLink>
     </LinkContainer>

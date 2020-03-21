@@ -39,10 +39,10 @@ interface IProps {
   articles: IArticleSummary[];
 }
 
-const HighlightedArticles = ({ articles }: IProps) => (
+const Articles = ({ articles }: IProps) => (
   <Wrapper>
     {[...new Array(Math.ceil(articles.length / 3))].map((_, index: number) => (
-      <ArticlesPreviewRow>
+      <ArticlesPreviewRow key={index}>
         {articles.slice(index * 3, index * 3 + 3).map(article => (
           <ArticlePreviewWrapper key={article.id}>
             <Article {...article} />
@@ -53,4 +53,4 @@ const HighlightedArticles = ({ articles }: IProps) => (
   </Wrapper>
 );
 
-export default HighlightedArticles;
+export default Articles;

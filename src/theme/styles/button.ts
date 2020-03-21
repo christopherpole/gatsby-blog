@@ -1,10 +1,10 @@
 import { css } from 'styled-components';
 import { darken } from 'polished';
 
-export default css<{ disabled?: boolean; alternate?: boolean }>`
+export default css<{ disabled?: boolean; altStyle?: boolean }>`
   display: inline-block;
   background-color: ${props =>
-    props.alternate ? props.theme.colors.secondary : props.theme.colors.primary};
+    props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary};
   color: ${props => props.theme.colors.fonts.secondary};
   padding: ${props => props.theme.spacing.medium};
   border: none;
@@ -17,7 +17,7 @@ export default css<{ disabled?: boolean; alternate?: boolean }>`
   &:focus,
   &:hover {
     background-color: ${props =>
-      darken(0.2, props.alternate ? props.theme.colors.secondary : props.theme.colors.primary)};
+      darken(0.2, props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary)};
   }
 
   ${props =>

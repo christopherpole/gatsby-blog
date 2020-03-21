@@ -34,7 +34,7 @@ const Submission = ({ showConfirmation, isSubmitting }: IProps) => (
       <ConfirmationMessage>Submitted!</ConfirmationMessage>
     </ConfirmationWrapper>
 
-    <Button alternate type="submit" disabled={isSubmitting} aria-hidden={showConfirmation}>
+    <Button altStyle type="submit" disabled={isSubmitting} aria-hidden={showConfirmation}>
       Submit
     </Button>
   </SubmitWrapper>

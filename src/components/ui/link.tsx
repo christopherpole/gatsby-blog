@@ -4,14 +4,14 @@ import { Link } from 'gatsby';
 
 import linkStyle from 'src/theme/styles/link';
 
-const Wrapper = styled(Link)`
+const Wrapper = styled(({ altStyle, ...rest }) => <Link {...rest} />)`
   ${linkStyle};
 `;
 
 interface IProps {
   to: string;
   children: React.ReactNode;
-  alternate?: boolean;
+  altStyle?: boolean;
 }
 
 const StyledLink = (props: IProps) => <Wrapper activeClassName="current" {...props} />;
