@@ -83,19 +83,19 @@ const ContactPage = () => {
           <Form onSubmit={handleSubmit}>
             <FieldWrapper>
               <Label>Subject</Label>
-              <Input component="input" type="text" name="subject" haserror={errors.subject} />
+              <Input component="input" type="text" name="subject" hasError={errors.subject} />
               <ErrorMessage name="subject" component="p" />
             </FieldWrapper>
 
             <FieldWrapper>
               <Label>Email</Label>
-              <Input component="input" type="email" name="email" haserror={errors.email} />
+              <Input component="input" type="email" name="email" hasError={errors.email} />
               <ErrorMessage name="email" component="p" />
             </FieldWrapper>
 
             <FieldWrapper>
               <Label>Message</Label>
-              <TextArea component="textarea" name="message" haserror={errors.message} />
+              <TextArea component="textarea" name="message" hasError={errors.message} />
               <ErrorMessage name="message" component="p" />
             </FieldWrapper>
 

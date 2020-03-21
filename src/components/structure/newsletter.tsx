@@ -12,7 +12,7 @@ import Label from 'src/components/ui/form/label';
 
 const Wrapper = styled.nav``;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(({ hasError, ...rest }) => <Input {...rest} />)`
   padding: ${props => props.theme.spacing.small};
   border-color: ${props => props.theme.colors.tertiary};
 
@@ -21,7 +21,7 @@ const StyledInput = styled(Input)`
   }
 
   ${props =>
-    props.haserror &&
+    props.hasError &&
     css`
       border-color: ${props.theme.colors.error.primary};
     `}
@@ -73,7 +73,7 @@ const NewsLetter = () => {
           <Form onSubmit={handleSubmit}>
             <FieldWrapper>
               <Label>Get the care info you need to keep your houseplants happy and healthy!</Label>
-              <StyledInput component="input" type="email" name="email" haserror={errors.email} />
+              <StyledInput component="input" type="email" name="email" hasError={errors.email} />
               <ErrorMessage name="email" component="p" />
             </FieldWrapper>
 

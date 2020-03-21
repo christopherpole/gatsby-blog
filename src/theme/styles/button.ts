@@ -11,7 +11,8 @@ export default css<{ disabled?: boolean; altStyle?: boolean }>`
   text-decoration: none;
   cursor: pointer;
   line-height: 1;
-  transition: background-color 200ms linear;
+  transition: background-color ${props => props.theme.transitions.duration}
+    ${props => props.theme.transitions.easing};
   font-weight: bold;
 
   &:focus,

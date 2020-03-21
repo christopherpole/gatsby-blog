@@ -5,7 +5,8 @@ export default css<{ altStyle: boolean }>`
   text-decoration: none;
   color: inherit;
   display: inline-flex;
-  transition: color 200ms linear;
+  transition: color ${props => props.theme.transitions.duration}
+    ${props => props.theme.transitions.easing};
   color: ${props =>
     props.altStyle ? props.theme.colors.fonts.secondary : props.theme.colors.primary};
 

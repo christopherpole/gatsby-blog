@@ -7,16 +7,18 @@ import SearchBox from 'src/components/structure/searchBox';
 
 const Wrapper = styled.header`
   width: 100%;
+  margin: auto;
+  max-width: ${props => props.theme.maxPageWidth};
+  padding: 0 ${props => props.theme.spacing.large};
 `;
 
 const WrapperInner = styled.div`
-  padding: ${props => props.theme.spacing.large} 0;
-  max-width: ${props => props.theme.maxPageWidth};
   display: flex;
+  padding: ${props => props.theme.spacing.large} 0;
   justify-content: space-between;
   align-items: center;
-  margin: auto;
   border-bottom: 1px solid ${props => props.theme.colors.border};
+  width: 100%;
 `;
 
 const LogoWrapper = styled.div`

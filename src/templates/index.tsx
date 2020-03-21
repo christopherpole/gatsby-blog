@@ -43,7 +43,7 @@ const HiddenHeadline = styled(Headline)`
 `;
 
 const ArticlesWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.large};
+  margin-bottom: ${props => props.theme.spacing.extraLarge};
 
   &:last-child {
     margin-bottom: 0;
@@ -85,15 +85,12 @@ const IndexPage = ({
   <Wrapper>
     <HiddenHeadline>{title}</HiddenHeadline>
 
-    {pageNumber === 0 && (
-      <ArticlesWrapper>
-        <ArticleSpotlight {...featuredArticle.nodes[0]} />
-      </ArticlesWrapper>
-    )}
-
     <ArticlesWrapper>
+      {pageNumber === 0 && <ArticleSpotlight {...featuredArticle.nodes[0]} />}
+
       <Articles articles={latestArticles.nodes} />
     </ArticlesWrapper>
+
     {numberOfPages > 1 && (
       <Paginatior
         baseUrl="/"

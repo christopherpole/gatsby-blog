@@ -1,5 +1,5 @@
 const theme = {
-  maxPageWidth: '100rem',
+  maxPageWidth: '110rem',
   colors: {
     primary: '#28AC28',
     background: '#fff',
@@ -18,10 +18,14 @@ const theme = {
       tertiary: '#666',
     },
   },
+  transitions: {
+    duration: '200ms',
+    easing: 'linear',
+  },
   spacing: {
-    extraLarge: '3rem',
-    large: '2rem',
-    medium: '1.5rem',
+    extraLarge: '4rem',
+    large: '3rem',
+    medium: '2rem',
     small: '1rem',
     extraSmall: '.5rem',
   },

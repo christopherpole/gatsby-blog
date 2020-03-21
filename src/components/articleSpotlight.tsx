@@ -8,6 +8,7 @@ import IArticleSummary from 'src/types/articleSummary';
 const Wrapper = styled.div`
   position: relative;
   text-align: center;
+  margin-bottom: ${props => props.theme.spacing.large};
 `;
 
 const ImageWrapper = styled.div``;
@@ -30,6 +31,7 @@ const CopyWrapperInner = styled.div`
 `;
 
 const Title = styled.h3`
+  line-height: 1;
   margin-bottom: ${props => props.theme.spacing.medium};
   font-size: ${props => props.theme.sizing.extraLarge};
 `;

@@ -18,7 +18,7 @@ const QUERY = graphql`
 `;
 
 const Wrapper = styled.nav`
-  margin-right: ${props => props.theme.spacing.extraLarge};
+  margin-right: ${props => props.theme.spacing.large};
 `;
 
 const LinksWrapper = styled.ul`

@@ -1,12 +1,14 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { Field } from 'formik';
 
-const StyledField = styled(Field)`
+const StyledField = styled(({ hasError, ...rest }) => <Field {...rest} />)`
   padding: ${props => props.theme.spacing.extraSmall};
   width: 100%;
   border: 1px solid #aaa;
   margin-bottom: ${props => props.theme.spacing.small};
-  transform: border-color 200ms linear;
+  transform: border-color ${props => props.theme.transitions.duration}
+    ${props => props.theme.transitions.easing};
 
   &:focus {
     outline: none;
@@ -14,7 +16,7 @@ const StyledField = styled(Field)`
   }
 
   ${props =>
-    props.haserror &&
+    props.hasError &&
     css`
       border-color: ${props.theme.colors.error.primary};
       background-color: ${props.theme.colors.error.secondary};

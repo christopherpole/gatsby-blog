@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const HeaderAndContentWrapper = styled.div`
-  padding: 0 ${props => props.theme.spacing.large};
+  /* padding: 0 ${props => props.theme.spacing.large}; */
   flex: 1;
   width: 100%;
 `;
@@ -28,7 +28,7 @@ const ContentWrapper = styled.main`
   flex: 3;
   width: 100%;
   margin: auto;
-  padding: ${props => props.theme.spacing.large} 0;
+  padding: ${props => props.theme.spacing.large};
   max-width: ${props => props.theme.maxPageWidth};
 `;
 

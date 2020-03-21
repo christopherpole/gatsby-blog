@@ -31,10 +31,10 @@ const ContentWrapper = styled.div`
   background-color: ${props => props.theme.colors.tertiary};
   font-size: ${props => props.theme.sizing.small};
   color: ${props => props.theme.colors.fonts.secondary};
-  padding: ${props => props.theme.spacing.large};
 `;
 
 const ContentWrapperInner = styled.div`
+  padding: ${props => props.theme.spacing.large};
   max-width: ${props => props.theme.maxPageWidth};
   margin: auto;
   width: 100%;

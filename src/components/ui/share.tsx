@@ -20,7 +20,8 @@ const buttonStyles = css`
   border: none;
   padding: 0;
   position: relative;
-  transition: background-color 200ms linear;
+  transition: background-color ${props => props.theme.transitions.duration}
+    ${props => props.theme.transitions.easing};
 `;
 
 const Wrapper = styled.ul`
