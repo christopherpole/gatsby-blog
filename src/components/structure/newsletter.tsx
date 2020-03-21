@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { Formik, Form } from 'formik';
@@ -12,8 +12,22 @@ import Label from 'src/components/ui/form/label';
 
 const Wrapper = styled.nav``;
 
+const StyledInput = styled(Input)`
+  padding: ${props => props.theme.spacing.small};
+
+  &:focus {
+    border-color: ${props => props.theme.colors.secondary};
+  }
+
+  ${props =>
+    props.haserror &&
+    css`
+      border-color: ${props.theme.colors.error.primary};
+    `}
+`;
+
 const FormErrorMessage = styled.p`
-  color: #f00;
+  color: ${props => props.theme.colors.error.primary};
 `;
 
 const NewsLetterSchema = Yup.object().shape({
@@ -58,7 +72,7 @@ const NewsLetter = () => {
           <Form onSubmit={handleSubmit}>
             <FieldWrapper>
               <Label>Get the care info you need to keep your houseplants happy and healthy!</Label>
-              <Input component="input" type="email" name="email" haserror={errors.email} />
+              <StyledInput component="input" type="email" name="email" haserror={errors.email} />
               <ErrorMessage name="email" component="p" />
             </FieldWrapper>
 

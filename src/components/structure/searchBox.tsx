@@ -1,7 +1,6 @@
 import React from 'react';
-import { darken } from 'polished';
 import { Link, navigate } from 'gatsby';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,7 +31,7 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${props => props.theme.spacing.medium};
+  padding: ${props => props.theme.spacing.small};
   transition-property: border-color background-color;
 `;
 

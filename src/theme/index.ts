@@ -2,6 +2,7 @@ const theme = {
   maxPageWidth: '100rem',
   colors: {
     primary: '#28AC28',
+    background: '#fff',
     secondary: '#ff3434',
     tertiary: '#222222',
     quaternary: '#191919',
@@ -18,7 +19,7 @@ const theme = {
     },
   },
   spacing: {
-    extraLarge: '2.5rem',
+    extraLarge: '3rem',
     large: '2rem',
     medium: '1.5rem',
     small: '1rem',

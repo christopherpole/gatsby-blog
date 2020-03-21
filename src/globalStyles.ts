@@ -18,6 +18,7 @@ export default createGlobalStyle`
     font-size: ${props => props.theme.sizing.medium};
     line-height: 1.5;
     color: ${props => props.theme.colors.fonts.primary};
+    background-color: ${props => props.theme.colors.background};
   }
   
   img {
