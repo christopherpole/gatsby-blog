@@ -8,6 +8,11 @@ import ITag from 'src/types/tag';
 
 const query = graphql`
   {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allContentfulTag {
       nodes {
         id
@@ -55,7 +60,7 @@ const ColumnHeader = styled.h4`
     display: block;
     background: white;
     width: 40%;
-    height: 0.3rem;
+    height: 0.2rem;
   }
 `;
 
@@ -147,7 +152,9 @@ const Footer = () => {
       </ContentWrapper>
 
       <CopyrightWrapper>
-        <Copyright>&copy; 2020, Terrarium Blog</Copyright>
+        <Copyright>
+          &copy; {new Date().getFullYear()}, {data.site.siteMetadata.title}
+        </Copyright>
       </CopyrightWrapper>
     </Wrapper>
   );

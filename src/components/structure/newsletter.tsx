@@ -14,6 +14,7 @@ const Wrapper = styled.nav``;
 
 const StyledInput = styled(Input)`
   padding: ${props => props.theme.spacing.small};
+  border-color: ${props => props.theme.colors.tertiary};
 
   &:focus {
     border-color: ${props => props.theme.colors.secondary};

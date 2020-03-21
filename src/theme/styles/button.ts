@@ -12,6 +12,7 @@ export default css<{ disabled?: boolean; alternate?: boolean }>`
   cursor: pointer;
   line-height: 1;
   transition: background-color 200ms linear;
+  font-weight: bold;
 
   &:focus,
   &:hover {
