@@ -12,6 +12,7 @@ interface IProps {
   children: string;
   to: string;
   className?: string;
+  disabled?: boolean;
 }
 
 const ButtonLink = (props: IProps) => <Wrapper {...props} />;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import SubmitButton from 'src/components/ui/form/submitButton';
+import Button from 'src/components/ui/button';
 
 interface IProps {
   showConfirmation: boolean;
@@ -34,14 +34,9 @@ const Submission = ({ showConfirmation, isSubmitting }: IProps) => (
       <ConfirmationMessage>Submitted!</ConfirmationMessage>
     </ConfirmationWrapper>
 
-    <SubmitButton
-      type="submit"
-      disabled={isSubmitting}
-      aria-hidden={showConfirmation}
-      isHidden={showConfirmation}
-    >
+    <Button alternate type="submit" disabled={isSubmitting} aria-hidden={showConfirmation}>
       Submit
-    </SubmitButton>
+    </Button>
   </SubmitWrapper>
 );
 

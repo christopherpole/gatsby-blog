@@ -11,6 +11,7 @@ interface IProps {
   children: React.ReactNode;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  alternate?: boolean;
 }
 
 const ButtonLink = (props: IProps) => <Wrapper {...props} />;
