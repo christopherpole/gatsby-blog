@@ -12,6 +12,7 @@ import Byline from 'src/components/ui/byline';
 import getContentfulRichTextRendererOverrides from 'src/utils/getContentfulRichTextRendererOverrides';
 import Articles from 'src/components/articles';
 import Share from 'src/components/ui/share';
+import Link from 'src/components/ui/link';
 import SEO from 'src/components/structure/seo';
 
 export const QUERY = graphql`
@@ -51,6 +52,10 @@ const BodyWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.large};
 `;
 
+const TagsWrapper = styled.p`
+  margin-bottom: ${props => props.theme.spacing.large};
+`;
+
 const SuggestedArticlesWrapper = styled.div``;
 
 interface IFullArticle extends IArticleSummary {
@@ -75,7 +80,7 @@ interface IProps {
 
 const ArticlePage = ({
   data: {
-    contentfulArticle: { id, title, description, createdAt, body, relatedArticles, image },
+    contentfulArticle: { id, title, description, tags, createdAt, body, relatedArticles, image },
     latestArticles,
   },
   location: { href, pathname },
@@ -100,6 +105,16 @@ const ArticlePage = ({
           renderNode: getContentfulRichTextRendererOverrides(),
         })}
       </BodyWrapper>
+
+      <TagsWrapper>
+        Tags:{' '}
+        {tags.map((tag, index) => (
+          <React.Fragment key={tag.id}>
+            <Link to={`/tag/${tag.slug}`}>{tag.name}</Link>
+            {index !== tags.length - 1 ? ', ' : ''}
+          </React.Fragment>
+        ))}
+      </TagsWrapper>
 
       <Disqus
         config={{
