@@ -12,6 +12,7 @@ import Input from 'src/components/ui/form/input';
 import Label from 'src/components/ui/form/label';
 import TextArea from 'src/components/ui/form/textArea';
 import SEO from 'src/components/structure/seo';
+import Headline from 'src/components/ui/headline';
 
 const Wrapper = styled.div``;
 
@@ -72,7 +73,8 @@ const ContactPage = () => {
   return (
     <Wrapper>
       <SEO title="Contact" pathname="/contact" />
-      <h1>Contact form</h1>
+
+      <Headline>Contact</Headline>
 
       <Formik
         initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}

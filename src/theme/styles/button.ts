@@ -6,7 +6,7 @@ export default css<{ disabled?: boolean; altStyle?: boolean }>`
   background-color: ${props =>
     props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary};
   color: ${props => props.theme.colors.fonts.secondary};
-  padding: ${props => props.theme.spacing.medium};
+  padding: ${props => props.theme.spacing.small};
   border: none;
   text-decoration: none;
   cursor: pointer;

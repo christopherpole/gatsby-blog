@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled(Link)`
   display: block;
-  margin-bottom: ${props => props.theme.spacing.medium};
+  margin-bottom: ${props => props.theme.spacing.small};
 `;
 
 const CopyWrapper = styled.div`
@@ -25,7 +25,7 @@ const CopyWrapper = styled.div`
 `;
 
 const Title = styled(Link)`
-  margin-bottom: ${props => props.theme.spacing.extraSmall};
+  margin-bottom: ${props => props.theme.spacing.xxs};
   font-size: ${props => props.theme.sizing.large};
   line-height: 1.3;
   font-weight: bold;
@@ -39,16 +39,14 @@ const Title = styled(Link)`
 
 const PublishedOn = styled.p`
   font-size: ${props => props.theme.sizing.small};
-  margin-bottom: ${props => props.theme.spacing.medium};
+  margin-bottom: ${props => props.theme.spacing.small};
   color: ${props => props.theme.colors.fonts.tertiary};
 `;
 
-const Description = styled.p`
-  margin-bottom: ${props => props.theme.spacing.medium};
-`;
+const Description = styled.p``;
 
 const TitleAndDescriptionWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.medium};
+  margin-bottom: ${props => props.theme.spacing.small};
 `;
 
 const LinkWrapper = styled.div``;

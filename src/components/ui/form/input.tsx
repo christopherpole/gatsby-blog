@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Field } from 'formik';
 
 const StyledField = styled(({ hasError, ...rest }) => <Field {...rest} />)`
-  padding: ${props => props.theme.spacing.extraSmall};
+  padding: ${props => props.theme.spacing.xxs};
   width: 100%;
   border: 1px solid #aaa;
   margin-bottom: ${props => props.theme.spacing.small};

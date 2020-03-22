@@ -31,7 +31,7 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${props => props.theme.spacing.small};
+  padding: ${props => props.theme.spacing.extraSmall};
   transition-property: border-color background-color;
 `;
 

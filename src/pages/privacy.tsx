@@ -2,12 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SEO from 'src/components/structure/seo';
+import Headline from 'src/components/ui/headline';
 
 const Wrapper = styled.div``;
 
 const PrivacyPage = () => (
   <Wrapper>
     <SEO title="Privacy Policy" pathname="/privacy" />
+
+    <Headline>Privacy Policy</Headline>
 
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

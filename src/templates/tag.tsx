@@ -58,7 +58,7 @@ const TagPage = ({
   location: { pathname },
 }: IProps) => (
   <Wrapper>
-    <Headline>{name}</Headline>
+    <Headline>{`Tag: ${name}`}</Headline>
     <Articles articles={nodes} />
     <SEO title={name} pathname={pathname} />
 

@@ -70,7 +70,7 @@ const LinksWrapper = styled.ul`
 
 const LinkWrapper = styled.li`
   list-style-type: none;
-  margin-bottom: ${props => props.theme.spacing.extraSmall};
+  margin-bottom: ${props => props.theme.spacing.xxs};
 
   &:last-child {
     margin-bottom: 0;

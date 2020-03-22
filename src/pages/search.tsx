@@ -5,6 +5,7 @@ import { useFlexSearch } from 'react-use-flexsearch';
 
 import Articles from 'src/components/articles';
 import SearchBox from 'src/components/structure/searchBox';
+import Headline from 'src/components/ui/headline';
 
 const Wrapper = styled.div``;
 
@@ -33,7 +34,8 @@ const SearchPage = (props: IProps) => {
 
   return (
     <Wrapper>
-      <h1>Search</h1>
+      {query && <Headline>{`Search results for "${query}"`}</Headline>}
+      {!query && <Headline>Search</Headline>}
 
       {!query.length && (
         <>
@@ -41,7 +43,6 @@ const SearchPage = (props: IProps) => {
           <SearchBox />
         </>
       )}
-
       {query.length > 0 && (
         <>
           <p>{query}</p>

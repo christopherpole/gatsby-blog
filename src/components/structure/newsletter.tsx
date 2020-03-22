@@ -13,7 +13,7 @@ import Label from 'src/components/ui/form/label';
 const Wrapper = styled.nav``;
 
 const StyledInput = styled(({ hasError, ...rest }) => <Input {...rest} />)`
-  padding: ${props => props.theme.spacing.small};
+  padding: ${props => props.theme.spacing.extraSmall};
   border-color: ${props => props.theme.colors.tertiary};
 
   &:focus {

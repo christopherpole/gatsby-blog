@@ -2,12 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SEO from 'src/components/structure/seo';
+import Headline from 'src/components/ui/headline';
 
 const Wrapper = styled.div``;
 
 const TermsPage = () => (
   <Wrapper>
-    <SEO title="Terms" pathname="/terms" />
+    <SEO title="Terms of Use" pathname="/terms" />
+
+    <Headline>Terms of Use</Headline>
 
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
