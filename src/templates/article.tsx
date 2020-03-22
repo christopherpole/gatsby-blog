@@ -4,6 +4,7 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Document as ContentfulDocument } from '@contentful/rich-text-types';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 import IArticleSummary from 'src/types/articleSummary';
 import Headline from 'src/components/ui/headline';
@@ -46,6 +47,10 @@ const PublishDate = styled.p`
   margin-bottom: ${props => props.theme.spacing.medium};
 `;
 
+const BodyWrapper = styled.div`
+  margin-bottom: ${props => props.theme.spacing.large};
+`;
+
 const SuggestedArticlesWrapper = styled.div``;
 
 interface IFullArticle extends IArticleSummary {
@@ -70,7 +75,7 @@ interface IProps {
 
 const ArticlePage = ({
   data: {
-    contentfulArticle: { title, description, createdAt, body, relatedArticles, image },
+    contentfulArticle: { id, title, description, createdAt, body, relatedArticles, image },
     latestArticles,
   },
   location: { href, pathname },
@@ -89,9 +94,20 @@ const ArticlePage = ({
       <PublishDate>{createdAt}</PublishDate>
       <Share url={href} title={title} media={(image.fluid as { src: string }).src as string} />
       <Img fluid={image.fluid} />
-      {documentToReactComponents(body.json, {
-        renderNode: getContentfulRichTextRendererOverrides(),
-      })}
+
+      <BodyWrapper>
+        {documentToReactComponents(body.json, {
+          renderNode: getContentfulRichTextRendererOverrides(),
+        })}
+      </BodyWrapper>
+
+      <Disqus
+        config={{
+          url: href,
+          identifier: id,
+          title,
+        }}
+      />
     </ArticleWrapper>
 
     {relatedArticles && relatedArticles.length > 0 && (
@@ -103,7 +119,6 @@ const ArticlePage = ({
 
     {!relatedArticles && (
       <SuggestedArticlesWrapper>
-        <Byline>Latest</Byline>
         <Articles articles={latestArticles.nodes} />
       </SuggestedArticlesWrapper>
     )}

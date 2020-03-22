@@ -51,6 +51,12 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-disqus',
+      options: {
+        shortname: 'terrariumblog',
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
