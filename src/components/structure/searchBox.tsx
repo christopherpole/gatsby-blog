@@ -10,10 +10,12 @@ import buttonStyles from 'src/theme/styles/button';
 import Input from 'src/components/ui/form/input';
 
 const QuerySchema = Yup.object().shape({
-  query: Yup.string().required('Required'),
+  query: Yup.string(),
 });
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  width: 100%;
+`;
 
 const InputWrapper = styled.div`
   display: flex;

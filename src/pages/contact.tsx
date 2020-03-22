@@ -16,6 +16,11 @@ import Headline from 'src/components/ui/headline';
 
 const Wrapper = styled.div``;
 
+const FormWrapper = styled.div`
+  max-width: 50rem;
+  margin: auto;
+`;
+
 const ContactSchema = Yup.object().shape({
   subject: Yup.string()
     .min(2, 'Subject too short')
@@ -76,50 +81,52 @@ const ContactPage = () => {
 
       <Headline>Contact</Headline>
 
-      <Formik
-        initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}
-        validationSchema={ContactSchema}
-        onSubmit={onSubmit}
-      >
-        {({ isSubmitting, errors, setFieldValue, handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
-            <FieldWrapper>
-              <Label>Subject</Label>
-              <Input component="input" type="text" name="subject" hasError={errors.subject} />
-              <ErrorMessage name="subject" component="p" />
-            </FieldWrapper>
+      <FormWrapper>
+        <Formik
+          initialValues={{ subject: '', email: '', message: '', 'g-recaptcha-response': '' }}
+          validationSchema={ContactSchema}
+          onSubmit={onSubmit}
+        >
+          {({ isSubmitting, errors, setFieldValue, handleSubmit }) => (
+            <Form onSubmit={handleSubmit}>
+              <FieldWrapper>
+                <Label>Subject</Label>
+                <Input component="input" type="text" name="subject" hasError={errors.subject} />
+                <ErrorMessage name="subject" component="p" />
+              </FieldWrapper>
 
-            <FieldWrapper>
-              <Label>Email</Label>
-              <Input component="input" type="email" name="email" hasError={errors.email} />
-              <ErrorMessage name="email" component="p" />
-            </FieldWrapper>
+              <FieldWrapper>
+                <Label>Email</Label>
+                <Input component="input" type="email" name="email" hasError={errors.email} />
+                <ErrorMessage name="email" component="p" />
+              </FieldWrapper>
 
-            <FieldWrapper>
-              <Label>Message</Label>
-              <TextArea component="textarea" name="message" hasError={errors.message} />
-              <ErrorMessage name="message" component="p" />
-            </FieldWrapper>
+              <FieldWrapper>
+                <Label>Message</Label>
+                <TextArea component="textarea" name="message" hasError={errors.message} />
+                <ErrorMessage name="message" component="p" />
+              </FieldWrapper>
 
-            <FieldWrapper>
-              <StyledRecaptcha
-                sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
-                verifyCallback={(val: string) => {
-                  setFieldValue('g-recaptcha-response', val);
-                }}
-                expiredCallback={() => {
-                  setFieldValue('g-recaptcha-response', '');
-                }}
-              />
-              <ErrorMessage name="g-recaptcha-response" component="p" />
-            </FieldWrapper>
+              <FieldWrapper>
+                <StyledRecaptcha
+                  sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
+                  verifyCallback={(val: string) => {
+                    setFieldValue('g-recaptcha-response', val);
+                  }}
+                  expiredCallback={() => {
+                    setFieldValue('g-recaptcha-response', '');
+                  }}
+                />
+                <ErrorMessage name="g-recaptcha-response" component="p" />
+              </FieldWrapper>
 
-            {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
+              {!!formError && <FormErrorMessage>{formError}</FormErrorMessage>}
 
-            <Submission showConfirmation={!!formHasSubmitted} isSubmitting={isSubmitting} />
-          </Form>
-        )}
-      </Formik>
+              <Submission showConfirmation={!!formHasSubmitted} isSubmitting={isSubmitting} />
+            </Form>
+          )}
+        </Formik>
+      </FormWrapper>
     </Wrapper>
   );
 };
