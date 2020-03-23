@@ -8,6 +8,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import buttonStyles from 'src/theme/styles/button';
 import Input from 'src/components/ui/form/input';
+import Label from 'src/components/ui/form/label';
 
 const QuerySchema = Yup.object().shape({
   query: Yup.string(),
@@ -20,6 +21,10 @@ const Wrapper = styled.div`
 const InputWrapper = styled.div`
   display: flex;
   margin: 0;
+`;
+
+const StyledLabel = styled(Label)`
+  display: none;
 `;
 
 const StyledInput = styled(Input)`
@@ -48,7 +53,8 @@ const SearchBox = () => {
         {({ handleSubmit, values }) => (
           <Form role="search" onSubmit={handleSubmit}>
             <InputWrapper>
-              <StyledInput component="input" type="text" name="query" />
+              <StyledLabel htmlFor="search-query">Search query</StyledLabel>
+              <StyledInput id="search-query" component="input" type="text" name="query" />
               <StyledLink to={`/search/${encodeURIComponent(values.query)}`}>
                 <FontAwesomeIcon icon={faSearch} />
               </StyledLink>

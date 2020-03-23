@@ -4,7 +4,8 @@ import Input from 'src/components/ui/form/input';
 
 const StyledTextArea = styled(Input)`
   height: 20rem;
-  margin-bottom: ${props => props.theme.spacing.small};
+  margin-bottom: ${props => props.theme.spacing.extraSmall};
+  resize: vertical;
 
   &:last-child {
     margin-bottom: 0;

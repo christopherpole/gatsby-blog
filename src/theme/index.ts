@@ -8,6 +8,10 @@ const theme = {
     quaternary: '#191919',
     border: '#e8e8e8',
     disabled: '#ccc',
+    input: {
+      background: '#fff',
+      border: '#aaa',
+    },
     error: {
       primary: '#f00',
       secondary: '#fcc',
@@ -32,8 +36,8 @@ const theme = {
     xxs: '.5rem',
   },
   sizing: {
-    xxl: '3.2rem',
-    extraLarge: '2.6rem',
+    xxl: '3.4rem',
+    extraLarge: '2.8rem',
     large: '2.2rem',
     medium: '1.6rem',
     small: '1.4rem',

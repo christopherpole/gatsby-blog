@@ -8,7 +8,6 @@ import { Disqus } from 'gatsby-plugin-disqus';
 
 import IArticleSummary from 'src/types/articleSummary';
 import Headline from 'src/components/ui/headline';
-import Byline from 'src/components/ui/byline';
 import getContentfulRichTextRendererOverrides from 'src/utils/getContentfulRichTextRendererOverrides';
 import Articles from 'src/components/articles';
 import Share from 'src/components/ui/share';
@@ -69,6 +68,14 @@ const BodyWrapper = styled.div`
 
 const TagsWrapper = styled.p`
   margin-bottom: ${props => props.theme.spacing.large};
+`;
+
+const Related = styled.p`
+  text-align: center;
+  font-weight: bold;
+  font-size: ${props => props.theme.sizing.extraLarge};
+  margin-bottom: ${props => props.theme.spacing.large};
+  line-height: 1;
 `;
 
 const SuggestedArticlesWrapper = styled.div``;
@@ -147,13 +154,14 @@ const ArticlePage = ({
 
     {relatedArticles && relatedArticles.length > 0 && (
       <SuggestedArticlesWrapper>
-        <Byline>Related</Byline>
+        <Related>Related Articles</Related>
         <Articles articles={relatedArticles} />
       </SuggestedArticlesWrapper>
     )}
 
     {!relatedArticles && (
       <SuggestedArticlesWrapper>
+        <Related>Latest Articles</Related>
         <Articles articles={latestArticles.nodes} />
       </SuggestedArticlesWrapper>
     )}

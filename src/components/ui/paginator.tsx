@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Link } from 'gatsby';
 
-import ButtonLink from 'src/components/ui/buttonLink';
+import buttonStyles from 'src/theme/styles/button';
 
 const Wrapper = styled.ul`
   padding: 0;
@@ -25,7 +26,8 @@ const LinkContainer = styled.li`
   }
 `;
 
-const StyledLink = styled(({ isActive, ...rest }) => <ButtonLink {...rest} />)`
+const StyledLink = styled(Link)<{ disabled?: boolean; isActive?: boolean }>`
+  ${buttonStyles};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,16 +47,22 @@ const StyledLink = styled(({ isActive, ...rest }) => <ButtonLink {...rest} />)`
   }
 
   ${props =>
-    props.disabled &&
+    props.isActive &&
     css`
-      color: ${props.theme.colors.disabled};
+      color: ${props.theme.colors.fonts.secondary};
+      background: ${props.theme.colors.primary};
     `}
 
   ${props =>
-    props.isActive &&
+    props.disabled &&
     css`
-      color: white;
-      background: ${props.theme.colors.primary};
+      color: ${props.theme.colors.disabled};
+
+      &:hover,
+      &:focus {
+        color: ${props.theme.colors.disabled};
+        background: transparent;
+      }
     `}
 `;
 

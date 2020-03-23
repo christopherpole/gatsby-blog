@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import { darken } from 'polished';
 
-export default css<{ disabled?: boolean; altStyle?: boolean }>`
+export default css<{ disabled?: boolean; submitting?: boolean; altStyle?: boolean }>`
   display: inline-block;
   background-color: ${props =>
     props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary};
@@ -11,9 +11,11 @@ export default css<{ disabled?: boolean; altStyle?: boolean }>`
   text-decoration: none;
   cursor: pointer;
   line-height: 1;
-  transition: background-color ${props => props.theme.transitions.duration}
-    ${props => props.theme.transitions.easing};
+  transition: ${props =>
+    `background-color ${props.theme.transitions.duration} ${props.theme.transitions.easing}`};
   font-weight: bold;
+  position: relative;
+  user-select: none;
 
   &:focus,
   &:hover {
@@ -24,12 +26,12 @@ export default css<{ disabled?: boolean; altStyle?: boolean }>`
   ${props =>
     props.disabled &&
     css`
-      &,
+      background-color: ${props.theme.colors.disabled};
+      cursor: auto;
+
       &:focus,
       &:hover {
-        pointer-events: none;
         background-color: ${props.theme.colors.disabled};
-        cursor: auto;
       }
     `}
 `;

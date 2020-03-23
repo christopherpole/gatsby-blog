@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
-import ButtonLink from 'src/components/ui/buttonLink';
 import IArticleSummary from 'src/types/articleSummary';
+import buttonStyles from 'src/theme/styles/button';
 
 const Wrapper = styled.div`
   position: relative;
@@ -32,7 +33,7 @@ const CopyWrapperInner = styled.div`
 `;
 
 const Title = styled.h3`
-  line-height: 1;
+  line-height: 1.2;
   margin-bottom: ${props => props.theme.spacing.medium};
   font-size: ${props => props.theme.sizing.xxl};
 `;
@@ -41,7 +42,8 @@ const Description = styled.p`
   margin-bottom: ${props => props.theme.spacing.large};
 `;
 
-const StyledButtonLink = styled(ButtonLink)`
+const StyledLink = styled(Link)`
+  ${buttonStyles};
   border: 2px solid white;
   background-color: transparent;
 
@@ -62,7 +64,7 @@ const ArticleSpotlight = ({ title, description, image, slug }: IArticleSummary) 
       <CopyWrapperInner>
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <StyledButtonLink to={`/article/${slug}`}>Read More</StyledButtonLink>
+        <StyledLink to={`/article/${slug}`}>Read More</StyledLink>
       </CopyWrapperInner>
     </CopyWrapper>
   </Wrapper>

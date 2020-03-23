@@ -19,6 +19,7 @@ module.exports = {
     'no-console': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'react/button-has-type': 'off',
+    'react/destructuring-assignment': 'off',
   },
   settings: {
     'import/resolver': {

@@ -5,14 +5,16 @@ import { Field } from 'formik';
 const StyledField = styled(({ hasError, ...rest }) => <Field {...rest} />)`
   padding: ${props => props.theme.spacing.xxs};
   width: 100%;
-  border: 1px solid #aaa;
-  margin-bottom: ${props => props.theme.spacing.small};
-  transform: border-color ${props => props.theme.transitions.duration}
-    ${props => props.theme.transitions.easing};
+  border: 1px solid ${props => props.theme.colors.input.border};
+  background-color: ${props => props.theme.colors.input.background};
+  margin-bottom: ${props => props.theme.spacing.extraSmall};
+  transform: ${props =>
+    `border-color ${props.theme.transitions.duration} ${props.theme.transitions.easing}`};
 
   &:focus {
     outline: none;
     border-color: ${props => props.theme.colors.primary};
+    background-color: ${props => props.theme.colors.input.background};
   }
 
   ${props =>
