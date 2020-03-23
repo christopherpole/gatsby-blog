@@ -1,12 +1,18 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 
 export const QUERY = graphql`
   query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     image: file(relativePath: { eq: "logo.png" }) {
       childImageSharp {
-        fixed(width: 200) {
+        fixed(width: 150) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }
@@ -14,10 +20,18 @@ export const QUERY = graphql`
   }
 `;
 
+const StyledLink = styled(Link)`
+  display: inline-flex;
+`;
+
 const Logo = () => {
   const data = useStaticQuery(QUERY);
 
-  return <Img fixed={data.image.childImageSharp.fixed} />;
+  return (
+    <StyledLink to="/">
+      <Img fixed={data.image.childImageSharp.fixed} alt={data.site.siteMetadata.title} />
+    </StyledLink>
+  );
 };
 
 export default Logo;

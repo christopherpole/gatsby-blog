@@ -16,7 +16,9 @@ export default createGlobalStyle`
   body {
     font-family: 'Karla', HelveticaNeue, "Helvetica Neue", sans-serif;
     font-size: ${props => props.theme.sizing.medium};
-    color: ${props => props.theme.colors.primaryFont};
+    line-height: 1.5;
+    color: ${props => props.theme.colors.fonts.primary};
+    background-color: ${props => props.theme.colors.background};
   }
   
   img {
@@ -38,6 +40,16 @@ export default createGlobalStyle`
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  h3 {
+    font-size: ${props => props.theme.sizing.large};
+  }
+
+  li {
+    p {
+      margin-bottom: 0;
+    } 
   }
 
   hr {

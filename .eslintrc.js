@@ -14,6 +14,12 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'error',
     'import/prefer-default-export': 'off',
     'arrow-parens': ['error', 'as-needed'],
+    'react/jsx-props-no-spreading': 'off',
+    'react/no-array-index-key': 'off',
+    'no-console': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/button-has-type': 'off',
+    'react/destructuring-assignment': 'off',
   },
   settings: {
     'import/resolver': {

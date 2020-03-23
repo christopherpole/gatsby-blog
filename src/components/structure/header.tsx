@@ -3,23 +3,31 @@ import styled from 'styled-components';
 
 import Logo from 'src/components/structure/logo';
 import Nav from 'src/components/structure/nav';
+import SearchBox from 'src/components/structure/searchBox';
 
 const Wrapper = styled.header`
   width: 100%;
+  margin: auto;
+  max-width: ${props => props.theme.maxPageWidth};
+  padding: 0 ${props => props.theme.spacing.large};
 `;
 
 const WrapperInner = styled.div`
-  padding: ${props => props.theme.spacing.large} 0;
-  max-width: ${props => props.theme.maxPageWidth};
   display: flex;
-  flex-direction: column;
+  padding: ${props => props.theme.spacing.large} 0;
+  justify-content: space-between;
   align-items: center;
-  margin: auto;
-  border-bottom: 1px solid ${props => props.theme.colors.defaultBorderColor};
+  border-bottom: 1px solid ${props => props.theme.colors.border};
+  width: 100%;
 `;
 
 const LogoWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.medium};
+  display: inline-flex;
+`;
+
+const NavSearchWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const Header = () => (
@@ -28,7 +36,10 @@ const Header = () => (
       <LogoWrapper>
         <Logo />
       </LogoWrapper>
-      <Nav />
+      <NavSearchWrapper>
+        <Nav />
+        <SearchBox />
+      </NavSearchWrapper>
     </WrapperInner>
   </Wrapper>
 );

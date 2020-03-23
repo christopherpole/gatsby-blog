@@ -1,29 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import 'normalize.css';
 
 import Footer from 'src/components/structure/footer';
 import Header from 'src/components/structure/header';
-
-export const QUERY = graphql`
-  {
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
-  }
-`;
+import SEO from 'src/components/structure/seo';
 
 interface IProps {
   children: React.ReactNode;
 }
 
 const HeaderAndContentWrapper = styled.div`
-  padding: 0 ${props => props.theme.spacing.large};
+  /* padding: 0 ${props => props.theme.spacing.large}; */
   flex: 1;
   width: 100%;
 `;
@@ -35,40 +24,35 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Content = styled.div`
-  max-width: ${props => props.theme.maxPageWidth};
-  flex: 1;
+const ContentWrapper = styled.main`
+  flex: 3;
   width: 100%;
   margin: auto;
-  padding: ${props => props.theme.spacing.large} 0;
+  padding: ${props => props.theme.spacing.large};
+  max-width: ${props => props.theme.maxPageWidth};
 `;
 
-const Layout = ({ children }: IProps) => {
-  const {
-    site: {
-      siteMetadata: { title, description },
-    },
-  } = useStaticQuery(QUERY);
+const Layout = ({ children }: IProps) => (
+  <>
+    <Helmet>
+      <html lang="en" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link
+        href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
 
-  return (
-    <>
-      <Helmet title={title}>
-        <meta name="description" content={description} />
-        <link
-          href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
+    <SEO />
 
-      <Wrapper>
-        <HeaderAndContentWrapper>
-          <Header />
-          <Content>{children}</Content>
-        </HeaderAndContentWrapper>
-        <Footer />
-      </Wrapper>
-    </>
-  );
-};
+    <Wrapper>
+      <HeaderAndContentWrapper>
+        <Header />
+        <ContentWrapper>{children}</ContentWrapper>
+      </HeaderAndContentWrapper>
+      <Footer />
+    </Wrapper>
+  </>
+);
 
 export default Layout;
