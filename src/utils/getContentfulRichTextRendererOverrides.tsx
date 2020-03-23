@@ -39,7 +39,12 @@ export default (): RenderNode => ({
         imageNode.contentful_id === node.data.target.sys.contentful_id,
     );
 
-    return <ArticleImage fluid={image.fluid} description={node.data.description} />;
+    return (
+      <ArticleImage
+        fluid={image.fluid}
+        description={node.data.target.fields.description['en-US']}
+      />
+    );
   },
   'heading-1': (node: Block | Inline) => (
     <Headline>{(node.content[0] as { value: string }).value}</Headline>

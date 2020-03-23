@@ -10,9 +10,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Description = styled.em`
-  margin-top: ${props => props.theme.spacing.small};
+const StyledImg = styled(Img)``;
+
+const Description = styled.p`
+  text-align: center;
+  background: #eee;
   font-size: ${props => props.theme.sizing.small};
+  padding: ${props => props.theme.spacing.extraSmall};
 `;
 
 interface IProps {
@@ -22,7 +26,7 @@ interface IProps {
 
 const ArticleImage = ({ fluid, description }: IProps) => (
   <Wrapper>
-    <Img fluid={fluid} />
+    <StyledImg fluid={fluid} />
     {description && <Description>{description}</Description>}
   </Wrapper>
 );

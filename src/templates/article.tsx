@@ -40,12 +40,27 @@ export const QUERY = graphql`
 
 const Wrapper = styled.div``;
 
+const StyledHeadline = styled(Headline)`
+  margin-bottom: ${props => props.theme.spacing.xxs};
+`;
+
+const IntroWrapper = styled.div`
+  margin-bottom: ${props => props.theme.spacing.large};
+  text-align: center;
+`;
+
 const ArticleWrapper = styled.article`
   margin-bottom: ${props => props.theme.spacing.large};
 `;
 
 const PublishDate = styled.p`
   margin-bottom: ${props => props.theme.spacing.medium};
+  font-size: ${props => props.theme.sizing.large};
+  color: ${props => props.theme.colors.fonts.tertiary};
+`;
+
+const ImageWrapper = styled.div`
+  margin-bottom: ${props => props.theme.spacing.large};
 `;
 
 const BodyWrapper = styled.div`
@@ -95,10 +110,15 @@ const ArticlePage = ({
     />
 
     <ArticleWrapper>
-      <Headline>{title}</Headline>
-      <PublishDate>{createdAt}</PublishDate>
-      <Share url={href} title={title} media={(image.fluid as { src: string }).src as string} />
-      <Img fluid={image.fluid} />
+      <IntroWrapper>
+        <StyledHeadline>{title}</StyledHeadline>
+        <PublishDate>{createdAt}</PublishDate>
+        <Share url={href} title={title} media={(image.fluid as { src: string }).src as string} />
+      </IntroWrapper>
+
+      <ImageWrapper>
+        <Img fluid={image.fluid} />
+      </ImageWrapper>
 
       <BodyWrapper>
         {documentToReactComponents(body.json, {

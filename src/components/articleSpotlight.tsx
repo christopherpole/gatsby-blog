@@ -25,6 +25,7 @@ const CopyWrapper = styled.div`
 `;
 
 const CopyWrapperInner = styled.div`
+  max-width: 50%;
   background-color: rgba(0, 0, 0, 0.8);
   padding: ${props => props.theme.spacing.extraLarge};
   color: white;
@@ -33,7 +34,7 @@ const CopyWrapperInner = styled.div`
 const Title = styled.h3`
   line-height: 1;
   margin-bottom: ${props => props.theme.spacing.medium};
-  font-size: ${props => props.theme.sizing.extraLarge};
+  font-size: ${props => props.theme.sizing.xxl};
 `;
 
 const Description = styled.p`

@@ -32,11 +32,13 @@ const theme = {
     xxs: '.5rem',
   },
   sizing: {
-    extraLarge: '3.4rem',
-    large: '2rem',
+    xxl: '3.2rem',
+    extraLarge: '2.6rem',
+    large: '2.2rem',
     medium: '1.6rem',
     small: '1.4rem',
     extraSmall: '1.2rem',
+    xxs: '1rem',
   },
 };
 

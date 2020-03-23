@@ -42,6 +42,16 @@ export default createGlobalStyle`
     }
   }
 
+  h3 {
+    font-size: ${props => props.theme.sizing.large};
+  }
+
+  li {
+    p {
+      margin-bottom: 0;
+    } 
+  }
+
   hr {
     margin-top: ${props => props.theme.spacing.large};
     margin-bottom: ${props => props.theme.spacing.large};

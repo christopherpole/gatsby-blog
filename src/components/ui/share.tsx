@@ -11,7 +11,6 @@ const buttonStyles = css`
   color: #fff !important;
   height: 4.5rem;
   width: 4.5rem;
-  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 100%;
@@ -20,18 +19,19 @@ const buttonStyles = css`
   border: none;
   padding: 0;
   position: relative;
+  display: flex;
   transition: background-color ${props => props.theme.transitions.duration}
     ${props => props.theme.transitions.easing};
 `;
 
 const Wrapper = styled.ul`
   padding: 0;
-  display: flex;
+  display: inline-flex;
 `;
 
 const IconWrapper = styled.li`
   list-style-type: none;
-  margin-right: ${props => props.theme.spacing.small};
+  margin-right: ${props => props.theme.spacing.extraSmall};
 
   &:last-child {
     margin-right: 0;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.h1`
   line-height: 1.2;
-  font-size: ${props => props.theme.sizing.extraLarge};
+  font-size: ${props => props.theme.sizing.xxl};
   margin-bottom: ${props => props.theme.spacing.large};
   text-align: center;
 `;
