@@ -58,9 +58,10 @@ const TagPage = ({
   location: { pathname },
 }: IProps) => (
   <Wrapper>
+    <SEO title={name} pathname={pathname} />
+
     <Headline>{`Tag: ${name}`}</Headline>
     <Articles articles={nodes} />
-    <SEO title={name} pathname={pathname} />
 
     {numberOfPages > 1 && (
       <Paginatior

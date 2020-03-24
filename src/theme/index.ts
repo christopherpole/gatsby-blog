@@ -1,3 +1,15 @@
+import { css } from 'styled-components';
+
+const createMediaQuery = (width: string) => {
+  //  eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (...args: any) => css`
+    @media (min-width: ${width}) {
+      //  @ts-ignore
+      ${css(...args)}
+    }
+  `;
+};
+
 const theme = {
   maxPageWidth: '110rem',
   colors: {
@@ -43,6 +55,11 @@ const theme = {
     small: '1.4rem',
     extraSmall: '1.2rem',
     xxs: '1rem',
+  },
+  breakpoints: {
+    small: createMediaQuery('23em'),
+    medium: createMediaQuery('45em'),
+    large: createMediaQuery('60em'),
   },
 };
 

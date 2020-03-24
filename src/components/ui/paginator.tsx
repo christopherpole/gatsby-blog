@@ -13,13 +13,19 @@ const Wrapper = styled.ul`
 
 const LinkContainer = styled.li`
   list-style-type: none;
-  width: 4rem;
-  height: 4rem;
-  margin-right: ${props => props.theme.spacing.small};
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: ${props => props.theme.spacing.xxs};
+
+  ${props => props.theme.breakpoints.medium`
+    width: 4rem;
+    height: 4rem;
+  `}
 
   &:last-child {
     margin-right: 0;
@@ -37,7 +43,7 @@ const StyledLink = styled(Link)<{ disabled?: boolean; isActive?: boolean }>`
   right: 0;
   bottom: 0;
   background-color: transparent;
-  transition-property: background-color color;
+  transition-property: background-color, color;
   color: ${props => props.theme.colors.fonts.primary};
 
   &:hover,

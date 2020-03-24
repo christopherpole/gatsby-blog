@@ -54,7 +54,7 @@ const ArticleWrapper = styled.article`
 
 const PublishDate = styled.p`
   margin-bottom: ${props => props.theme.spacing.medium};
-  font-size: ${props => props.theme.sizing.large};
+  font-size: ${props => props.theme.sizing.medium};
   color: ${props => props.theme.colors.fonts.tertiary};
 `;
 

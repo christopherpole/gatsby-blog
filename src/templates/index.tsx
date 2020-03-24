@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import Paginatior from 'src/components/ui/paginator';
 import Headline from 'src/components/ui/headline';
-import ArticleSpotlight from 'src/components/articleSpotlight';
+import Article from 'src/components/article';
 import Articles from 'src/components/articles';
 import IArticleSummary from 'src/types/articleSummary';
 
@@ -42,14 +42,6 @@ const HiddenHeadline = styled(Headline)`
   display: none;
 `;
 
-const ArticlesWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.extraLarge};
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
 interface IProps {
   data: {
     site: {
@@ -84,12 +76,8 @@ const IndexPage = ({
 }: IProps) => (
   <Wrapper>
     <HiddenHeadline>{title}</HiddenHeadline>
-
-    <ArticlesWrapper>
-      {pageNumber === 0 && <ArticleSpotlight {...featuredArticle.nodes[0]} />}
-
-      <Articles articles={latestArticles.nodes} />
-    </ArticlesWrapper>
+    {pageNumber === 0 && <Article spotlight {...featuredArticle.nodes[0]} />}
+    <Articles articles={latestArticles.nodes} />
 
     {numberOfPages > 1 && (
       <Paginatior

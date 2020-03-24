@@ -10,11 +10,15 @@ export default createGlobalStyle`
   }
 
   html {
-    font-size: 62.5%;
+    font-size: 52.5%;
+
+    ${props => props.theme.breakpoints.small`
+      font-size: 62.5%;
+    `}
   }
 
   body {
-    font-family: 'Karla', HelveticaNeue, "Helvetica Neue", sans-serif;
+    font-family: 'Karla', HelveticaNeue, 'Helvetica Neue', sans-serif;
     font-size: ${props => props.theme.sizing.medium};
     line-height: 1.5;
     color: ${props => props.theme.colors.fonts.primary};

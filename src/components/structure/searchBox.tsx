@@ -39,7 +39,7 @@ const StyledLink = styled(Link)`
   align-items: center;
   justify-content: center;
   padding: ${props => props.theme.spacing.extraSmall};
-  transition-property: border-color background-color;
+  transition-property: border-color, background-color;
 `;
 
 const SearchBox = () => {

@@ -13,12 +13,16 @@ const Wrapper = styled.header`
 `;
 
 const WrapperInner = styled.div`
-  display: flex;
   padding: ${props => props.theme.spacing.large} 0;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
   align-items: center;
   border-bottom: 1px solid ${props => props.theme.colors.border};
   width: 100%;
+
+  ${props => props.theme.breakpoints.medium`
+    justify-content: space-between;
+  `}
 `;
 
 const LogoWrapper = styled.div`
@@ -26,8 +30,12 @@ const LogoWrapper = styled.div`
 `;
 
 const NavSearchWrapper = styled.div`
-  display: flex;
-  align-items: center;
+  display: none;
+
+  ${props => props.theme.breakpoints.medium`
+    display: flex;
+    align-items: center;
+  `}
 `;
 
 const Header = () => (

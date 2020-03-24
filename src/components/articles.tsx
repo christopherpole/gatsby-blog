@@ -4,35 +4,40 @@ import styled from 'styled-components';
 import IArticleSummary from 'src/types/articleSummary';
 import Article from 'src/components/article';
 
-const Wrapper = styled.ul`
-  margin-bottom: ${props => props.theme.spacing.large};
-  padding: 0;
+const Wrapper = styled.div`
+  margin-bottom: ${props => props.theme.spacing.extraLarge};
 
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
-const ArticlesPreviewRow = styled.ul`
-  margin-bottom: ${props => props.theme.spacing.large};
+const WrapperInner = styled.ul`
   padding: 0;
-  display: flex;
-  margin-right: calc(-${props => props.theme.spacing.large} / 2);
-  margin-left: calc(-${props => props.theme.spacing.large} / 2);
+  position: relative;
+  margin: calc(-${props => props.theme.spacing.large} / 2);
 
   &:last-child {
-    margin-bottom: 0;
+    margin: calc(-${props => props.theme.spacing.large} / 2);
   }
+
+  ${props => props.theme.breakpoints.medium`
+    display: flex;
+    flex-wrap: wrap;
+  `}
 `;
 
 const ArticlePreviewWrapper = styled.li`
   list-style-type: none;
-  padding: 0 calc(${props => props.theme.spacing.large} / 2);
-  width: 33.33333%;
+  padding: calc(${props => props.theme.spacing.large} / 2);
 
-  &:last-child {
-    margin-right: 0;
-  }
+  ${props => props.theme.breakpoints.medium`
+    width: 50%;
+  `}
+
+  ${props => props.theme.breakpoints.large`
+    width: 33.33333%;
+  `}
 `;
 
 interface IProps {
@@ -41,15 +46,13 @@ interface IProps {
 
 const Articles = ({ articles }: IProps) => (
   <Wrapper>
-    {[...new Array(Math.ceil(articles.length / 3))].map((_, index: number) => (
-      <ArticlesPreviewRow key={index}>
-        {articles.slice(index * 3, index * 3 + 3).map(article => (
-          <ArticlePreviewWrapper key={article.id}>
-            <Article {...article} />
-          </ArticlePreviewWrapper>
-        ))}
-      </ArticlesPreviewRow>
-    ))}
+    <WrapperInner>
+      {articles.map(article => (
+        <ArticlePreviewWrapper key={article.id}>
+          <Article {...article} />
+        </ArticlePreviewWrapper>
+      ))}
+    </WrapperInner>
   </Wrapper>
 );
 
