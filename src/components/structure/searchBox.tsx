@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
@@ -33,7 +33,7 @@ const StyledInput = styled(Input)`
   border-right: none;
 `;
 
-const StyledLink = styled(Link)`
+const StyledSubmitButton = styled.button`
   ${buttonStyles};
   display: flex;
   align-items: center;
@@ -44,24 +44,29 @@ const StyledLink = styled(Link)`
 
 interface IProps {
   className?: string;
+  onSearch?: () => void;
 }
 
-const SearchBox = ({ className }: IProps) => {
+const SearchBox = ({ className, onSearch }: IProps) => {
   const onSubmit = ({ query }: { query: string }) => {
     navigate(`/search/${encodeURIComponent(query)}`);
+
+    if (onSearch) {
+      onSearch();
+    }
   };
 
   return (
     <Wrapper className={className}>
       <Formik initialValues={{ query: '' }} validationSchema={QuerySchema} onSubmit={onSubmit}>
-        {({ handleSubmit, values }) => (
+        {({ handleSubmit }) => (
           <Form role="search" onSubmit={handleSubmit}>
             <InputWrapper>
               <StyledLabel htmlFor="search-query">Search query</StyledLabel>
               <StyledInput id="search-query" component="input" type="text" name="query" />
-              <StyledLink to={`/search/${encodeURIComponent(values.query)}`}>
+              <StyledSubmitButton type="submit">
                 <FontAwesomeIcon icon={faSearch} />
-              </StyledLink>
+              </StyledSubmitButton>
             </InputWrapper>
           </Form>
         )}

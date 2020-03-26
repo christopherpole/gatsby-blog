@@ -71,7 +71,7 @@ const WrapperInner = styled.div<{
   top: 0;
   bottom: 0;
   padding: ${props => props.theme.spacing.large};
-  animation: slideIn 500ms ease-out forwards;
+  animation: slideIn 500ms ease forwards;
   width: ${SLIDING_MENU_WIDTH};
   right: -${SLIDING_MENU_WIDTH};
   display: flex;
@@ -157,7 +157,7 @@ const LinkWrapper = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(Link)<{ onClick: () => void }>`
   padding: ${props => props.theme.spacing.xxs} 0;
   display: block;
 `;
@@ -172,6 +172,10 @@ const SlidingMenu = ({ slidingMenuState, setSlidingMenuState }: IProps) => {
     allContentfulTag: { nodes },
   } = useStaticQuery(QUERY);
 
+  const closeSlidingMenu = () => {
+    setSlidingMenuState('slidingOut');
+  };
+
   return (
     <Wrapper
       slidingMenuState={slidingMenuState}
@@ -184,22 +188,20 @@ const SlidingMenu = ({ slidingMenuState, setSlidingMenuState }: IProps) => {
       }}
     >
       <WrapperInner slidingMenuState={slidingMenuState}>
-        <CloseButton
-          onClick={() => {
-            setSlidingMenuState('slidingOut');
-          }}
-        >
+        <CloseButton onClick={closeSlidingMenu}>
           <FontAwesomeIcon icon={faTimes} />
           <CloseCopy>Close</CloseCopy>
         </CloseButton>
         <NavContainer>
-          <StyledSearchBox />
+          <StyledSearchBox onSearch={closeSlidingMenu} />
           <StyledNav>
             <NavHeader>Categories</NavHeader>
             <LinksWrapper>
               {nodes.map(({ id, name, slug }: ITag) => (
                 <LinkWrapper key={id}>
-                  <StyledLink to={`/tag/${slug}`}>{name}</StyledLink>
+                  <StyledLink onClick={closeSlidingMenu} to={`/tag/${slug}`}>
+                    {name}
+                  </StyledLink>
                 </LinkWrapper>
               ))}
             </LinksWrapper>
@@ -208,22 +210,34 @@ const SlidingMenu = ({ slidingMenuState, setSlidingMenuState }: IProps) => {
             <NavHeader>Links</NavHeader>
             <LinksWrapper>
               <LinkWrapper>
-                <StyledLink to="/">Home</StyledLink>
+                <StyledLink onClick={closeSlidingMenu} to="/">
+                  Home
+                </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink to="/about">About</StyledLink>
+                <StyledLink onClick={closeSlidingMenu} to="/about">
+                  About
+                </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink to="/disclaimer">Affiliate Disclaimer</StyledLink>
+                <StyledLink onClick={closeSlidingMenu} to="/disclaimer">
+                  Affiliate Disclaimer
+                </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink to="/contact">Contact</StyledLink>
+                <StyledLink onClick={closeSlidingMenu} to="/contact">
+                  Contact
+                </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink to="/privacy">Privary Policy</StyledLink>
+                <StyledLink onClick={closeSlidingMenu} to="/privacy">
+                  Privary Policy
+                </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink to="/terms">Terms of Use</StyledLink>
+                <StyledLink onClick={closeSlidingMenu} to="/terms">
+                  Terms of Use
+                </StyledLink>
               </LinkWrapper>
             </LinksWrapper>
           </StyledNav>

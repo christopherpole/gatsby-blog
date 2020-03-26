@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled(Link)<{ spotlight?: boolean }>`
+const ImageWrapper = styled(({ spotlight, ...rest }) => <Link {...rest} />)`
   display: block;
   margin-bottom: ${props => props.theme.spacing.small};
 
@@ -86,7 +86,7 @@ const TitleAndDescriptionWrapper = styled.div<{ spotlight?: boolean }>`
     `}
 `;
 
-const Title = styled(Link)<{ spotlight?: boolean }>`
+const Title = styled(({ spotlight, ...rest }) => <Link {...rest} />)`
   margin-bottom: ${props => props.theme.spacing.xxs};
   font-size: ${props => props.theme.sizing.extraLarge};
   line-height: 1.3;
@@ -123,7 +123,7 @@ const PublishedOn = styled.p<{ spotlight?: boolean }>`
 
 const Description = styled.p``;
 
-const StyledLink = styled(Link)<{ spotlight?: boolean }>`
+const StyledLink = styled(({ spotlight, ...rest }) => <Link {...rest} />)`
   ${props =>
     props.spotlight &&
     props.theme.breakpoints.medium`
