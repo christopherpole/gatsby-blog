@@ -42,13 +42,17 @@ const StyledLink = styled(Link)`
   transition-property: border-color, background-color;
 `;
 
-const SearchBox = () => {
+interface IProps {
+  className?: string;
+}
+
+const SearchBox = ({ className }: IProps) => {
   const onSubmit = ({ query }: { query: string }) => {
     navigate(`/search/${encodeURIComponent(query)}`);
   };
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Formik initialValues={{ query: '' }} validationSchema={QuerySchema} onSubmit={onSubmit}>
         {({ handleSubmit, values }) => (
           <Form role="search" onSubmit={handleSubmit}>

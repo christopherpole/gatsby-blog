@@ -32,7 +32,9 @@ const LinkContainer = styled.li`
   }
 `;
 
-const StyledLink = styled(Link)<{ disabled?: boolean; isActive?: boolean }>`
+const StyledLink = styled(({ isActive, disabled, ...rest }) => (
+  <Link disabled={disabled} {...rest} />
+))`
   ${buttonStyles};
   display: flex;
   align-items: center;
@@ -62,6 +64,7 @@ const StyledLink = styled(Link)<{ disabled?: boolean; isActive?: boolean }>`
   ${props =>
     props.disabled &&
     css`
+      pointer-events: none;
       color: ${props.theme.colors.disabled};
 
       &:hover,

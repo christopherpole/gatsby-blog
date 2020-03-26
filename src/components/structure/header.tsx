@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Logo from 'src/components/structure/logo';
 import Nav from 'src/components/structure/nav';
 import SearchBox from 'src/components/structure/searchBox';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const Wrapper = styled.header`
   width: 100%;
@@ -13,15 +15,24 @@ const Wrapper = styled.header`
 `;
 
 const WrapperInner = styled.div`
-  padding: ${props => props.theme.spacing.large} 0;
   display: flex;
   justify-content: center;
+  padding: ${props => props.theme.spacing.large} 0;
   align-items: center;
   border-bottom: 1px solid ${props => props.theme.colors.border};
   width: 100%;
+  justify-content: space-between;
+`;
+
+const HamburgerMenu = styled.button`
+  font-size: ${props => props.theme.sizing.large};
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 
   ${props => props.theme.breakpoints.medium`
-    justify-content: space-between;
+    display: none;
   `}
 `;
 
@@ -38,12 +49,19 @@ const NavSearchWrapper = styled.div`
   `}
 `;
 
-const Header = () => (
+interface IProps {
+  showSlidingMenu: () => void;
+}
+
+const Header = ({ showSlidingMenu }: IProps) => (
   <Wrapper>
     <WrapperInner>
       <LogoWrapper>
         <Logo />
       </LogoWrapper>
+      <HamburgerMenu onClick={showSlidingMenu}>
+        <FontAwesomeIcon icon={faBars} />
+      </HamburgerMenu>
       <NavSearchWrapper>
         <Nav />
         <SearchBox />

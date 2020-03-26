@@ -49,8 +49,8 @@ const theme = {
   },
   sizing: {
     xxl: '3.4rem',
-    extraLarge: '2.8rem',
-    large: '2.2rem',
+    extraLarge: '2.6rem',
+    large: '2rem',
     medium: '1.6rem',
     small: '1.4rem',
     extraSmall: '1.2rem',

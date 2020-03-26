@@ -88,7 +88,7 @@ const TitleAndDescriptionWrapper = styled.div<{ spotlight?: boolean }>`
 
 const Title = styled(Link)<{ spotlight?: boolean }>`
   margin-bottom: ${props => props.theme.spacing.xxs};
-  font-size: ${props => props.theme.sizing.large};
+  font-size: ${props => props.theme.sizing.extraLarge};
   line-height: 1.3;
   font-weight: bold;
   color: inherit;
@@ -108,7 +108,7 @@ const Title = styled(Link)<{ spotlight?: boolean }>`
 `;
 
 const PublishedOn = styled.p<{ spotlight?: boolean }>`
-  font-size: ${props => props.theme.sizing.small};
+  font-size: ${props => props.theme.sizing.medium};
   margin-bottom: ${props => props.theme.spacing.small};
   color: ${props => props.theme.colors.fonts.tertiary};
 
