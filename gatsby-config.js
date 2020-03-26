@@ -23,7 +23,6 @@ module.exports = {
     title: 'Terrarium Blog',
     description: 'A blog about terrariums',
     author: 'Christopher Pole',
-    url: 'http://localhost:8000',
     siteUrl: 'http://localhost:8000',
     image: 'https://placehold.it/200x200',
   },

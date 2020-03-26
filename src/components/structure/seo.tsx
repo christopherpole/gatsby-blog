@@ -9,7 +9,7 @@ export const QUERY = graphql`
         title
         description
         image
-        url
+        siteUrl
       }
     }
   }
@@ -34,16 +34,18 @@ const SEO = (overrides: IProps) => {
     title: overrides.title ? `${overrides.title} - ${siteMetadata.title}` : siteMetadata.title,
     description: overrides.description ? overrides.description : siteMetadata.description,
     image: overrides.image ? overrides.image : siteMetadata.image,
-    url: overrides.pathname ? `${siteMetadata.url}${overrides.pathname}` : siteMetadata.url,
+    url: overrides.pathname ? `${siteMetadata.siteUrl}${overrides.pathname}` : siteMetadata.siteUrl,
     twitterUsername: overrides.twitterUsername,
     isArticle: overrides.isArticle,
   };
+
+  fields.url = fields.url.replace('http://', 'https://').replace('www.', '');
 
   return (
     <Helmet title={fields.title}>
       {fields.description && <meta name="description" content={fields.description} />}
       {fields.image && <meta name="image" content={fields.image} />}
-      <link rel="canonical" href={`https://${fields.url}`} />
+      <link rel="canonical" href={fields.url} />
 
       {fields.title && <meta property="og:title" content={fields.title} />}
       {fields.description && <meta property="og:description" content={fields.description} />}

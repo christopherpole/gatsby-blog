@@ -7,6 +7,7 @@ import Headline from 'src/components/ui/headline';
 import Article from 'src/components/article';
 import Articles from 'src/components/articles';
 import IArticleSummary from 'src/types/articleSummary';
+import SEO from 'src/components/structure/seo';
 
 export const QUERY = graphql`
   query($limit: Int!, $skip: Int!) {
@@ -62,6 +63,9 @@ interface IProps {
     pageNumber: number;
     numberOfPages: number;
   };
+  location: {
+    pathname: string;
+  };
 }
 
 const IndexPage = ({
@@ -73,8 +77,11 @@ const IndexPage = ({
     latestArticles,
   },
   pageContext: { previousPagePath, nextPagePath, pageNumber, numberOfPages },
+  location: { pathname },
 }: IProps) => (
   <Wrapper>
+    <SEO pathname={pathname} />
+
     <HiddenHeadline>{title}</HiddenHeadline>
     {pageNumber === 0 && <Article spotlight {...featuredArticle.nodes[0]} />}
     <Articles articles={latestArticles.nodes} />

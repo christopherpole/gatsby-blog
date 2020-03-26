@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { useFlexSearch } from 'react-use-flexsearch';
 
+import SEO from 'src/components/structure/seo';
 import Articles from 'src/components/articles';
 import SearchBox from 'src/components/searchBox';
 import Headline from 'src/components/ui/headline';
@@ -44,6 +45,8 @@ const SearchPage = (props: IProps) => {
 
   return (
     <Wrapper>
+      <SEO title="Search" pathname="/search" />
+
       {/* No query */}
       {!query.length && (
         <>
