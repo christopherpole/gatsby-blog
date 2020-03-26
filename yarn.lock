@@ -1875,6 +1875,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-sticky-el@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/react-sticky-el/-/react-sticky-el-1.0.2.tgz#dd544d164566829b5857783de19ae1892e99835a"
+  integrity sha512-LjtfYEAKylFdTXMdoOnt2qVLf6BgrudNPeMxYu6rIqSEjN2eRE3yQkWvaodiYjMH474DQi04kwjt4SD3bdv5Bw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "16.9.19"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.19.tgz#c842aa83ea490007d29938146ff2e4d9e4360c40"
@@ -11617,7 +11624,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@>=15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -11966,6 +11973,13 @@ react-side-effect@^1.1.0:
   dependencies:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
+
+react-sticky-el@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-sticky-el/-/react-sticky-el-1.1.1.tgz#bbbb37c353dd65522eac1ccf6795aa206a30bba1"
+  integrity sha512-2WSEiOxsybUJaJHacLSSspGQjFUryBGIbqCkcq9I8Up78YPDGLEHeUF+RnHIhfKJYILHVqODFrL0mnu9ehWhrg==
+  dependencies:
+    prop-types ">=15.7.2"
 
 react-use-flexsearch@^0.1.1:
   version "0.1.1"

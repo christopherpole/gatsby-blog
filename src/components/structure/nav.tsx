@@ -18,7 +18,11 @@ const QUERY = graphql`
 `;
 
 const Wrapper = styled.nav`
-  margin-right: ${props => props.theme.spacing.large};
+  margin-right: ${props => props.theme.spacing.medium};
+
+  ${props => props.theme.breakpoints.large`
+    margin-right: ${props.theme.spacing.large};
+  `}
 `;
 
 const LinksWrapper = styled.ul`
@@ -34,6 +38,10 @@ const LinkWrapper = styled.li`
   margin-right: ${props => props.theme.spacing.small};
 
   ${props => props.theme.breakpoints.medium`
+    margin-right: ${props.theme.spacing.medium};
+  `}
+
+  ${props => props.theme.breakpoints.large`
     margin-right: ${props.theme.spacing.large};
   `}
 

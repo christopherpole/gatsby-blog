@@ -28,7 +28,7 @@ const Wrapper = styled.div<{ slidingMenuState: 'hidden' | 'slidingIn' | 'sliding
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 3;
   animation: fadeIn 500ms linear forwards;
   background-color: transparent;
 

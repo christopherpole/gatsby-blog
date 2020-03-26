@@ -44,12 +44,14 @@
     "react-helmet": "^5.2.1",
     "react-recaptcha": "^2.3.10",
     "react-share": "^4.0.1",
+    "react-sticky-el": "^1.1.1",
     "react-use-flexsearch": "^0.1.1",
     "styled-components": "^5.0.1",
     "yup": "^0.28.1"
   },
   "devDependencies": {
     "@types/react-helmet": "^5.0.15",
+    "@types/react-sticky-el": "^1.0.2",
     "@types/styled-components": "^5.0.0",
     "@types/yup": "^0.26.32",
     "@typescript-eslint/eslint-plugin": "^2.19.0",

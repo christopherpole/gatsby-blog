@@ -12,8 +12,8 @@ export const QUERY = graphql`
     }
     image: file(relativePath: { eq: "logo.png" }) {
       childImageSharp {
-        fixed(width: 120) {
-          ...GatsbyImageSharpFixed_tracedSVG
+        fluid {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
@@ -22,16 +22,19 @@ export const QUERY = graphql`
 
 const StyledLink = styled(Link)`
   display: inline-flex;
+  max-width: 100%;
 `;
 
-const StyledImg = styled(Img)``;
+const StyledImg = styled(Img)`
+  width: 200px;
+`;
 
 const Logo = () => {
   const data = useStaticQuery(QUERY);
 
   return (
     <StyledLink to="/">
-      <StyledImg fixed={data.image.childImageSharp.fixed} alt={data.site.siteMetadata.title} />
+      <StyledImg fluid={data.image.childImageSharp.fluid} alt={data.site.siteMetadata.title} />
     </StyledLink>
   );
 };
