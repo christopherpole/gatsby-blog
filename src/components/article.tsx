@@ -154,7 +154,7 @@ interface IProps extends IArticleSummary {
 
 const Article = ({ spotlight, title, description, thumbnail, slug, createdAt }: IProps) => (
   <Wrapper>
-    <ImageWrapper spotlight={spotlight} to={`/article/${slug}`}>
+    <ImageWrapper aria-label="Visit article" spotlight={spotlight} to={`/article/${slug}`}>
       <Img fluid={thumbnail.fluid} />
     </ImageWrapper>
 

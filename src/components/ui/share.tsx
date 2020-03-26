@@ -142,6 +142,7 @@ const Share = ({ url, title, media }: IProps) => (
     <IconWrapper>
       <EmailButton
         href={`mailto:?Subject=${title}&body=Check%20out%20this%20article%3A%20${url}`}
+        aria-label="Share via email"
         onClick={() => {
           trackEvent('Email');
         }}

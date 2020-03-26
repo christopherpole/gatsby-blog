@@ -33,7 +33,7 @@ const Logo = () => {
   const data = useStaticQuery(QUERY);
 
   return (
-    <StyledLink to="/">
+    <StyledLink aria-label="Back to homepage" to="/">
       <StyledImg fluid={data.image.childImageSharp.fluid} alt={data.site.siteMetadata.title} />
     </StyledLink>
   );

@@ -133,38 +133,40 @@ const Footer = () => {
         <ContentWrapperInner>
           <Column links>
             <ColumnHeader>Links</ColumnHeader>
-            <LinksWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/">
-                  Home
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/about">
-                  About
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/disclaimer">
-                  Affiliate Disclaimer
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/contact">
-                  Contact
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/privacy">
-                  Privary Policy
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/terms">
-                  Terms of Use
-                </Link>
-              </LinkWrapper>
-            </LinksWrapper>
+            <nav>
+              <LinksWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/">
+                    Home
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/about">
+                    About
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/disclaimer">
+                    Affiliate Disclaimer
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/contact">
+                    Contact
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/privacy">
+                    Privary Policy
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/terms">
+                    Terms of Use
+                  </Link>
+                </LinkWrapper>
+              </LinksWrapper>
+            </nav>
           </Column>
           <Column tags>
             <ColumnHeader>Tags</ColumnHeader>

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useFlexSearch } from 'react-use-flexsearch';
 
 import Articles from 'src/components/articles';
-import SearchBox from 'src/components/structure/searchBox';
+import SearchBox from 'src/components/searchBox';
 import Headline from 'src/components/ui/headline';
 
 const searchQuery = graphql`

@@ -4,7 +4,7 @@ import Sticky from 'react-sticky-el';
 
 import Logo from 'src/components/structure/logo';
 import Nav from 'src/components/structure/nav';
-import SearchBox from 'src/components/structure/searchBox';
+import SearchBox from 'src/components/searchBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 

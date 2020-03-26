@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import ITag from 'src/types/tag';
-import SearchBox from 'src/components/structure/searchBox';
+import SearchBox from 'src/components/searchBox';
 import Link from 'src/components/ui/link';
 
 const QUERY = graphql`

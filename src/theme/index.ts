@@ -13,10 +13,10 @@ const createMediaQuery = (width: string) => {
 const theme = {
   maxPageWidth: '110rem',
   colors: {
-    primary: '#28AC28',
-    background: '#fff',
-    secondary: '#ff3434',
+    primary: '#048a17',
+    secondary: '#E80404',
     tertiary: '#222222',
+    background: '#fff',
     quaternary: '#191919',
     border: '#e8e8e8',
     disabled: '#ccc',
