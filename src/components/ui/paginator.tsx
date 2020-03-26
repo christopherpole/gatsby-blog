@@ -105,7 +105,10 @@ const Paginatior = ({
 
     {[...Array(numberOfPages)].map((_, i) => (
       <LinkContainer key={`link-container-${i}`}>
-        <StyledLink isActive={pageNumber === i} to={`${baseUrl}/${i === 0 ? '' : i + 1}`}>
+        <StyledLink
+          isActive={pageNumber === i}
+          to={`${baseUrl !== '/' ? baseUrl : ''}/${i === 0 ? '' : i + 1}`}
+        >
           {`${i + 1}`}
         </StyledLink>
       </LinkContainer>
@@ -118,7 +121,10 @@ const Paginatior = ({
     </LinkContainer>
 
     <LinkContainer>
-      <StyledLink disabled={!nextPagePath} to={`${baseUrl}/${numberOfPages}`}>
+      <StyledLink
+        disabled={!nextPagePath}
+        to={`${baseUrl !== '/' ? baseUrl : ''}/${numberOfPages}`}
+      >
         &gt;&gt;
       </StyledLink>
     </LinkContainer>

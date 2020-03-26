@@ -65,7 +65,7 @@ const TagPage = ({
 
     {numberOfPages > 1 && (
       <Paginatior
-        baseUrl={`tag/${slug}`}
+        baseUrl={`/tag/${slug}`}
         previousPagePath={previousPagePath}
         nextPagePath={nextPagePath}
         pageNumber={pageNumber}

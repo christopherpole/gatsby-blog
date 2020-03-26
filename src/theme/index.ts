@@ -49,7 +49,7 @@ const theme = {
   },
   sizing: {
     xxl: '3.4rem',
-    extraLarge: '2.6rem',
+    extraLarge: '2.4rem',
     large: '2rem',
     medium: '1.6rem',
     small: '1.4rem',
