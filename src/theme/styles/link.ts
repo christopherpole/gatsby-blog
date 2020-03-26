@@ -1,12 +1,12 @@
 import { css } from 'styled-components';
 import { darken } from 'polished';
 
-export default css<{ altStyle: boolean }>`
+export default css<{ altStyle?: boolean }>`
   text-decoration: none;
   color: inherit;
   display: inline-flex;
-  transition: color ${props => props.theme.transitions.duration}
-    ${props => props.theme.transitions.easing};
+  transition: ${props =>
+    `color ${props.theme.transitions.duration} ${props.theme.transitions.easing}`};
   color: ${props =>
     props.altStyle ? props.theme.colors.fonts.secondary : props.theme.colors.primary};
 

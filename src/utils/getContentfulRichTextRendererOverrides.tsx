@@ -43,7 +43,9 @@ export default (): RenderNode => ({
       ? node.data.target.fields.description['en-US']
       : undefined;
 
-    return <ArticleImage fluid={image.fluid} description={description} />;
+    const maxWidth = `${node.data.target.fields.file['en-US'].details.image.width}px`;
+
+    return <ArticleImage maxWidth={maxWidth} fluid={image.fluid} description={description} />;
   },
   'heading-1': (node: Block | Inline) => (
     <Headline>{(node.content[0] as { value: string }).value}</Headline>
