@@ -23,7 +23,7 @@ module.exports = {
     title: 'Terrarium Blog',
     description: 'A blog about terrariums',
     author: 'Christopher Pole',
-    siteUrl: 'http://localhost:8000',
+    siteUrl: 'https://localhost:8000',
     image: 'https://placehold.it/200x200',
   },
   plugins: [
@@ -35,6 +35,7 @@ module.exports = {
         siteSpeedSampleRate: 10,
       },
     },
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-root-import',
     'gatsby-plugin-react-helmet',
