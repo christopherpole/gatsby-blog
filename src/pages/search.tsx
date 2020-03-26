@@ -40,12 +40,7 @@ const SearchPage = (props: IProps) => {
   //  on giving us our URL param like this
   //  eslint-disable-next-line react/destructuring-assignment
   const query = props['*'];
-  let articles;
-
-  //  Perform the search if there is a query
-  if (query) {
-    articles = useFlexSearch(query, index, JSON.parse(store));
-  }
+  const articles = useFlexSearch(query, index, JSON.parse(store));
 
   return (
     <Wrapper>
@@ -67,7 +62,7 @@ const SearchPage = (props: IProps) => {
       {query && <Headline>{`Search results for "${query}"`}</Headline>}
 
       {/* No articles */}
-      {articles && articles.length === 0 && (
+      {query && articles && articles.length === 0 && (
         <NoResultsWrapper>
           <p>No results found!</p>
           <SearchBoxWrapper>
@@ -77,7 +72,7 @@ const SearchPage = (props: IProps) => {
       )}
 
       {/* Articles */}
-      {articles && articles.length > 0 && <Articles articles={articles} />}
+      {query && articles && articles.length > 0 && <Articles articles={articles} />}
     </Wrapper>
   );
 };
