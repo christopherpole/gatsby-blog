@@ -12,9 +12,10 @@ const createMediaQuery = (width: string) => {
 
 const theme = {
   maxPageWidth: '110rem',
+  hoverModifier: 0.1,
   colors: {
-    primary: '#048a17',
-    secondary: '#E80404',
+    primary: '#008a14',
+    secondary: '#e30001',
     tertiary: '#222222',
     background: '#fff',
     quaternary: '#191919',

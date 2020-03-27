@@ -45,7 +45,7 @@ const FacebookButton = styled(FacebookShareButton)`
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#3a579a')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#3a579a')}!important;
   }
 `;
 
@@ -55,7 +55,7 @@ const TwitterButton = styled(TwitterShareButton)`
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#00abf0')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#00abf0')}!important;
   }
 `;
 
@@ -65,7 +65,7 @@ const PinterestButton = styled(PinterestShareButton)`
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#c92228')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#c92228')}!important;
   }
 `;
 
@@ -75,7 +75,7 @@ const EmailButton = styled.a`
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#f65002')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#f65002')}!important;
   }
 `;
 

@@ -13,6 +13,8 @@ export default css<{ altStyle?: boolean }>`
   &:hover,
   &:focus {
     color: ${props =>
-      props.altStyle ? props.theme.colors.secondary : darken(0.1, props.theme.colors.primary)};
+      props.altStyle
+        ? props.theme.colors.secondary
+        : darken(props.theme.hoverModifier, props.theme.colors.primary)};
   }
 `;

@@ -20,7 +20,10 @@ export default css<{ disabled?: boolean; submitting?: boolean; altStyle?: boolea
   &:focus,
   &:hover {
     background-color: ${props =>
-      darken(0.2, props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary)};
+      darken(
+        props.theme.hoverModifier,
+        props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary,
+      )};
   }
 
   ${props =>
