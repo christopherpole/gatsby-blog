@@ -1,11 +1,23 @@
 import React from 'react';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
-import { FacebookShareButton, TwitterShareButton, PinterestShareButton } from 'react-share';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  PinterestShareButton,
+  RedditShareButton,
+  WhatsappShareButton,
+} from 'react-share';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF, faTwitter, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import {
+  faFacebookF,
+  faTwitter,
+  faPinterestP,
+  faRedditAlien,
+  faWhatsapp,
+} from '@fortawesome/free-brands-svg-icons';
 
 const buttonStyles = css`
   color: #fff !important;
@@ -69,13 +81,33 @@ const PinterestButton = styled(PinterestShareButton)`
   }
 `;
 
-const EmailButton = styled.a`
+const RedditButton = styled(RedditShareButton)`
   ${buttonStyles}
-  background-color: #f65002!important;
+  background-color: #FF5700!important;
 
   &:hover,
   &:focus {
-    background-color: ${props => darken(props.theme.hoverModifier, '#f65002')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#FF5700')}!important;
+  }
+`;
+
+const WhatsAppButton = styled(WhatsappShareButton)`
+  ${buttonStyles}
+  background-color: #25D366!important;
+
+  &:hover,
+  &:focus {
+    background-color: ${props => darken(props.theme.hoverModifier, '#25D366')}!important;
+  }
+`;
+
+const EmailButton = styled.a`
+  ${buttonStyles}
+  background-color: #6A5ACD!important;
+
+  &:hover,
+  &:focus {
+    background-color: ${props => darken(props.theme.hoverModifier, '#6A5ACD')}!important;
   }
 `;
 
@@ -137,6 +169,34 @@ const Share = ({ url, title, media }: IProps) => (
       >
         <FontAwesomeIcon icon={faPinterestP} />
       </PinterestButton>
+    </IconWrapper>
+
+    <IconWrapper>
+      <RedditButton
+        url={url}
+        title={title}
+        beforeOnClick={
+          (() => {
+            trackEvent('Reddit');
+          }) as () => Promise<void>
+        }
+      >
+        <FontAwesomeIcon icon={faRedditAlien} />
+      </RedditButton>
+    </IconWrapper>
+
+    <IconWrapper>
+      <WhatsAppButton
+        url={url}
+        title={title}
+        beforeOnClick={
+          (() => {
+            trackEvent('WhatsApp');
+          }) as () => Promise<void>
+        }
+      >
+        <FontAwesomeIcon icon={faWhatsapp} />
+      </WhatsAppButton>
     </IconWrapper>
 
     <IconWrapper>
