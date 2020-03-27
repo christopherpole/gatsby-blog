@@ -215,11 +215,6 @@ const SlidingMenu = ({ slidingMenuState, setSlidingMenuState }: IProps) => {
                 </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink onClick={closeSlidingMenu} to="/about">
-                  About
-                </StyledLink>
-              </LinkWrapper>
-              <LinkWrapper>
                 <StyledLink onClick={closeSlidingMenu} to="/disclaimer">
                   Affiliate Disclaimer
                 </StyledLink>

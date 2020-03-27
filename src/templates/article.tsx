@@ -21,6 +21,7 @@ export const QUERY = graphql`
       body {
         json
       }
+      containsAffiliateLinks
       relatedArticles {
         ...articleSummaryFields
       }
@@ -62,6 +63,12 @@ const ImageWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.large};
 `;
 
+const AffiliateDisclaimer = styled.p`
+  text-align: center;
+  color: ${props => props.theme.colors.fonts.tertiary};
+  font-style: italic;
+`;
+
 const BodyWrapper = styled.div`
   margin-bottom: ${props => props.theme.spacing.large};
 `;
@@ -85,6 +92,7 @@ interface IFullArticle extends IArticleSummary {
   body: {
     json: ContentfulDocument;
   };
+  containsAffiliateLinks: boolean;
 }
 
 interface IProps {
@@ -102,7 +110,17 @@ interface IProps {
 
 const ArticlePage = ({
   data: {
-    contentfulArticle: { id, title, description, tags, createdAt, body, relatedArticles, image },
+    contentfulArticle: {
+      id,
+      title,
+      description,
+      tags,
+      createdAt,
+      body,
+      relatedArticles,
+      image,
+      containsAffiliateLinks,
+    },
     latestArticles,
   },
   location: { href, pathname },
@@ -126,6 +144,13 @@ const ArticlePage = ({
       <ImageWrapper>
         <Img fluid={image.fluid} />
       </ImageWrapper>
+
+      {containsAffiliateLinks && (
+        <AffiliateDisclaimer>
+          This post contains affiliate links. See the full affiliate disclaimer{' '}
+          <Link to="/disclaimer">here</Link>
+        </AffiliateDisclaimer>
+      )}
 
       <BodyWrapper>
         {documentToReactComponents(body.json, {

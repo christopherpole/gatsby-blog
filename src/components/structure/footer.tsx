@@ -141,11 +141,6 @@ const Footer = () => {
                   </Link>
                 </LinkWrapper>
                 <LinkWrapper>
-                  <Link altStyle to="/about">
-                    About
-                  </Link>
-                </LinkWrapper>
-                <LinkWrapper>
                   <Link altStyle to="/disclaimer">
                     Affiliate Disclaimer
                   </Link>

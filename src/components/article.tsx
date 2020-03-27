@@ -169,9 +169,7 @@ const Article = ({ spotlight, title, description, thumbnail, slug, createdAt }: 
         </TitleAndDescriptionWrapper>
 
         <StyledLink spotlight={spotlight} to={`/article/${slug}`}>
-          <span>
-            Read more <ArrowWrapper spotlight={spotlight}>→</ArrowWrapper>
-          </span>
+          Read more <ArrowWrapper spotlight={spotlight}>&nbsp;→</ArrowWrapper>
         </StyledLink>
       </CopyWrapperInner>
     </CopyWrapper>
