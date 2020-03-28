@@ -141,8 +141,8 @@ const Footer = () => {
                   </Link>
                 </LinkWrapper>
                 <LinkWrapper>
-                  <Link altStyle to="/disclaimer">
-                    Affiliate Disclaimer
+                  <Link altStyle to="/terms">
+                    Terms and Conditions
                   </Link>
                 </LinkWrapper>
                 <LinkWrapper>
@@ -151,8 +151,8 @@ const Footer = () => {
                   </Link>
                 </LinkWrapper>
                 <LinkWrapper>
-                  <Link altStyle to="/terms">
-                    Terms of Use
+                  <Link altStyle to="/disclaimer">
+                    Affiliate Disclaimer
                   </Link>
                 </LinkWrapper>
                 <LinkWrapper>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
+import Link from 'src/components/ui/link';
 import SEO from 'src/components/structure/seo';
 import Headline from 'src/components/ui/headline';
 import Byline from 'src/components/ui/byline';
@@ -203,7 +204,10 @@ const PrivacyPage = () => {
 
       <Byline>Consent</Byline>
 
-      <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms.</p>
+      <p>
+        By using our website, you hereby consent to our Privacy Policy and agree to its{' '}
+        <Link to="/terms">terms.</Link>
+      </p>
     </Wrapper>
   );
 };

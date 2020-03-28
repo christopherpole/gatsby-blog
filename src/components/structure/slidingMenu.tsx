@@ -215,13 +215,8 @@ const SlidingMenu = ({ slidingMenuState, setSlidingMenuState }: IProps) => {
                 </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink onClick={closeSlidingMenu} to="/disclaimer">
-                  Affiliate Disclaimer
-                </StyledLink>
-              </LinkWrapper>
-              <LinkWrapper>
-                <StyledLink onClick={closeSlidingMenu} to="/contact">
-                  Contact
+                <StyledLink onClick={closeSlidingMenu} to="/terms">
+                  Terms and Conditions
                 </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
@@ -230,8 +225,13 @@ const SlidingMenu = ({ slidingMenuState, setSlidingMenuState }: IProps) => {
                 </StyledLink>
               </LinkWrapper>
               <LinkWrapper>
-                <StyledLink onClick={closeSlidingMenu} to="/terms">
-                  Terms of Use
+                <StyledLink onClick={closeSlidingMenu} to="/disclaimer">
+                  Affiliate Disclaimer
+                </StyledLink>
+              </LinkWrapper>
+              <LinkWrapper>
+                <StyledLink onClick={closeSlidingMenu} to="/contact">
+                  Contact
                 </StyledLink>
               </LinkWrapper>
             </LinksWrapper>
