@@ -53,7 +53,7 @@ const SearchPage = (props: IProps) => {
           <Headline>Search</Headline>
 
           <NoResultsWrapper>
-            <p>Enter your search term below</p>
+            <p>Enter your search query below:</p>
             <SearchBoxWrapper>
               <SearchBox />
             </SearchBoxWrapper>

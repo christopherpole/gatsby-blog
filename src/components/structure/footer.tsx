@@ -86,15 +86,6 @@ const Column = styled.div<{ links?: boolean; tags?: boolean; newsletter?: boolea
 const ColumnHeader = styled.h4`
   font-size: ${props => props.theme.sizing.medium};
   margin-bottom: ${props => props.theme.spacing.small};
-
-  &:after {
-    content: '';
-    margin-top: ${props => props.theme.spacing.xxs};
-    display: block;
-    background: white;
-    width: 40%;
-    height: 0.2rem;
-  }
 `;
 
 const LinksWrapper = styled.ul`

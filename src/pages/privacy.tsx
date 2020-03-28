@@ -37,7 +37,7 @@ const PrivacyPage = () => {
     <Wrapper>
       <SEO title="Privacy Policy" pathname="/privacy" />
 
-      <Headline>Privacy Policy for {title}</Headline>
+      <Headline>Privacy Policy</Headline>
 
       <p>
         At {title}, accessible from {siteUrl}, one of our main priorities is the privacy of our
