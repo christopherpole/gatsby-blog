@@ -9,7 +9,7 @@ const Wrapper = styled.h1`
 `;
 
 interface IProps {
-  children: string;
+  children: string | React.ReactNode;
   className?: string;
 }
 

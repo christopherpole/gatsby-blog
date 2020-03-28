@@ -146,11 +146,6 @@ const Footer = () => {
                   </Link>
                 </LinkWrapper>
                 <LinkWrapper>
-                  <Link altStyle to="/contact">
-                    Contact
-                  </Link>
-                </LinkWrapper>
-                <LinkWrapper>
                   <Link altStyle to="/privacy">
                     Privary Policy
                   </Link>
@@ -158,6 +153,11 @@ const Footer = () => {
                 <LinkWrapper>
                   <Link altStyle to="/terms">
                     Terms of Use
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/contact">
+                    Contact
                   </Link>
                 </LinkWrapper>
               </LinksWrapper>
