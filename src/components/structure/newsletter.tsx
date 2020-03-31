@@ -117,7 +117,7 @@ const NewsLetter = () => {
             >
               <FieldWrapper>
                 <Label htmlFor="newsletter-contact">
-                  Enter your email address below to get new updates sent directly to your inbox!
+                  Enter your email address below to get updates sent directly to your inbox!
                 </Label>
 
                 <StyledInput

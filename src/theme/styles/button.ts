@@ -16,6 +16,7 @@ export default css<{ disabled?: boolean; submitting?: boolean; altStyle?: boolea
   font-weight: bold;
   position: relative;
   user-select: none;
+  white-space: nowrap;
 
   &:focus,
   &:hover {

@@ -38,7 +38,7 @@ const WrapperInner = styled.div`
 
   .stuck & {
     padding: ${props => props.theme.spacing.extraSmall} ${props => props.theme.spacing.large};
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.1);
     max-width: 100%;
   }
 `;

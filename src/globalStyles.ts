@@ -15,6 +15,10 @@ export default createGlobalStyle`
     ${props => props.theme.breakpoints.small`
       font-size: 62.5%;
     `}
+
+    ${props => props.theme.breakpoints.extraLarge`
+      font-size: 67.5%;
+    `}
   }
 
   body {

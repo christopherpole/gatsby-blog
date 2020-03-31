@@ -6,6 +6,7 @@ import 'normalize.css';
 import Footer from 'src/components/structure/footer';
 import Header from 'src/components/structure/header';
 import SlidingMenu from 'src/components/structure/slidingMenu';
+import CookiesNotification from 'src/components/structure/cookiesNotification';
 import SEO from 'src/components/structure/seo';
 
 interface IProps {
@@ -66,6 +67,7 @@ const Layout = ({ children }: IProps) => {
           <ContentWrapper>{children}</ContentWrapper>
         </HeaderAndContentWrapper>
         <Footer />
+        <CookiesNotification />
       </Wrapper>
     </>
   );

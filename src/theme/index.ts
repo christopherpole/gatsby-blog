@@ -11,7 +11,7 @@ const createMediaQuery = (width: string) => {
 };
 
 const theme = {
-  maxPageWidth: '110rem',
+  maxPageWidth: '120rem',
   hoverModifier: 0.1,
   colors: {
     primary: '#008a14',
@@ -61,6 +61,7 @@ const theme = {
     small: createMediaQuery('23em'),
     medium: createMediaQuery('45em'),
     large: createMediaQuery('60em'),
+    extraLarge: createMediaQuery('80em'),
   },
 };
 

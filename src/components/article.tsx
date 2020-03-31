@@ -128,7 +128,7 @@ const StyledLink = styled(({ spotlight, ...rest }) => <Link {...rest} />)`
     props.spotlight &&
     props.theme.breakpoints.medium`
       ${buttonStyles};
-      border: 2px solid white;
+      border: .2rem solid white;
       background-color: transparent;
       transition-property: color, background-color;
       
