@@ -40,7 +40,7 @@ const TermsPage = () => {
       <Headline>Terms and Conditions</Headline>
 
       <p>
-        These terms and conditions outline the rules and regulations for the use of
+        These terms and conditions outline the rules and regulations for the use of{` `}
         {title}&apos;s Website, located at {siteUrl}.
       </p>
 
