@@ -23,7 +23,7 @@ module.exports = {
     title: 'The Terrarium Zone',
     description: 'A blog about terrariums',
     author: 'Christopher Pole',
-    siteUrl: 'theterrariumzone.com',
+    siteUrl: 'https://theterrariumzone.com',
     image: 'https://placehold.it/200x200',
   },
   plugins: [
