@@ -34,12 +34,12 @@ const SEO = (overrides: IProps) => {
     title: overrides.title ? `${overrides.title} - ${siteMetadata.title}` : siteMetadata.title,
     description: overrides.description ? overrides.description : siteMetadata.description,
     image: overrides.image ? overrides.image : siteMetadata.image,
-    url: overrides.pathname ? `${siteMetadata.siteUrl}${overrides.pathname}` : siteMetadata.siteUrl,
+    url: overrides.pathname
+      ? `https://${siteMetadata.siteUrl}${overrides.pathname}`
+      : siteMetadata.siteUrl,
     twitterUsername: overrides.twitterUsername,
     isArticle: overrides.isArticle,
   };
-
-  fields.url = fields.url.replace('http://', 'https://').replace('www.', '');
 
   return (
     <Helmet title={fields.title}>

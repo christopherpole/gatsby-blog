@@ -20,10 +20,10 @@ const getContent = input => {
 
 module.exports = {
   siteMetadata: {
-    title: 'Terrarium Blog',
+    title: 'The Terrarium Zone',
     description: 'A blog about terrariums',
     author: 'Christopher Pole',
-    siteUrl: 'localhost:8000',
+    siteUrl: 'theterrariumzone.com',
     image: 'https://placehold.it/200x200',
   },
   plugins: [
@@ -68,11 +68,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Terrarium Blog',
-        short_name: 'Terrarium Blogs',
+        name: 'The Terrarium Zone',
+        short_name: 'The Terrarium Zone',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        background_color: '#008a14',
+        theme_color: '#008a14',
         display: 'standalone',
         icon: 'src/images/gatsby-icon.png',
       },
