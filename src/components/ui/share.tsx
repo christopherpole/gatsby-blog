@@ -4,7 +4,6 @@ import {
   FacebookShareButton,
   TwitterShareButton,
   PinterestShareButton,
-  RedditShareButton,
   WhatsappShareButton,
 } from 'react-share';
 import styled, { css } from 'styled-components';
@@ -15,7 +14,6 @@ import {
   faFacebookF,
   faTwitter,
   faPinterestP,
-  faRedditAlien,
   faWhatsapp,
 } from '@fortawesome/free-brands-svg-icons';
 
@@ -81,15 +79,15 @@ const PinterestButton = styled(PinterestShareButton)`
   }
 `;
 
-const RedditButton = styled(RedditShareButton)`
-  ${buttonStyles}
-  background-color: #FF5700!important;
+// const RedditButton = styled(RedditShareButton)`
+//   ${buttonStyles}
+//   background-color: #FF5700!important;
 
-  &:hover,
-  &:focus {
-    background-color: ${props => darken(props.theme.hoverModifier, '#FF5700')}!important;
-  }
-`;
+//   &:hover,
+//   &:focus {
+//     background-color: ${props => darken(props.theme.hoverModifier, '#FF5700')}!important;
+//   }
+// `;
 
 const WhatsAppButton = styled(WhatsappShareButton)`
   ${buttonStyles}
@@ -103,11 +101,11 @@ const WhatsAppButton = styled(WhatsappShareButton)`
 
 const EmailButton = styled.a`
   ${buttonStyles}
-  background-color: #6A5ACD!important;
+  background-color: #FF5700!important;
 
   &:hover,
   &:focus {
-    background-color: ${props => darken(props.theme.hoverModifier, '#6A5ACD')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#FF5700')}!important;
   }
 `;
 
@@ -171,7 +169,7 @@ const Share = ({ url, title, media }: IProps) => (
       </PinterestButton>
     </IconWrapper>
 
-    <IconWrapper>
+    {/* <IconWrapper>
       <RedditButton
         url={url}
         title={title}
@@ -183,7 +181,7 @@ const Share = ({ url, title, media }: IProps) => (
       >
         <FontAwesomeIcon icon={faRedditAlien} />
       </RedditButton>
-    </IconWrapper>
+    </IconWrapper> */}
 
     <IconWrapper>
       <WhatsAppButton
