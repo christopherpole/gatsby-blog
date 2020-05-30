@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
@@ -8,7 +8,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import buttonStyles from 'src/theme/styles/button';
 import Input from 'src/components/ui/form/input';
-import Label from 'src/components/ui/form/label';
 
 const QuerySchema = Yup.object().shape({
   query: Yup.string(),
@@ -23,41 +22,51 @@ const InputWrapper = styled.div`
   margin: 0;
 `;
 
-const StyledLabel = styled(Label)`
-  display: none;
-`;
-
 const StyledInput = styled(Input)`
   margin-bottom: 0;
   padding-left: 1rem;
   border-right: none;
 `;
 
-const StyledLink = styled(Link)`
+const StyledSubmitButton = styled.button`
   ${buttonStyles};
   display: flex;
   align-items: center;
   justify-content: center;
   padding: ${props => props.theme.spacing.extraSmall};
-  transition-property: border-color background-color;
+  transition-property: border-color, background-color;
 `;
 
-const SearchBox = () => {
+interface IProps {
+  className?: string;
+  onSearch?: () => void;
+}
+
+const SearchBox = ({ className, onSearch }: IProps) => {
   const onSubmit = ({ query }: { query: string }) => {
     navigate(`/search/${encodeURIComponent(query)}`);
+
+    if (onSearch) {
+      onSearch();
+    }
   };
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <Formik initialValues={{ query: '' }} validationSchema={QuerySchema} onSubmit={onSubmit}>
-        {({ handleSubmit, values }) => (
+        {({ handleSubmit }) => (
           <Form role="search" onSubmit={handleSubmit}>
             <InputWrapper>
-              <StyledLabel htmlFor="search-query">Search query</StyledLabel>
-              <StyledInput id="search-query" component="input" type="text" name="query" />
-              <StyledLink to={`/search/${encodeURIComponent(values.query)}`}>
+              <StyledInput
+                aria-label="Search query"
+                id="search-query"
+                component="input"
+                type="text"
+                name="query"
+              />
+              <StyledSubmitButton aria-label="Search now" type="submit">
                 <FontAwesomeIcon icon={faSearch} />
-              </StyledLink>
+              </StyledSubmitButton>
             </InputWrapper>
           </Form>
         )}

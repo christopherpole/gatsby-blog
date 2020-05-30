@@ -1,11 +1,21 @@
 import React from 'react';
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics';
-import { FacebookShareButton, TwitterShareButton, PinterestShareButton } from 'react-share';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  PinterestShareButton,
+  WhatsappShareButton,
+} from 'react-share';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF, faTwitter, faPinterestP } from '@fortawesome/free-brands-svg-icons';
+import {
+  faFacebookF,
+  faTwitter,
+  faPinterestP,
+  faWhatsapp,
+} from '@fortawesome/free-brands-svg-icons';
 
 const buttonStyles = css`
   color: #fff !important;
@@ -45,7 +55,7 @@ const FacebookButton = styled(FacebookShareButton)`
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#3a579a')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#3a579a')}!important;
   }
 `;
 
@@ -55,7 +65,7 @@ const TwitterButton = styled(TwitterShareButton)`
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#00abf0')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#00abf0')}!important;
   }
 `;
 
@@ -65,17 +75,37 @@ const PinterestButton = styled(PinterestShareButton)`
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#c92228')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#c92228')}!important;
+  }
+`;
+
+// const RedditButton = styled(RedditShareButton)`
+//   ${buttonStyles}
+//   background-color: #FF5700!important;
+
+//   &:hover,
+//   &:focus {
+//     background-color: ${props => darken(props.theme.hoverModifier, '#FF5700')}!important;
+//   }
+// `;
+
+const WhatsAppButton = styled(WhatsappShareButton)`
+  ${buttonStyles}
+  background-color: #25D366!important;
+
+  &:hover,
+  &:focus {
+    background-color: ${props => darken(props.theme.hoverModifier, '#25D366')}!important;
   }
 `;
 
 const EmailButton = styled.a`
   ${buttonStyles}
-  background-color: #f65002!important;
+  background-color: #FF5700!important;
 
   &:hover,
   &:focus {
-    background-color: ${darken(0.1, '#f65002')}!important;
+    background-color: ${props => darken(props.theme.hoverModifier, '#FF5700')}!important;
   }
 `;
 
@@ -139,9 +169,38 @@ const Share = ({ url, title, media }: IProps) => (
       </PinterestButton>
     </IconWrapper>
 
+    {/* <IconWrapper>
+      <RedditButton
+        url={url}
+        title={title}
+        beforeOnClick={
+          (() => {
+            trackEvent('Reddit');
+          }) as () => Promise<void>
+        }
+      >
+        <FontAwesomeIcon icon={faRedditAlien} />
+      </RedditButton>
+    </IconWrapper> */}
+
+    <IconWrapper>
+      <WhatsAppButton
+        url={url}
+        title={title}
+        beforeOnClick={
+          (() => {
+            trackEvent('WhatsApp');
+          }) as () => Promise<void>
+        }
+      >
+        <FontAwesomeIcon icon={faWhatsapp} />
+      </WhatsAppButton>
+    </IconWrapper>
+
     <IconWrapper>
       <EmailButton
         href={`mailto:?Subject=${title}&body=Check%20out%20this%20article%3A%20${url}`}
+        aria-label="Share via email"
         onClick={() => {
           trackEvent('Email');
         }}

@@ -11,6 +11,7 @@ interface IProps {
   disabled?: boolean;
   submitting?: boolean;
   altStyle?: boolean;
+  onClick?: () => void;
 }
 
 const Wrapper = styled(({ altStyle, submitting, ...rest }: IProps) => <button {...rest} />)`

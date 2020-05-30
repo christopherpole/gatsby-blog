@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import 'normalize.css';
 
 import Footer from 'src/components/structure/footer';
 import Header from 'src/components/structure/header';
+import SlidingMenu from 'src/components/structure/slidingMenu';
+import CookiesNotification from 'src/components/structure/cookiesNotification';
 import SEO from 'src/components/structure/seo';
 
 interface IProps {
@@ -12,7 +14,6 @@ interface IProps {
 }
 
 const HeaderAndContentWrapper = styled.div`
-  /* padding: 0 ${props => props.theme.spacing.large}; */
   flex: 1;
   width: 100%;
 `;
@@ -32,27 +33,44 @@ const ContentWrapper = styled.main`
   max-width: ${props => props.theme.maxPageWidth};
 `;
 
-const Layout = ({ children }: IProps) => (
-  <>
-    <Helmet>
-      <html lang="en" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link
-        href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
-        rel="stylesheet"
-      />
-    </Helmet>
+const Layout = ({ children }: IProps) => {
+  const [slidingMenuState, setSlidingMenuState] = useState<
+    'hidden' | 'slidingIn' | 'slidingOut' | 'showing'
+  >('hidden');
 
-    <SEO />
+  return (
+    <>
+      <Helmet>
+        <html lang="en" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
 
-    <Wrapper>
-      <HeaderAndContentWrapper>
-        <Header />
-        <ContentWrapper>{children}</ContentWrapper>
-      </HeaderAndContentWrapper>
-      <Footer />
-    </Wrapper>
-  </>
-);
+      <SEO />
+
+      <Wrapper>
+        {slidingMenuState !== 'hidden' && (
+          <SlidingMenu
+            setSlidingMenuState={setSlidingMenuState}
+            slidingMenuState={slidingMenuState}
+          />
+        )}
+        <HeaderAndContentWrapper>
+          <Header
+            showSlidingMenu={() => {
+              setSlidingMenuState('slidingIn');
+            }}
+          />
+          <ContentWrapper>{children}</ContentWrapper>
+        </HeaderAndContentWrapper>
+        <Footer />
+        <CookiesNotification />
+      </Wrapper>
+    </>
+  );
+};
 
 export default Layout;

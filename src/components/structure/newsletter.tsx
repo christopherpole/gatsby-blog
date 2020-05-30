@@ -117,10 +117,11 @@ const NewsLetter = () => {
             >
               <FieldWrapper>
                 <Label htmlFor="newsletter-contact">
-                  Get the care info you need to keep your houseplants happy and healthy!
+                  Enter your email address below to get updates sent directly to your inbox!
                 </Label>
 
                 <StyledInput
+                  placeholder="Email"
                   id="newsletter-contact"
                   component="input"
                   type="email"

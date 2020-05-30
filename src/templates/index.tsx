@@ -4,9 +4,10 @@ import { graphql } from 'gatsby';
 
 import Paginatior from 'src/components/ui/paginator';
 import Headline from 'src/components/ui/headline';
-import ArticleSpotlight from 'src/components/articleSpotlight';
+import Article from 'src/components/article';
 import Articles from 'src/components/articles';
 import IArticleSummary from 'src/types/articleSummary';
+import SEO from 'src/components/structure/seo';
 
 export const QUERY = graphql`
   query($limit: Int!, $skip: Int!) {
@@ -42,14 +43,6 @@ const HiddenHeadline = styled(Headline)`
   display: none;
 `;
 
-const ArticlesWrapper = styled.div`
-  margin-bottom: ${props => props.theme.spacing.extraLarge};
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
 interface IProps {
   data: {
     site: {
@@ -70,6 +63,9 @@ interface IProps {
     pageNumber: number;
     numberOfPages: number;
   };
+  location: {
+    pathname: string;
+  };
 }
 
 const IndexPage = ({
@@ -81,15 +77,14 @@ const IndexPage = ({
     latestArticles,
   },
   pageContext: { previousPagePath, nextPagePath, pageNumber, numberOfPages },
+  location: { pathname },
 }: IProps) => (
   <Wrapper>
+    <SEO pathname={pathname} />
+
     <HiddenHeadline>{title}</HiddenHeadline>
-
-    <ArticlesWrapper>
-      {pageNumber === 0 && <ArticleSpotlight {...featuredArticle.nodes[0]} />}
-
-      <Articles articles={latestArticles.nodes} />
-    </ArticlesWrapper>
+    {pageNumber === 0 && <Article spotlight {...featuredArticle.nodes[0]} />}
+    <Articles articles={latestArticles.nodes} />
 
     {numberOfPages > 1 && (
       <Paginatior

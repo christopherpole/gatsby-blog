@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Link from 'src/components/ui/link';
@@ -29,39 +29,63 @@ const Wrapper = styled.footer`
 
 const ContentWrapper = styled.div`
   background-color: ${props => props.theme.colors.tertiary};
-  font-size: ${props => props.theme.sizing.small};
   color: ${props => props.theme.colors.fonts.secondary};
+  font-size: ${props => props.theme.sizing.small};
 `;
 
 const ContentWrapperInner = styled.div`
   padding: ${props => props.theme.spacing.large};
   max-width: ${props => props.theme.maxPageWidth};
   margin: auto;
-  width: 100%;
-  display: flex;
+
+  ${props => props.theme.breakpoints.medium`
+    width: 100%;
+    display: flex;
+  `}
 `;
 
-const Column = styled.div`
+const Column = styled.div<{ links?: boolean; tags?: boolean; newsletter?: boolean }>`
   flex: 1;
-  margin-right: ${props => props.theme.spacing.large};
+  margin-bottom: ${props => props.theme.spacing.large};
 
   &:last-child {
-    margin-right: 0;
+    margin-bottom: 0;
   }
+
+  ${props => props.theme.breakpoints.medium`
+    margin-right: ${props.theme.spacing.large};
+
+    &:last-child {
+      margin-right: 0;
+    }
+  `}
+
+  ${props =>
+    props.links &&
+    css`
+      display: none;
+
+      ${props.theme.breakpoints.medium`
+        display: block;
+      `}
+    `}
+
+  ${props =>
+    props.tags &&
+    css`
+      ${props.theme.breakpoints.medium`
+        display: none;
+      `}
+
+      ${props.theme.breakpoints.large`
+        display: block;
+      `}
+    `}
 `;
 
 const ColumnHeader = styled.h4`
   font-size: ${props => props.theme.sizing.medium};
-  margin-bottom: ${props => props.theme.spacing.medium};
-
-  &:after {
-    content: '';
-    margin-top: ${props => props.theme.spacing.extraSmall};
-    display: block;
-    background: white;
-    width: 40%;
-    height: 0.2rem;
-  }
+  margin-bottom: ${props => props.theme.spacing.small};
 `;
 
 const LinksWrapper = styled.ul`
@@ -98,42 +122,39 @@ const Footer = () => {
     <Wrapper>
       <ContentWrapper>
         <ContentWrapperInner>
-          <Column>
+          <Column links>
             <ColumnHeader>Links</ColumnHeader>
-            <LinksWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/">
-                  Home
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/about">
-                  About
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/disclaimer">
-                  Affiliate Disclaimer
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/contact">
-                  Contact
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/privacy">
-                  Privary Policy
-                </Link>
-              </LinkWrapper>
-              <LinkWrapper>
-                <Link altStyle to="/terms">
-                  Terms of Use
-                </Link>
-              </LinkWrapper>
-            </LinksWrapper>
+            <nav>
+              <LinksWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/">
+                    Home
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/terms">
+                    Terms and Conditions
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/privacy">
+                    Privary Policy
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/disclaimer">
+                    Affiliate Disclaimer
+                  </Link>
+                </LinkWrapper>
+                <LinkWrapper>
+                  <Link altStyle to="/contact">
+                    Contact
+                  </Link>
+                </LinkWrapper>
+              </LinksWrapper>
+            </nav>
           </Column>
-          <Column>
+          <Column tags>
             <ColumnHeader>Tags</ColumnHeader>
             {data.allContentfulTag.nodes.map(({ id, slug, name }: ITag, index: number) => (
               <React.Fragment key={id}>
@@ -144,7 +165,7 @@ const Footer = () => {
               </React.Fragment>
             ))}
           </Column>
-          <Column>
+          <Column newsletter>
             <ColumnHeader>Newsletter</ColumnHeader>
             <Newsletter />
           </Column>

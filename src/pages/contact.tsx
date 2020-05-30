@@ -110,7 +110,7 @@ const ContactPage = () => {
 
       <FormAndConfirmationMessageWrapper>
         <ConfirmationMessage isShowing={formHasSubmitted} aria-hidden={formHasSubmitted}>
-          Thanks for getting in touch! We&apos;ll be in contact soon
+          Thanks for your message. I&apos;ll get back to you shortly!
         </ConfirmationMessage>
 
         <FormWrapper isShowing={!formHasSubmitted} aria-hidden={!formHasSubmitted}>

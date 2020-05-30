@@ -13,20 +13,28 @@ const Wrapper = styled.ul`
 
 const LinkContainer = styled.li`
   list-style-type: none;
-  width: 4rem;
-  height: 4rem;
-  margin-right: ${props => props.theme.spacing.small};
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 0;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: ${props => props.theme.spacing.xxs};
+
+  ${props => props.theme.breakpoints.medium`
+    width: 4rem;
+    height: 4rem;
+  `}
 
   &:last-child {
     margin-right: 0;
   }
 `;
 
-const StyledLink = styled(Link)<{ disabled?: boolean; isActive?: boolean }>`
+const StyledLink = styled(({ isActive, disabled, ...rest }) => (
+  <Link disabled={disabled} {...rest} />
+))`
   ${buttonStyles};
   display: flex;
   align-items: center;
@@ -37,7 +45,7 @@ const StyledLink = styled(Link)<{ disabled?: boolean; isActive?: boolean }>`
   right: 0;
   bottom: 0;
   background-color: transparent;
-  transition-property: background-color color;
+  transition-property: background-color, color;
   color: ${props => props.theme.colors.fonts.primary};
 
   &:hover,
@@ -56,6 +64,7 @@ const StyledLink = styled(Link)<{ disabled?: boolean; isActive?: boolean }>`
   ${props =>
     props.disabled &&
     css`
+      pointer-events: none;
       color: ${props.theme.colors.disabled};
 
       &:hover,
@@ -96,7 +105,10 @@ const Paginatior = ({
 
     {[...Array(numberOfPages)].map((_, i) => (
       <LinkContainer key={`link-container-${i}`}>
-        <StyledLink isActive={pageNumber === i} to={`${baseUrl}/${i === 0 ? '' : i + 1}`}>
+        <StyledLink
+          isActive={pageNumber === i}
+          to={`${baseUrl !== '/' ? baseUrl : ''}/${i === 0 ? '' : i + 1}`}
+        >
           {`${i + 1}`}
         </StyledLink>
       </LinkContainer>
@@ -109,7 +121,10 @@ const Paginatior = ({
     </LinkContainer>
 
     <LinkContainer>
-      <StyledLink disabled={!nextPagePath} to={`${baseUrl}/${numberOfPages}`}>
+      <StyledLink
+        disabled={!nextPagePath}
+        to={`${baseUrl !== '/' ? baseUrl : ''}/${numberOfPages}`}
+      >
         &gt;&gt;
       </StyledLink>
     </LinkContainer>

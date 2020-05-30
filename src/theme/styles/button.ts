@@ -16,11 +16,15 @@ export default css<{ disabled?: boolean; submitting?: boolean; altStyle?: boolea
   font-weight: bold;
   position: relative;
   user-select: none;
+  white-space: nowrap;
 
   &:focus,
   &:hover {
     background-color: ${props =>
-      darken(0.2, props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary)};
+      darken(
+        props.theme.hoverModifier,
+        props.altStyle ? props.theme.colors.secondary : props.theme.colors.primary,
+      )};
   }
 
   ${props =>

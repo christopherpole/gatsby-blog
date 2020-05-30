@@ -1,10 +1,23 @@
+import { css } from 'styled-components';
+
+const createMediaQuery = (width: string) => {
+  //  eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (...args: any) => css`
+    @media (min-width: ${width}) {
+      //  @ts-ignore
+      ${css(...args)}
+    }
+  `;
+};
+
 const theme = {
-  maxPageWidth: '110rem',
+  maxPageWidth: '120rem',
+  hoverModifier: 0.1,
   colors: {
-    primary: '#28AC28',
-    background: '#fff',
-    secondary: '#ff3434',
+    primary: '#008a14',
+    secondary: '#e30001',
     tertiary: '#222222',
+    background: '#fff',
     quaternary: '#191919',
     border: '#e8e8e8',
     disabled: '#ccc',
@@ -37,12 +50,18 @@ const theme = {
   },
   sizing: {
     xxl: '3.4rem',
-    extraLarge: '2.8rem',
-    large: '2.2rem',
+    extraLarge: '2.4rem',
+    large: '2rem',
     medium: '1.6rem',
     small: '1.4rem',
     extraSmall: '1.2rem',
     xxs: '1rem',
+  },
+  breakpoints: {
+    small: createMediaQuery('23em'),
+    medium: createMediaQuery('45em'),
+    large: createMediaQuery('60em'),
+    extraLarge: createMediaQuery('80em'),
   },
 };
 
